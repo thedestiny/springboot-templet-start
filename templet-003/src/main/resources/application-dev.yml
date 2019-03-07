@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:mysql://xxxxxxx:5306/rabbit?useUnicode=true&characterEncoding=utf8&useSSL=false&tinyInt1isBit=true
+    username: xxxxx
+    password: xxxxxxxxxxxxxxxxxx
