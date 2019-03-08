@@ -29,7 +29,13 @@ mvn -U -e  clean package -Dmaven.test.skip=true
 nohoup java -jar app.jar --spring.profiles.active=prod  > nohup.out & 后台运行
 ```
 
+##### 5、templet-005
 
+spring5.0.5RELEASE+jsp
+
+##### 6、templet-006
+
+spring5.0.5RELEASE+freemarker+session共享
 
 
 
