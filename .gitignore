@@ -3,4 +3,11 @@ target
 *.iml
 logs
 loghome
+springboot-templet-start.iml
 
+
+springboot-jsp-mybatis-druid-war/src/test/java/com/example/
+springboot-jsp-mybatis-druid/src/test/java/com/example/
+springboot-thymeleaf-mybatis-druid/src/test/java/com/example/
+springboot-thymeleaf-mybatisplus-hikari/src/test/java/com/example/
+springboot-thymeleaf/src/test/java/com/example/
