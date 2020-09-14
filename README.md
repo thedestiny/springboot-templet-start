@@ -36,7 +36,7 @@
 
 技术架构 springboot2.3.3.RELEASE+lombok+jsp+mybatis+druid ，package 为war包，采用tomcat 方式部署
 
-##### 2.5、springboot-jsp-mybatis-druid
+##### 2.5、springboot-jsp-mybatis-druid(horse)
 
 技术架构 springboot2.3.3.RELEASE+lombok+jsp+mybatis+druid ，package 为jar包，采用 java -jar 方式部署
 

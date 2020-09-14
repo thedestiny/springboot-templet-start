@@ -1,4 +1,4 @@
-package com.destiny.example;
+package com.destiny.horse;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
@@ -7,16 +7,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.example.svmdemo.mapper")
-public class TempletApplication {
+@MapperScan("com.destiny.horse.mapper")
+public class HorseApplication {
 
-    private static Logger logger = LoggerFactory.getLogger(TempletApplication.class);
+    private static Logger logger = LoggerFactory.getLogger(HorseApplication.class);
 
     public static void main(String[] args) {
-
-        logger.info("dddddddddddddd");
-
-        SpringApplication.run(TempletApplication.class, args);
+        logger.info("start HorseApplication !");
+        SpringApplication.run(HorseApplication.class, args);
     }
 
 }

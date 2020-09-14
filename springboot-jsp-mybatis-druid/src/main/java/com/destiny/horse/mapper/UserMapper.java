@@ -1,7 +1,7 @@
-package com.destiny.example.mapper;
+package com.destiny.horse.mapper;
 
 
-import com.destiny.example.entity.User;
+import com.destiny.horse.entity.User;
 
 import java.util.List;
 

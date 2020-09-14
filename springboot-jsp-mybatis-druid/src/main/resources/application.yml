@@ -2,10 +2,9 @@ spring:
   profiles:
     active: dev
   application:
-     name: svn-demo
+     name: springboot-jsp-mybatis-druid
   banner:
     charset: UTF-8
-
   http:
     multipart:
       max-file-size: 50MB
@@ -33,17 +32,23 @@ spring:
   mvc:
     static-path-pattern: /static/**
     view:
-      prefix: /WEB-INF/views/
+      prefix: WEB-INF/views/
       suffix: .jsp
 
 
 logging:
   config: classpath:logback.xml
+  # level: debug
+  # org.springframework.boot.autoconfigure: error
 
 
 #公共配置与profiles选择无关
 mybatis:
-  typeAliasesPackage: com.example.svndemo
+  typeAliasesPackage: com.destiny.horse
   mapperLocations: classpath:mapper/*.xml
   configuration:
     cache-enabled: true
+# 项目启动方式
+debug: false
+server:
+  port: 8081
