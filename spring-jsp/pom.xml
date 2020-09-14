@@ -425,25 +425,6 @@
                     </compilerArguments>
                 </configuration>
             </plugin>
-
-            <plugin>
-                <groupId>org.mybatis.generator</groupId>
-                <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.3.2</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>mysql</groupId>
-                        <artifactId>mysql-connector-java</artifactId>
-                        <version>5.1.35</version>
-                    </dependency>
-                </dependencies>
-                <configuration>
-                    <!--配置文件的路径-->
-                    <configurationFile>src/main/resources/gen/mybatis-generator.xml</configurationFile>
-                    <overwrite>true</overwrite>
-                    <verbose>true</verbose>
-                </configuration>
-            </plugin>
         </plugins>
 
     </build>

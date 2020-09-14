@@ -17,7 +17,7 @@
         </commentGenerator>
         <!--数据库链接URL，用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://server.destiny.com:5306/victory"
-                        userId="destiny" password="Destiny9089395!">
+                        userId="root" password="">
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
@@ -41,53 +41,7 @@
         </javaClientGenerator>
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名 -->
 
-        <table tableName="victory_socket" domainObjectName="Socket"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
-
-        <table tableName="victory_socket_rate" domainObjectName="SocketRate"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
-
-        <table tableName="victory_socket_basic" domainObjectName="SocketBasic"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
-
-        <table tableName="victory_board" domainObjectName="Board"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
-
-        <table tableName="victory_board_detail" domainObjectName="BoardDetail"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
-
-        <table tableName="victory_board_rate" domainObjectName="BoardRate"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
-
-        <table tableName="victory_socket_concentration" domainObjectName="SocketConcentration"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
-
-
-        <table tableName="victory_capital_flow" domainObjectName="CapitalFlow"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
-
-        <table tableName="victory_index_rate" domainObjectName="IndexRate"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
-
-        <table tableName="victory_rate_change" domainObjectName="RateChange"
+        <table tableName="table_name" domainObjectName="TableName"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"/>
