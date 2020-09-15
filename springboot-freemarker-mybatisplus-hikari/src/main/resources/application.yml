@@ -1,0 +1,62 @@
+spring:
+  profiles:
+    active: dev
+  application:
+     name: springboot-thymeleaf-mybatisplus-hikari
+
+  #连接池配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-test-query: select 1
+      connection-timeout: 20000
+      auto-commit: false
+      idle-timeout: 2000
+      max-lifetime: 2000
+      login-timeout: 200
+      maximum-pool-size: 2000
+      # transaction-isolation:
+
+  ## 配置单个上传文件大小
+  mvc:
+    static-path-pattern: /static/**
+  freemarker:
+    request-context-attribute: req  #req访问request
+    content-type: text/html
+    enabled: true
+    #缓存配置
+    cache: false
+    #模板加载路径 按需配置
+    template-loader-path: classpath:/templates/
+    charset: UTF-8
+    settings:
+      #数字格式化，无小数点
+      number_format: '0.##'
+    #后缀名
+    suffix: .ftl
+
+logging:
+  config: classpath:logback.xml
+
+
+#公共配置与profiles选择无关
+mybatis-plus:
+  global-config:
+    db-config:
+      capital-mode: true
+      id-type: id_worker
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.destiny.rabbit.entity
+  configuration:
+    cache-enabled: true
+    map-underscore-to-camel-case: true
+    default-executor-type: batch
+    lazy-loading-enabled: false
+    # 以实际参数名去查询参数
+    use-actual-param-name: true
+    log-prefix: "mybatis-plus"
+    # 默认获取数据条数
+    default-fetch-size: 100
+    default-statement-timeout: 10000
+
+

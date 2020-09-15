@@ -24,7 +24,7 @@
     <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <property name="converters">
             <list>
-                <bean class="com.destiny.example.web.converter.StringConverter"/>
+                <bean class="com.destiny.dog.web.converter.StringConverter"/>
             </list>
         </property>
     </bean>

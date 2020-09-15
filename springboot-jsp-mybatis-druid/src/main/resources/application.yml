@@ -10,6 +10,7 @@ spring:
       max-file-size: 50MB
       max-request-size: 50MB
 
+
   #连接池配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -32,8 +33,11 @@ spring:
   mvc:
     static-path-pattern: /static/**
     view:
-      prefix: WEB-INF/views/
+      prefix: /WEB-INF/views/
       suffix: .jsp
+  thymeleaf:
+    cache: false
+    enabled: false
 
 
 logging:
@@ -52,3 +56,4 @@ mybatis:
 debug: false
 server:
   port: 8081
+

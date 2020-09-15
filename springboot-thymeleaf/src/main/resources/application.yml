@@ -2,7 +2,7 @@ spring:
   profiles:
     active: dev
   application:
-     name: svn-demo
+     name: springboot-thymeleaf
   thymeleaf:
     mode: HTML5
     encoding: UTF-8

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.destiny.rabbit.mapper.UserMapper">
+
+    <!-- 引用对象个数 缓存策略 是否只读 缓存间隔时间 -->
+    <cache size="1024" eviction="LRU" readOnly="true" flushInterval="30000" />
+    <!--
+    flushCache=true 刷新缓存
+    useCache="false" 是否使用二级缓存
+    -->
+
+    <resultMap id="user_base_result_map" type="com.destiny.rabbit.entity.User">
+        <id column="id" property="id"/>
+        <id column="username" property="username"/>
+        <id column="password" property="password"/>
+        <id column="salt" property="salt"/>
+        <id column="nickname" property="nickname"/>
+        <id column="cellphone" property="cellphone"/>
+        <id column="id_card" property="idCard"/>
+        <id column="birthday" property="birthday"/>
+        <id column="age" property="age"/>
+        <id column="weight" property="weight"/>
+        <id column="create_time" property="createTime"/>
+        <id column="update_time" property="updateTime"/>
+
+
+    </resultMap>
+
+
+    <sql id="sql_columns">
+        `id`, `username`, `password`, `salt`, `nickname`, `cellphone`, `id_card`, `birthday`, `age`, `weight`, `create_time`, `update_time`
+    </sql>
+
+
+
+    <select id="selectUserList" resultMap="user_base_result_map" parameterType="User" >
+        select
+        <include refid="sql_columns"/>
+        from `tb_user`
+        <where>
+            <if test="id != null ">
+                id = #{id}
+            </if>
+
+        </where>
+    </select>
+
+
+    <select id="selectUserListByNameAndAge" resultMap="user_base_result_map">
+        select
+        <include refid="sql_columns"/>
+        from `tb_user`
+        where username = #{username} and age = #{age} limit 1
+    </select>
+
+
+</mapper>

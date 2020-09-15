@@ -21,18 +21,18 @@
 
 #### 2 项目说明
 
-##### 2.1、spring-freemarker
+##### 2.1、spring-freemarker(cat)
 技术架构 spring5.2.8RELEASE、freemarker、redis共享session，采用 tomcat 方式部署
 
-##### 2.2、spring-jsp-mybatis-plus
+##### 2.2、spring-jsp-mybatis-plus(dog)
 
 技术架构 spring5.2.8RELEASE、jsp、mybatis-plus，采用 tomcat 方式部署
 
-##### 2.3、spring-jsp
+##### 2.3、spring-jsp(fox)
 
 技术架构 spring5.2.8RELEASE、jsp、redis共享session，采用 tomcat 方式部署
 
-##### 2.4、springboot-jsp-mybatis-druid-war
+##### 2.4、springboot-jsp-mybatis-druid-war(eagle)
 
 技术架构 springboot2.3.3.RELEASE+lombok+jsp+mybatis+druid ，package 为war包，采用tomcat 方式部署
 
@@ -40,15 +40,15 @@
 
 技术架构 springboot2.3.3.RELEASE+lombok+jsp+mybatis+druid ，package 为jar包，采用 java -jar 方式部署
 
-##### 2.6、springboot-thymeleaf-mybatis-druid
+##### 2.6、springboot-thymeleaf-mybatis-druid(camel)
 
 技术架构 springboot2.3.3.RELEASE+lombok+freemaker+mybatis+druid，package 为jar包，采用 java -jar 方式部署
 
-##### 2.7、springboot-thymeleaf-mybatisplus-hikari
+##### 2.7、springboot-fremarker-mybatisplus-hikari(rabbit)
 
 技术架构 springboot2.3.3.RELEASE+lombok+freemaker+mybatisplus+hikari，package 为jar包，采用 java -jar 方式部署
 
-##### 2.8、springboot-thymeleaf
+##### 2.8、springboot-thymeleaf(wolf)
 
 技术架构 springboot2.3.3.RELEASE+lombok+thymeleaf, package 为jar包，采用 java -jar 方式部署
 
