@@ -1,0 +1,5 @@
+${AnsiColor.BRIGHT_RED}
+Spring Boot For Rabbit !
+应用名称: ${spring.application.name}:V${spring.application.version}
+版本信息: ${spring-boot.version}
+格式化版本: ${spring-boot.formatted-version}

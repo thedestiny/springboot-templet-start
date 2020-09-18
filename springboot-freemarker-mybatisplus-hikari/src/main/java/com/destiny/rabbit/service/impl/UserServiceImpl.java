@@ -16,4 +16,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 	public User queryUserByNameAndAge(String username, Integer age) {
 		return baseMapper.selectUserListByNameAndAge(username, age);
 	}
+	
+	
 }

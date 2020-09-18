@@ -3,6 +3,7 @@ spring:
     active: dev
   application:
      name: springboot-thymeleaf-mybatisplus-hikari
+     version: 1.0
 
   #连接池配置
   datasource:
@@ -34,9 +35,20 @@ spring:
       number_format: '0.##'
     #后缀名
     suffix: .ftl
+  banner:
+    location: banner.txt
+    charset: UTF-8
+    image:
+      height: 34
 
 logging:
-  config: classpath:logback.xml
+  level:
+    root: info
+    com:
+      destiny:
+        rabbit: debug
+
+# config: classpath:logback-back.xml
 
 
 #公共配置与profiles选择无关
@@ -58,5 +70,6 @@ mybatis-plus:
     # 默认获取数据条数
     default-fetch-size: 100
     default-statement-timeout: 10000
-
+server:
+  port: 8990
 
