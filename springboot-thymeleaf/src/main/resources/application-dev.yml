@@ -1,1 +1,7 @@
-
+spring:
+  application:
+    name: springboot-thymeleaf
+  data:
+    elasticsearch:
+      client:
+        reactive:
