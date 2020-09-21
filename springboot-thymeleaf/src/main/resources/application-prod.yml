@@ -1,1 +1,9 @@
-
+spring:
+  elasticsearch:
+    password: password
+    username: username
+    connection-timeout: 100000
+    use-ssl: false
+    max-in-memory-size: 20000
+    socket-timeout: 100000
+    endpoints: ip:port
