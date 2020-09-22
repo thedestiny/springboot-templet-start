@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,11 @@ public class ElasticSearchConfig {
 	
 	@Autowired
 	private ElasticProperties properties;
+	
+	@Bean(name = "elasticsearchTemplate")
+	public ElasticsearchRestTemplate elasticsearchTemplate(){
+		return new ElasticsearchRestTemplate(restHighLevelClient());
+	}
 	
 	
 	@Bean
@@ -56,18 +62,17 @@ public class ElasticSearchConfig {
 	 *
 	 * @return
 	 */
-	private static RestHighLevelClient getRestHighLevelClient(RestClientBuilder builder, ElasticProperties properties) {
+	private static RestHighLevelClient getRestHighLevelClient(RestClientBuilder clientBuilder, ElasticProperties properties) {
 		// Callback used the default {@link RequestConfig} being set to the {@link CloseableHttpClient}
-		
-		builder.setRequestConfigCallback(requestConfigBuilder -> {
-			requestConfigBuilder.setConnectTimeout(properties.getConnectTimeout());
-			requestConfigBuilder.setSocketTimeout(properties.getSocketTimeout());
-			requestConfigBuilder.setConnectionRequestTimeout(properties.getConnectionRequestTimeout());
-			return requestConfigBuilder;
+		clientBuilder.setRequestConfigCallback(builder -> {
+			builder.setConnectTimeout(properties.getConnectTimeout());
+			builder.setSocketTimeout(properties.getSocketTimeout());
+			builder.setConnectionRequestTimeout(properties.getConnectionRequestTimeout());
+			return builder;
 		});
 		
 		// Callback used to customize the {@link CloseableHttpClient} instance used by a {@link RestClient} instance.
-		builder.setHttpClientConfigCallback(httpClientBuilder -> {
+		clientBuilder.setHttpClientConfigCallback(httpClientBuilder -> {
 			httpClientBuilder.setMaxConnTotal(properties.getMaxConnectTotal());
 			httpClientBuilder.setMaxConnPerRoute(properties.getMaxConnectPerRoute());
 			return httpClientBuilder;
@@ -80,14 +85,13 @@ public class ElasticSearchConfig {
 			final CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
 			credentialsProvider.setCredentials(AuthScope.ANY, new UsernamePasswordCredentials(properties.getUsername(), properties.getPassword()));
 			
-			builder.setHttpClientConfigCallback( (client) -> {
-				
+			clientBuilder.setHttpClientConfigCallback((client) -> {
 				return client.setDefaultCredentialsProvider(credentialsProvider);
 			});
 		}
 		
 		
-		return new RestHighLevelClient(builder);
+		return new RestHighLevelClient(clientBuilder);
 	}
 	
 }

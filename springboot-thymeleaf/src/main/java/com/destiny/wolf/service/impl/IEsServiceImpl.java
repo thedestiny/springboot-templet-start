@@ -1,6 +1,7 @@
 package com.destiny.wolf.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.alibaba.fastjson.JSONObject;
 import com.destiny.wolf.service.IEsService;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequest;
@@ -86,6 +87,7 @@ public class IEsServiceImpl implements IEsService {
 	public void deleteRequest(String index, String id) {
 		DeleteRequest deleteRequest = new DeleteRequest(index, id);
 		try {
+			log.info("delete {}", JSONObject.toJSONString(deleteRequest));
 			client.delete(deleteRequest, COMMON_OPTIONS);
 		} catch (IOException e) {
 			log.error("删除索引文档 {" + index + "} 数据id {" + id + "} 失败", e);

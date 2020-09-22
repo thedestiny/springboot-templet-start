@@ -10,11 +10,11 @@ public interface BookIndexService extends IEsService {
 	
 	/**
 	 * 查询数据
-	 * */
-	List<BookIndex> searchList(String index);
+	 */
+	List<BookIndex> searchList();
 	
 	/**
 	 * 批量插入
-	 * */
-	void insertBach(String index, List<BookIndex> list);
+	 */
+	void insertBach(List<BookIndex> list);
 }

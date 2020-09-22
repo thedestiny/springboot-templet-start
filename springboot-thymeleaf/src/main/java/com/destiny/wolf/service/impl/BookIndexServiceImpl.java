@@ -22,8 +22,13 @@ import java.util.Map;
 @Service
 public class BookIndexServiceImpl extends IEsServiceImpl implements BookIndexService {
 	
+	/**
+	 * 索引名
+	 * */
+	private static final String index = "book_index";
+	
 	@Override
-	public void insertBach(String index, List<BookIndex> list) {
+	public void insertBach(List<BookIndex> list) {
 		if (list.isEmpty()) {
 			log.warn("bach insert index but list is empty ...");
 			return;
@@ -34,7 +39,7 @@ public class BookIndexServiceImpl extends IEsServiceImpl implements BookIndexSer
 	}
 	
 	@Override
-	public List<BookIndex> searchList(String index) {
+	public List<BookIndex> searchList() {
 		SearchResponse searchResponse = search(index);
 		SearchHit[] hits = searchResponse.getHits().getHits();
 		List<BookIndex> lolList = new ArrayList<>();
@@ -51,8 +56,6 @@ public class BookIndexServiceImpl extends IEsServiceImpl implements BookIndexSer
 		SearchRequest searchRequest = new SearchRequest(index);
 		SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
 		searchSourceBuilder.query(QueryBuilders.matchAllQuery());
-		
-		
 		
 		//bool符合查询
 		//BoolQueryBuilder boolQueryBuilder = new BoolQueryBuilder()

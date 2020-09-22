@@ -58,6 +58,8 @@ public class ElasticProperties {
 	 */
 	private Integer maxConnectTotal = 30;
 	
+	private Integer maxInMemorySize;
+	
 	
 	/**
 	 * 索引配置信息
