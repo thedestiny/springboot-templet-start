@@ -39,4 +39,8 @@ public class BookIndex implements Serializable {
 	private List<String> tags;
 	
 	
+	private String describe;
+	
+	private String address;
+	
 }

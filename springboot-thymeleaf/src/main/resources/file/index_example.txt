@@ -1,0 +1,41 @@
+// 删除索引
+DELETE person_profile
+
+// 查看索引结构
+GET /person_profile/_mapping
+
+//  查询全部数据
+GET /person_profile/_search
+{
+  "query":{
+    "match_all": {}
+  }
+}
+
+
+// 创建索引
+PUT /person_profile
+{
+  "settings":{
+    "number_of_shards": 3,
+    "number_of_replicas": 1
+  },
+  "mappings":{
+    "properties":{
+      "name":{"type":"keyword"},
+      "address":{"type":"text", "index":true},
+      "postal_code":{"type":"keyword"},
+      "id_card":{"type":"keyword"},
+      "email":{"type":"keyword"},
+      "company":{"type":"text","ignore_above":256},
+      "job":{"type":"keyword"},
+      "phone":{"type":"keyword"},
+      "age":{"type":"keyword"},
+      "sentence":{"type":"text","ignore_above":256},
+      "salary":{"type":"double"},
+      "create_time":{"type":"date", "index":true},
+      "paragraph":{"type":"text","ignore_above":256},
+      "words":{"type":"text"}
+    }
+  }
+}
