@@ -24,6 +24,7 @@ import org.elasticsearch.common.unit.Fuzziness;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.index.query.RangeQueryBuilder;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
@@ -271,8 +272,14 @@ public class BookIndexServiceTest extends WolfApplicationTests {
 		
 		
 		template.save(profiles1);
-		
-		
 	}
+	
+	public static void main(String[] args) {
+	
+	
+	
+	
+	}
+	
 	
 }
