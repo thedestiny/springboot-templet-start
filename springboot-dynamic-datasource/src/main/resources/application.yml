@@ -44,11 +44,14 @@ logging:
   # config: classpath:logback.xml
   level:
     com.baomidou: debug
-    root: info
+    root: debug
+    com.destiny: debug
 
 #公共配置与profiles选择无关
-mybatis:
-  typeAliasesPackage: com.destiny.seal
-  mapperLocations: classpath:mapper/*.xml
-  configuration:
-    cache-enabled: true
+mybatis-plus:
+  global-config:
+    db-config:
+      capital-mode: true
+      id-type: id_worker
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.destiny.seal.entity

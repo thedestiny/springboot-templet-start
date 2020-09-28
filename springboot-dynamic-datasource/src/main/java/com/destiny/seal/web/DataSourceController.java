@@ -2,16 +2,24 @@ package com.destiny.seal.web;
 
 import com.baomidou.dynamic.datasource.DynamicRoutingDataSource;
 import com.baomidou.dynamic.datasource.creator.BasicDataSourceCreator;
+import com.baomidou.dynamic.datasource.creator.DataSourceCreator;
 import com.baomidou.dynamic.datasource.creator.DruidDataSourceCreator;
 import com.baomidou.dynamic.datasource.creator.HikariDataSourceCreator;
 import com.baomidou.dynamic.datasource.creator.JndiDataSourceCreator;
+import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DataSourceProperty;
+import com.destiny.seal.config.DataSourceDTO;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.sql.DataSource;
 import java.util.Set;
 
 @Slf4j
@@ -21,11 +29,15 @@ public class DataSourceController {
 	
 	@Autowired
 	private DynamicRoutingDataSource ds;
-	// @Autowired
-	// private DataSourceCreator dataSourceCreator;
+	@Autowired
+	private DataSourceCreator dataSourceCreator;
+	@Autowired
 	private BasicDataSourceCreator basicDataSourceCreator;
+	@Autowired
 	private JndiDataSourceCreator jndiDataSourceCreator;
+	@Autowired
 	private DruidDataSourceCreator druidDataSourceCreator;
+	@Autowired
 	private HikariDataSourceCreator hikariDataSourceCreator;
 	
 	@GetMapping(value = "list")
@@ -39,23 +51,53 @@ public class DataSourceController {
 		return "delete success";
 	}
 	
-	/*@PostMapping("/add") //recommond use this method
+	
+	@PostMapping("/add")
 	public Set<String> add(@Validated @RequestBody DataSourceDTO dto) {
-		DataSourceProperty dataSourceProperty = new DataSourceProperty();
-		BeanUtils.copyProperties(dto, dataSourceProperty);
-		DataSource dataSource = dataSourceCreator.createDataSource(dataSourceProperty);
-		ds.addDataSource(dto.getPollName(), dataSource);
+		
+		DataSource dataSource = dataSourceCreator.createDataSource(fillSourceProperty(dto));
+		return addDataSource(ds, dataSource, dto.getPollName());
+	}
+	
+	@PostMapping("/add/basic")
+	public Set<String> addBasic(@Validated @RequestBody DataSourceDTO dto) {
+		DataSource dataSource = basicDataSourceCreator.createDataSource(fillSourceProperty(dto));
+		return addDataSource(ds, dataSource, dto.getPollName());
+	}
+	
+	@PostMapping("/add/druid")
+	public Set<String> addDruid(@Validated @RequestBody DataSourceDTO dto) {
+		DataSource dataSource = druidDataSourceCreator.createDataSource(fillSourceProperty(dto));
+		return addDataSource(ds, dataSource, dto.getPollName());
+	}
+	
+	@PostMapping("/add/hikari")
+	public Set<String> addHikariCP(@Validated @RequestBody DataSourceDTO dto) {
+		// DataSourceProperty dataSourceProperty = new DataSourceProperty();
+		// BeanUtils.copyProperties(dto, dataSourceProperty);
+		// DataSource dataSource = hikariDataSourceCreator.createDataSource(dataSourceProperty);
+		// ds.addDataSource(dto.getPollName(), dataSource);
+		// return ds.getCurrentDataSources().keySet();
+		
+		DataSource dataSource = hikariDataSourceCreator.createDataSource(fillSourceProperty(dto));
+		return addDataSource(ds, dataSource, dto.getPollName());
+	}
+	
+	/**
+	 * 添加数据源
+	 */
+	private Set<String> addDataSource(DynamicRoutingDataSource ds, DataSource dataSource, String pollName) {
+		
+		ds.addDataSource(pollName, dataSource);
 		return ds.getCurrentDataSources().keySet();
 	}
 	
-	@PostMapping("/addBasic")
-	public Set<String> addBasic(@Validated @RequestBody DataSourceDTO dto) {
+	private DataSourceProperty fillSourceProperty(DataSourceDTO dto) {
 		DataSourceProperty dataSourceProperty = new DataSourceProperty();
 		BeanUtils.copyProperties(dto, dataSourceProperty);
-		DataSource dataSource = basicDataSourceCreator.createDataSource(dataSourceProperty);
-		ds.addDataSource(dto.getPollName(), dataSource);
-		return ds.getCurrentDataSources().keySet();
+		return dataSourceProperty;
 	}
+	
 	
 	@PostMapping("/addJndi")
 	public Set<String> addJndi(String pollName, String jndiName) {
@@ -63,24 +105,6 @@ public class DataSourceController {
 		ds.addDataSource(pollName, dataSource);
 		return ds.getCurrentDataSources().keySet();
 	}
-	
-	@PostMapping("/addDruid")
-	public Set<String> addDruid(@Validated @RequestBody DataSourceDTO dto) {
-		DataSourceProperty dataSourceProperty = new DataSourceProperty();
-		BeanUtils.copyProperties(dto, dataSourceProperty);
-		DataSource dataSource = druidDataSourceCreator.createDataSource(dataSourceProperty);
-		ds.addDataSource(dto.getPollName(), dataSource);
-		return ds.getCurrentDataSources().keySet();
-	}
-	
-	@PostMapping("/addHikariCP")
-	public Set<String> addHikariCP(@Validated @RequestBody DataSourceDTO dto) {
-		DataSourceProperty dataSourceProperty = new DataSourceProperty();
-		BeanUtils.copyProperties(dto, dataSourceProperty);
-		DataSource dataSource = hikariDataSourceCreator.createDataSource(dataSourceProperty);
-		ds.addDataSource(dto.getPollName(), dataSource);
-		return ds.getCurrentDataSources().keySet();
-	}*/
 	
 	
 }
