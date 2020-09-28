@@ -52,6 +52,6 @@ mybatis-plus:
   global-config:
     db-config:
       capital-mode: true
-      id-type: id_worker
+      id-type: assign_id
   mapper-locations: classpath:/mapper/*.xml
   type-aliases-package: com.destiny.seal.entity
