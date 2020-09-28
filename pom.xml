@@ -19,6 +19,7 @@
         <module>spring-freemarker</module>
         <module>spring-jsp-mybatisplus</module>
         <module>springboot-freemarker-mybatisplus-hikari</module>
+        <module>springboot-dynamic-datasource</module>
     </modules>
 
 

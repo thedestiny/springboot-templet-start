@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.destiny.seal.mapper.UserMapper">
+
+    <!-- 引用对象个数 缓存策略 是否只读 缓存间隔时间 -->
+    <cache size="1024" eviction="LRU" readOnly="true" flushInterval="30000" />
+
+    <!--
+    flushCache=true 刷新缓存
+    useCache="false" 是否使用二级缓存
+    -->
+
+    <select id="selectUserList" resultType="com.destiny.seal.entity.User" parameterType="com.destiny.seal.entity.User" >
+        select * from `tb_user`
+        <where>
+            <if test="id != null ">
+                id = #{id}
+            </if>
+
+        </where>
+    </select>
+
+</mapper>
