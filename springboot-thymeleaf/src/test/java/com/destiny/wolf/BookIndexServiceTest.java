@@ -68,6 +68,9 @@ public class BookIndexServiceTest extends WolfApplicationTests {
 	@Autowired
 	private ElasticsearchRestTemplate template;
 	
+	@Autowired
+	public RestHighLevelClient client;
+	
 	protected static final RequestOptions COMMON_OPTIONS;
 	
 	static {
@@ -80,8 +83,7 @@ public class BookIndexServiceTest extends WolfApplicationTests {
 	@Autowired
 	private BookIndexService bookIndexService;
 	
-	@Autowired
-	public RestHighLevelClient client;
+
 	
 	@Test
 	public void test001() {
