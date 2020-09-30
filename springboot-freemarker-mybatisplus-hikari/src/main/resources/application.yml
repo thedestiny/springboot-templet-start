@@ -43,10 +43,8 @@ spring:
 
 logging:
   level:
-    root: info
-    com:
-      destiny:
-        rabbit: debug
+    root: debug
+    com.destiny.rabbit: debug
 
 # config: classpath:logback-back.xml
 
@@ -57,10 +55,12 @@ mybatis-plus:
     db-config:
       capital-mode: true
       id-type: id_worker
+    banner: true
+    # meta-object-handler: com.destiny.rabbit.config.RabbitObjFieldHandler
   mapper-locations: classpath:/mapper/*.xml
   type-aliases-package: com.destiny.rabbit.entity
   configuration:
-    cache-enabled: true
+    cache-enabled: false
     map-underscore-to-camel-case: true
     default-executor-type: batch
     lazy-loading-enabled: false
@@ -70,6 +70,11 @@ mybatis-plus:
     # 默认获取数据条数
     default-fetch-size: 100
     default-statement-timeout: 10000
+    # interceptors:
+    #    - com.destiny.rabbit.config.plugins.RabbitMyBatisPlusInterceptor
+  type-handlers-package: com.destiny.rabbit.config.typehandler
+
+
 server:
   port: 8990
 

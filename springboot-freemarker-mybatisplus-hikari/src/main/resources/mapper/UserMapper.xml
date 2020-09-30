@@ -46,11 +46,24 @@
     </select>
 
 
-    <select id="selectUserListByNameAndAge" resultMap="user_base_result_map">
+    <select id="selectUserListByNameAndAge" resultMap="user_base_result_map" parameterType="object">
         select
         <include refid="sql_columns"/>
         from `tb_user`
         where username = #{username} and age = #{age} limit 1
+    </select>
+
+
+    <select id="selectUserForPage" resultMap="user_base_result_map" parameterType="User">
+        select
+        <include refid="sql_columns"/>
+        from `tb_user`
+        <where>
+            <if test="username != null and username != '' ">
+                username = #{username}
+            </if>
+        </where>
+
     </select>
 
 

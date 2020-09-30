@@ -1,15 +1,13 @@
-package com.destiny.rabbit.entity;
+package com.destiny.rabbit.entity.query;
 
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.Data;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
-@TableName(value = "tb_user")
-public class User implements Serializable {
+public class UserPage  extends Page {
 	
 	private Long id;
 	private String username;
