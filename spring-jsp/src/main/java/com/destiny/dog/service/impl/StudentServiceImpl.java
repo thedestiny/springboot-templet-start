@@ -8,13 +8,10 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class UserServiceImpl implements UserService {
+public class StudentServiceImpl implements StudentService {
 	
 	@Autowired
-	private StudentService studentService;
+	private UserService userService;
 	
 	
-
-
-
 }
