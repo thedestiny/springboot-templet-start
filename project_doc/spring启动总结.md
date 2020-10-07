@@ -263,6 +263,15 @@ Spring容器的refresh()【创建刷新】;
 https://www.cnblogs.com/liuyk-code/p/9886033.html						
 						
 						
+```
+1 IOC容器中注入了一个 internalAutoProxyCreator = AnnotationAwareAspectJAutoProxyCreator的bean ，到此可以得出结论，
+@EnableAspectJAutoProxy给容器中注册一个AnnotationAwareAspectJAutoProxyCreator。
+2 
+internalAutoProxyCreator
+AnnotationAwareAspectJAutoProxyCreator
+
+
+```											
 							
 						
 						
