@@ -269,7 +269,8 @@ https://www.cnblogs.com/liuyk-code/p/9886033.html
 2 
 internalAutoProxyCreator
 AnnotationAwareAspectJAutoProxyCreator
-
+     静态代理分为：编译时织入（特殊编译器实现）、类加载时织入（特殊的类加载器实现）。
+       动态代理有  ：   jdk动态代理（基于接口来实现）、CGlib（基于类实现）。 
 
 ```											
 							
