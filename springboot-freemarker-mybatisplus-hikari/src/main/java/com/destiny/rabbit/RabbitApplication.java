@@ -53,7 +53,18 @@ public class RabbitApplication {
 	 *          -> invokeBeanFactoryPostProcessors
 	 *     -> afterRefresh
 	 *
+	 * AutoConfigurationImportSelector -> process -> getAutoConfigurationEntry -> getCandidateConfigurations -> SpringFactoriesLoader.loadFactoryNames
 	 *
+	 * load 方法
+	 * import 标签解析
+	 *
+	 * refresh
+	 *
+	 * invokeBeanFactoryPostProcessor
+	 *
+	 * onRefresh
+	 *
+	 * web server
 	 *
 	 * */
 	
