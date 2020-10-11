@@ -61,6 +61,7 @@ public class RabbitApplication {
 	 * refresh
 	 *
 	 * invokeBeanFactoryPostProcessor
+	 *   -> ConfigurationClassParser -> process ->  ConfigurationClassPostProcessor
 	 *
 	 * onRefresh
 	 *
