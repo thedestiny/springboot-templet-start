@@ -33,6 +33,12 @@
             <scope>compile</scope>
         </dependency>-->
 
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>28.2-jre</version>
+        </dependency>
+
         <!-- spring 依赖添加 -->
         <!-- spring-core -->
         <dependency>

@@ -1,5 +1,6 @@
 package com.destiny.wolf;
 
+import com.alibaba.nacos.api.config.annotation.NacosConfigurationProperties;
 import com.destiny.wolf.config.WolfAppEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;

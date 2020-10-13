@@ -3,6 +3,7 @@ package com.destiny.wolf.web;
 import cn.hutool.core.lang.Snowflake;
 import cn.hutool.core.util.IdUtil;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.nacos.api.config.annotation.NacosValue;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.RedissonDelayedQueue;
 import org.redisson.api.RAtomicDouble;
@@ -28,6 +29,9 @@ public class HomeController {
 	
 	@Autowired
 	private RedissonClient redissonClient;
+
+	@NacosValue(value = "${app.msg}")
+	private String msg;
 	
 	
 	@RequestMapping(value = {"/", "home.html", "index.html"})
