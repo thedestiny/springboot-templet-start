@@ -11,5 +11,6 @@ spring:
         file-extension: yml
         server-addr: 172.16.4.242:8848
         group: DEFAULT_GROUP
+  # 允许bean定义时重写
   main:
     allow-bean-definition-overriding: true
