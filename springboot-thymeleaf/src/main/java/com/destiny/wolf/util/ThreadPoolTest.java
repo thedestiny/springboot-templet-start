@@ -42,9 +42,7 @@ public class ThreadPoolTest {
 		int corePoolSize = 2;
 		int maxPoolSize = 4;
 		int keepAlive = 200;
-		
 		int taskCount = 10;
-		
 		
 		ThreadPoolExecutor executor = new ThreadPoolExecutor(corePoolSize, maxPoolSize, keepAlive,
 				TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(200),

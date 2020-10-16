@@ -49,4 +49,6 @@ mybatis:
   typeAliasesPackage: com.example.svndemo
   mapperLocations: classpath:mapper/*.xml
   configuration:
-    cache-enabled: true
+    cache-enabled: false
+    map-underscore-to-camel-case: true
+
