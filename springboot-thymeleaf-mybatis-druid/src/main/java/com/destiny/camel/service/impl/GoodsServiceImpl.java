@@ -6,8 +6,10 @@ import com.destiny.camel.service.GoodsService;
 import com.destiny.camel.util.CamelLock;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Slf4j
+@Service
 public class GoodsServiceImpl implements GoodsService {
 
     @Autowired

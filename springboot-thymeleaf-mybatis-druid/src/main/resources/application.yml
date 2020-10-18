@@ -41,14 +41,20 @@ spring:
     suffix: .ftl
 
 logging:
-  config: classpath:logback.xml
+  # config: classpath:logback.xml
+  level:
+     root: info
+
 
 
 #公共配置与profiles选择无关
 mybatis:
-  typeAliasesPackage: com.example.svndemo
+  typeAliasesPackage: com.destiny.camel.entity
   mapperLocations: classpath:mapper/*.xml
   configuration:
     cache-enabled: false
     map-underscore-to-camel-case: true
 
+
+server:
+  port: 9090
