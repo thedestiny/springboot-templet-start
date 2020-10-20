@@ -4,62 +4,35 @@ import lombok.extern.slf4j.Slf4j;
 import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
-import java.security.AccessController;
-import java.security.PrivilegedActionException;
-import java.security.PrivilegedExceptionAction;
 import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.locks.LockSupport;
 
 @Slf4j
 public class CamelLock {
 	
-	private static Unsafe unsafe;
-	private static Long stateOffset;
-	
-	static {
-		try {
-			unsafe = getUnsafe();
-			// Field theUnsafe = Unsafe.class.getDeclaredField("theUnsafe");
-			// theUnsafe.setAccessible(true);
-			// unsafe =  (Unsafe) theUnsafe.get(null);
-			// unsafe = AccessController.doPrivileged(action);
-			// stateOffset = unsafe.objectFieldOffset(CamelLock.class.getDeclaredField("stateOffset"));
-			// if (unsafe == null) {
-			//
-			// } else {
-			// 	stateOffset = 0L;
-			// }
-			
-			
-		} catch (Exception e) {
-			log.info("error is {} detail is {}", e.getMessage(), e);
-			throw new RuntimeException("Unable to load unsafe", e);
-		}
-		
-	}
-	
 	/**
 	 * 记录加锁的次数
 	 */
-	private static int state = 0;
+	private volatile int state = 0;
 	
-	public static int getState() {
-		return state;
+	public int getState() {
+		return this.state;
 	}
 	
-	private static ConcurrentLinkedDeque<Thread> linkedDeque = new ConcurrentLinkedDeque<Thread>();
+	private ConcurrentLinkedDeque<Thread> linkedDeque = new ConcurrentLinkedDeque<Thread>();
 	
 	/**
 	 * 当前线程
 	 */
-	private static Thread lockHolder;
+	private Thread lockHolder;
 	
-	public static void setLockHolder(Thread lockHolder) {
-		CamelLock.lockHolder = lockHolder;
+	public Thread getLockHolder() {
+		return lockHolder;
 	}
 	
-	public static Thread getLockHolder() {
-		return lockHolder;
+	public void setLockHolder(Thread lockHolder) {
+		this.lockHolder = lockHolder;
 	}
 	
 	public void lock() {
@@ -113,55 +86,40 @@ public class CamelLock {
 	}
 	
 	public final boolean cas(int except, int update) {
-		return unsafe.compareAndSwapInt(this, stateOffset.longValue(), except, update);
+		try {
+			Unsafe unsafe = reflectGetUnsafe();
+			long valueOffset = unsafe.objectFieldOffset
+					(CamelLock.class.getDeclaredField("state"));
+			return unsafe.compareAndSwapInt(state, valueOffset, except, update);
+		} catch (NoSuchFieldException e) {
+			e.printStackTrace();
+			return false;
+		}
 		
 	}
 	
 	public static void main(String[] args) throws NoSuchFieldException {
-		System.out.println("22");
-		// 首先是Person类中的name属性，在内存中设定的偏移位置
-		Field field2 = CamelLock.class.getDeclaredField("state");
-		System.out.println(unsafe);
-		// 一旦这个类实例化后，该属性在内存中的偏移位置
-		// long offset2 = unsafe.objectFieldOffset(field2);
-		// System.out.println(offset2);
+		
+		CamelLock lock = new CamelLock();
+		lock.lock();
+		
+		lock.unlock();
+		
+		LinkedBlockingQueue queue = new LinkedBlockingQueue();
+		
+		
 	}
 	
-	public static Unsafe getUnsafe() throws PrivilegedActionException {
-		/*try {
-			Field field = Unsafe.class.getDeclaredField("theUnsafe");
-			//因为 Unsafe 的 theUnsafe 字段是private 的，所以这里需要设置成可访问的
+	private static Unsafe reflectGetUnsafe() {
+		try {
+			Class<?> clazz = Unsafe.class;
+			Field field = clazz.getDeclaredField("theUnsafe");
 			field.setAccessible(true);
-			//Unsafe 的这个属性 theUnsafe 是静态的所以这里的get参数就是null
-			return  (Unsafe)field.get(Unsafe.class);
-			
-			// return unsafe;
-		} catch (Exception e) {}
-		return null;*/
-		
-		
-		PrivilegedExceptionAction<Unsafe> action = new PrivilegedExceptionAction<Unsafe>() {
-			public Unsafe run() throws Exception {
-				Field theUnsafe = Unsafe.class.getDeclaredField("theUnsafe");
-				theUnsafe.setAccessible(true);
-				return (Unsafe) theUnsafe.get(null);
-			}
-		};
-		Unsafe unsafe = AccessController.doPrivileged(action);
-		return unsafe;
+			return (Unsafe) field.get(clazz);
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+			return null;
+		}
 	}
-	
-	// static class Instance {
-	// 	public static Unsafe reflectObj() {
-	// 		try {
-	// 			Field theUnsafe = Unsafe.class.getDeclaredField("theUnsafe");
-	// 			theUnsafe.setAccessible(Boolean.TRUE);
-	// 			return (Unsafe) theUnsafe.get(null);
-	// 		} catch (Exception e) {
-	// 			log.error("error !");
-	// 		}
-	// 		return null;
-	// 	}
-	// }
 	
 }
