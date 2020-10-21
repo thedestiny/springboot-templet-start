@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.destiny</groupId>
-    <artifactId>springboot-thymeleaf-mybatis-druid</artifactId>
+    <artifactId>springboot-nacos-dubbo-consumer</artifactId>
     <version>1.0</version>
-    <name>springboot-thymeleaf-mybatis-druid</name>
+    <name>springboot-nacos-dubbo-consumer</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

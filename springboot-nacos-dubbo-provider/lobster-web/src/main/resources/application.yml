@@ -1,0 +1,64 @@
+spring:
+  profiles:
+    active: dev
+  application:
+     name: springboot-thymealf-mybatis-druid
+
+  #连接池配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      validationQuery: SELECT 1
+      initialSize: 10
+      minIdle: 10
+      maxActive: 200
+      maxWait: 100000
+      minEvictableIdleTimeMillis: 180000
+      testOnBorrow: false
+      testWhileIdle: true
+      removeAbandoned: true
+      removeAbandonedTimeout: 1800
+      logAbandoned: true
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 100
+
+  ## 配置单个上传文件大小
+  mvc:
+    static-path-pattern: /static/**
+  freemarker:
+    request-context-attribute: req  #req访问request
+    content-type: text/html
+    enabled: true
+    #缓存配置
+    cache: false
+    #模板加载路径 按需配置
+    template-loader-path: classpath:/templates/
+    charset: UTF-8
+    settings:
+      #数字格式化，无小数点
+      number_format: '0.##'
+    #后缀名
+    suffix: .ftl
+
+logging:
+  # config: classpath:logback.xml
+  level:
+     root: info
+
+
+
+#公共配置与profiles选择无关
+mybatis:
+  typeAliasesPackage: com.destiny.lobster.entity.entity
+  mapperLocations: classpath:mapper/*.xml
+  configuration:
+    cache-enabled: false
+    map-underscore-to-camel-case: true
+
+
+server:
+  port: 9090
+
+nacos:
+   config:
+      server-addr: 127.0.0.1:8848

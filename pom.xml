@@ -20,6 +20,8 @@
         <module>spring-jsp-mybatisplus</module>
         <module>springboot-freemarker-mybatisplus-hikari</module>
         <module>springboot-dynamic-datasource</module>
+        <module>springboot-nacos-dubbo-consumer</module>
+        <module>springboot-nacos-dubbo-provider</module>
     </modules>
 
 

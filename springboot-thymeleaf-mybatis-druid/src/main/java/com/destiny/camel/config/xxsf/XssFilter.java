@@ -2,6 +2,7 @@ package com.destiny.camel.config.xxsf;
 
 
 import cn.hutool.core.util.StrUtil;
+import com.destiny.camel.config.xxsf.XssHttpServletRequestWrapper;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;

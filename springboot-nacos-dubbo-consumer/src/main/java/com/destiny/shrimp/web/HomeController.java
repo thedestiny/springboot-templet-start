@@ -1,6 +1,6 @@
-package com.destiny.camel.web;
+package com.destiny.shrimp.web;
 
-import com.destiny.camel.service.GoodsService;
+import com.destiny.shrimp.service.GoodsService;
 import com.google.gson.JsonObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

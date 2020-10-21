@@ -1,6 +1,7 @@
 package com.destiny.camel.config.xxsf;
 
 import cn.hutool.core.util.StrUtil;
+import com.destiny.camel.config.xxsf.XssFilter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -17,7 +18,7 @@ import java.util.Map;
  */
 @Configuration
 public class FilterConfig {
-    @Value("${xss.enabled}")
+    @Value("${xss.enabled:false}")
     private String enabled;
 
     @Value("${xss.excludes}")

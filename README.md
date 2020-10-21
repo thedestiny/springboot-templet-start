@@ -53,4 +53,11 @@
 技术架构 springboot2.3.3.RELEASE+lombok+thymeleaf, package 为jar包，采用 java -jar 方式部署
 
 ##### 2.9、springboot-dynamic-datasource(seal)
+动态数据源实例
+
+##### 2.10、springboot-nacos-dubbo-consumer(shrimp)
+
+
+##### 2.11、springboot-nacos-dubbo-provider(lobster)
+
  
