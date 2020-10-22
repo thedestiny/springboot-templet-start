@@ -1,6 +1,5 @@
 package com.destiny.lobster.utils.utils;
 
-import lombok.extern.slf4j.Slf4j;
 import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
@@ -8,7 +7,6 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.locks.LockSupport;
 
-@Slf4j
 public class CamelLock {
 	
 	/**

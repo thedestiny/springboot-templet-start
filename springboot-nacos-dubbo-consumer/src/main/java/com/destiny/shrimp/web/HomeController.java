@@ -1,7 +1,9 @@
 package com.destiny.shrimp.web;
 
+import com.destiny.lobster.api.api.LobsterServiceApi;
 import com.destiny.shrimp.service.GoodsService;
 import com.google.gson.JsonObject;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class HomeController {
 
     @Autowired
     private GoodsService goodsService;
+    
+    @DubboReference(version = "1.0")
+    private LobsterServiceApi lobsterServiceApi;
 
 
 

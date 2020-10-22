@@ -2,7 +2,7 @@ spring:
   profiles:
     active: dev
   application:
-     name: springboot-thymealf-mybatis-druid
+     name: springboot-nacos-dubbo-provider
 
   #连接池配置
   datasource:
@@ -39,12 +39,13 @@ spring:
       number_format: '0.##'
     #后缀名
     suffix: .ftl
+  main:
+    allow-bean-definition-overriding: true
 
 logging:
   # config: classpath:logback.xml
   level:
      root: info
-
 
 
 #公共配置与profiles选择无关
@@ -57,8 +58,26 @@ mybatis:
 
 
 server:
-  port: 9090
+  port: 9091
 
 nacos:
    config:
       server-addr: 127.0.0.1:8848
+      encode: UTF-8
+      # 重试次数
+      max-retry: 10
+      # 重试时间
+      config-retry-time: 1000
+      # 主配置 配置监听长轮询超时时间
+      config-long-poll-timeout: 10000
+      # 是否 nacos 配置优先
+      remote-first: false
+      group: DEFAULT_GROUP
+      data-id: data-example
+      type: yaml
+      # 自动开启刷新
+      auto-refresh: true
+      # namespace:
+      # username:
+      # password:
+      # context-path:

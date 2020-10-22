@@ -2,14 +2,14 @@ spring:
   application:
     name: mock-data
   profiles:
-    active: test
+    active: dev
   cloud:
     nacos:
       config:
         encode: UTF-8
-        namespace: becd365f-e098-40d6-b596-cad6fefe1cd1
+        namespace: 5fa720d5-1f62-4d6d-8846-7a06489c6a5f
         file-extension: yml
-        server-addr: 172.16.4.242:8848
+        server-addr: 127.0.0.1:8848
         group: DEFAULT_GROUP
   # 允许bean定义时重写
   main:

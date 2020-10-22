@@ -46,8 +46,6 @@
             <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
 
-
-
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
@@ -71,6 +69,7 @@
         <dependency>
             <groupId>com.alibaba.boot</groupId>
             <artifactId>nacos-config-spring-boot-starter</artifactId>
+            <version>0.2.7</version>
         </dependency>
 
 

@@ -47,7 +47,7 @@ logging:
 
 #公共配置与profiles选择无关
 mybatis:
-  typeAliasesPackage: com.example.svndemo
+  typeAliasesPackage: com.destiny.eagle
   mapperLocations: classpath:mapper/*.xml
   configuration:
     cache-enabled: true
