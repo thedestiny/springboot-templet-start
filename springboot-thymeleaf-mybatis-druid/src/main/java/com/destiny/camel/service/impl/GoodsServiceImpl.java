@@ -1,5 +1,6 @@
 package com.destiny.camel.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.destiny.camel.entity.Goods;
 import com.destiny.camel.mapper.GoodsMapper;
 import com.destiny.camel.service.GoodsService;
@@ -11,26 +12,34 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 public class GoodsServiceImpl implements GoodsService {
-
-    @Autowired
-    private GoodsMapper goodsMapper;
-
-    /**
-     * 同步信息
-     * */
-    private static CamelLock sync = new CamelLock();
-
-
-    @Override
-    public int order() {
-
-        sync.lock();
-        Goods goods = goodsMapper.queryGoodsById(1L);
-        if (goods != null && goods.getStock() > 0) {
-            goodsMapper.updateGoodsStock(1L,1);
-        }
-        sync.unlock();
-
-        return 0;
-    }
+	
+	@Autowired
+	private GoodsMapper goodsMapper;
+	
+	/**
+	 * 同步信息
+	 */
+	
+	
+	@Override
+	public int order() {
+		
+		
+		CamelLock sync = new CamelLock();
+		try {
+			sync.lock();
+			Goods goods = goodsMapper.queryGoodsById(1L);
+			log.info(" goods is -> ", JSONObject.toJSONString(goods));
+			if (goods != null && goods.getStock() > 0) {
+				goodsMapper.updateGoodsStock(1L, 1);
+			}
+		}catch (Exception e){
+			sync.unlock();
+			
+		}
+		
+		
+		
+		return 0;
+	}
 }

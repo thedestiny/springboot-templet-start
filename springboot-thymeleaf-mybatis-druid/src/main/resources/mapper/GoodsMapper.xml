@@ -9,13 +9,14 @@
     useCache="false" 是否使用二级缓存
     -->
 
-    <select id="queryGoodsById" resultType="com.destiny.camel.entity.Goods">
+    <select id="queryGoodsById" resultType="com.destiny.camel.entity.Goods" timeout="10000">
 
         select * from `tb_goods` where id = #{id}
 
     </select>
 
     <update id="updateGoodsStock">
+
         update `tb_goods` set stock = stock - #{stock} where id = #{id}
 
     </update>

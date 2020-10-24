@@ -45,6 +45,11 @@ logging:
   level:
      root: info
 
+xss:
+  enabled: false
+  excludes: index
+  urlPatterns: /api/*
+
 
 
 #公共配置与profiles选择无关

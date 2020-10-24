@@ -87,10 +87,11 @@ public class CamelLock {
 	
 	public final boolean cas(int except, int update) {
 		try {
-			Unsafe unsafe = reflectGetUnsafe();
-			long valueOffset = unsafe.objectFieldOffset
+			Unsafe usf = reflectGetUnsafe();
+			long valueOffset = usf.objectFieldOffset
 					(CamelLock.class.getDeclaredField("state"));
-			return unsafe.compareAndSwapInt(state, valueOffset, except, update);
+			return usf.compareAndSwapInt(state, valueOffset, except, update);
+			
 		} catch (NoSuchFieldException e) {
 			e.printStackTrace();
 			return false;
@@ -101,6 +102,10 @@ public class CamelLock {
 	public static void main(String[] args) throws NoSuchFieldException {
 		
 		CamelLock lock = new CamelLock();
+		lock.lock();
+		
+		lock.unlock();
+		
 		lock.lock();
 		
 		lock.unlock();
