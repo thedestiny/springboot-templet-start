@@ -3,7 +3,6 @@ spring:
     active: dev
   application:
      name: springboot-nacos-dubbo-provider
-
   #连接池配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -41,7 +40,23 @@ spring:
     suffix: .ftl
   main:
     allow-bean-definition-overriding: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  # 文件上传
+  servlet:
+    multipart:
+      # 单个文件大小 10MB 设置总上传大小 100MB
+      max-file-size: 10MB
+      max-request-size: 100MB
 
+
+  # 服务模块
+  devtools:
+    remote:
+      restart:
+        # 热部署开关
+        enabled: false
 logging:
   # config: classpath:logback.xml
   level:
@@ -59,6 +74,11 @@ mybatis:
 
 server:
   port: 9091
+  tomcat:
+    uri-encoding: UTF-8
+    threads:
+      max: 300
+      min-spare: 30
 
 nacos:
    config:
