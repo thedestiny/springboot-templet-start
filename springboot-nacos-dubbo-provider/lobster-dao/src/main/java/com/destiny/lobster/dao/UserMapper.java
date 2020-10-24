@@ -1,8 +1,8 @@
-package com.destiny.lobster.dao.mapper;
+package com.destiny.lobster.dao;
 
 
 
-import com.destiny.lobster.entity.entity.User;
+import com.destiny.lobster.entity.User;
 
 import java.util.List;
 

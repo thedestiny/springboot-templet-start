@@ -82,11 +82,45 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- dubbo-registry-nacos -->
+        <!-- dubbo 2.7.x引入-->
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>2.7.8</version>
+        </dependency>
+        <!-- nacos 2.7.x引入-->
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-registry-nacos</artifactId>
+            <version>2.7.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.nacos</groupId>
+            <artifactId>nacos-client</artifactId>
+            <version>1.1.3</version>
+        </dependency>
+
+<!--
+        &lt;!&ndash; dubbo-registry-nacos &ndash;&gt;
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo-registry-nacos</artifactId>
-            <version>2.7.7</version>
+            <version>2.6.6</version>
+            &lt;!&ndash; 2.7.7 2.6.6 &ndash;&gt;
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>2.6.8</version>
+            &lt;!&ndash; 2.6.5 &ndash;&gt;
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.spring</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>1.0.11</version>
         </dependency>
 
         <dependency>
@@ -96,9 +130,10 @@
         </dependency>
 
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>dubbo</artifactId>
-            <version>2.6.9</version>
+            <groupId>com.alibaba.nacos</groupId>
+            <artifactId>nacos-client</artifactId>
+            <version>1.1.3</version>
+            &lt;!&ndash; 1.0.1 1.1.3 &ndash;&gt;
         </dependency>
 
 
@@ -112,14 +147,14 @@
                     <artifactId>dubbo</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
+        </dependency>-->
 
-        <dependency>
+       <!-- <dependency>
             <groupId>com.alibaba.boot</groupId>
             <artifactId>nacos-config-spring-boot-actuator</artifactId>
             <version>0.2.1</version>
         </dependency>
-
+-->
 
     </dependencies>
 

@@ -1,4 +1,4 @@
-package com.destiny.lobster.entity.entity;
+package com.destiny.lobster.entity;
 
 import lombok.Data;
 

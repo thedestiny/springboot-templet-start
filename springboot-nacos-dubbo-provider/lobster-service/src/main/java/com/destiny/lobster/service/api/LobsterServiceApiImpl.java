@@ -1,11 +1,10 @@
 package com.destiny.lobster.service.api;
 
-import com.alibaba.dubbo.config.annotation.Service;
-import com.destiny.lobster.api.api.LobsterServiceApi;
+import com.destiny.lobster.api.LobsterServiceApi;
 import com.destiny.lobster.api.dto.UserDTO;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
+import org.apache.dubbo.config.annotation.Service;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,8 +1,8 @@
 package com.destiny.lobster.service.service.impl;
 
 
-import com.destiny.lobster.dao.mapper.GoodsMapper;
-import com.destiny.lobster.entity.entity.Goods;
+import com.destiny.lobster.dao.GoodsMapper;
+import com.destiny.lobster.entity.Goods;
 import com.destiny.lobster.service.service.OrderService;
 
 import com.destiny.lobster.utils.utils.CamelLock;

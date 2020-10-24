@@ -1,6 +1,7 @@
 package com.destiny.shrimp.web;
 
-import com.destiny.lobster.api.api.LobsterServiceApi;
+import com.destiny.lobster.api.LobsterServiceApi;
+import com.destiny.lobster.api.dto.UserDTO;
 import com.destiny.shrimp.service.GoodsService;
 import com.google.gson.JsonObject;
 import org.apache.dubbo.config.annotation.DubboReference;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -22,7 +24,7 @@ public class HomeController {
 
     @Autowired
     private GoodsService goodsService;
-    
+
     @DubboReference(version = "1.0")
     private LobsterServiceApi lobsterServiceApi;
 
@@ -42,10 +44,11 @@ public class HomeController {
     @GetMapping(value = "order")
     @ResponseBody
     public String order(){
-     
+
     	// http://localhost:9090/order
-	    
-        int num = goodsService.order();
+	    List<UserDTO> userDTOS = lobsterServiceApi.queryUserList(new UserDTO());
+	    userDTOS.forEach(System.out::println);
+	    // int num = goodsService.order();
         JsonObject jsonObject = new JsonObject();
         return jsonObject.toString();
     }

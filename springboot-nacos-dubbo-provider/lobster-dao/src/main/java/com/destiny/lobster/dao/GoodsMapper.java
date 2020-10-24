@@ -1,7 +1,7 @@
-package com.destiny.lobster.dao.mapper;
+package com.destiny.lobster.dao;
 
 
-import com.destiny.lobster.entity.entity.Goods;
+import com.destiny.lobster.entity.Goods;
 import org.apache.ibatis.annotations.Param;
 
 public interface GoodsMapper {

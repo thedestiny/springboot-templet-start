@@ -1,4 +1,4 @@
-package com.destiny.lobster.api.api;
+package com.destiny.lobster.api;
 
 
 import com.destiny.lobster.api.dto.UserDTO;

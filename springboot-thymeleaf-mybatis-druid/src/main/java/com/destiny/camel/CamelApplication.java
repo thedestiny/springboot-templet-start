@@ -10,6 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan("com.destiny.camel.mapper")
 public class CamelApplication {
 	
+	
+	
 	public static void main(String[] args) {
 		
 		log.info("start CamelApplication !");

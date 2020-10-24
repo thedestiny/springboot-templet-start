@@ -50,7 +50,7 @@ logging:
 
 #公共配置与profiles选择无关
 mybatis:
-  typeAliasesPackage: com.destiny.lobster.entity.entity
+  typeAliasesPackage: com.destiny.lobster.entity
   mapperLocations: classpath:mapper/*.xml
   configuration:
     cache-enabled: false
@@ -81,3 +81,30 @@ nacos:
       # username:
       # password:
       # context-path:
+      namespace:
+
+# dubbo nacos 注册地址
+dubbo:
+  registry:
+    address: nacos://${nacos.config.server-addr}?namespace=5fa720d5-1f62-4d6d-8846-7a06489c6a5f
+    timeout: 10000
+    # namespace=5fa720d5-1f62-4d6d-8846-7a06489c6a5f
+    # parameters:
+    #   namespace: 5fa720d5-1f62-4d6d-8846-7a06489c6a5f
+    # protocol: nacos
+  application:
+    name: lobster
+    # qos-enable: false
+    # qos-accept-foreign-ip: false
+  provider:
+    register: true
+    # serialization:
+    # server
+    version: 1.0
+    retries: 2
+
+  protocol:
+    name: dubbo
+    port: 20880
+  scan:
+    base-packages: com.destiny.lobster.service.api

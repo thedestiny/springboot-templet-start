@@ -57,7 +57,28 @@ mybatis:
     cache-enabled: false
     map-underscore-to-camel-case: true
 
-
+dubbo:
+  registry:
+    address: nacos://127.0.0.1:8848?namespace=5fa720d5-1f62-4d6d-8846-7a06489c6a5f
+    timeout: 10000
+    # parameters:
+    #   namespace: 5fa720d5-1f62-4d6d-8846-7a06489c6a5f
+    # protocol: nacos
+  application:
+    name: shrimp
+    # qos-enable: false
+    # qos-accept-foreign-ip: false
+    # provider:
+    #   register: true
+    # serialization:
+    # server
+    version: 1.0
+  protocol:
+    name: dubbo
+    port: -1
+    threads: 200
+  consumer:
+    check: false
 
 server:
   port: 9090
