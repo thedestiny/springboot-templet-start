@@ -4,12 +4,16 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.lang.ref.PhantomReference;
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.SoftReference;
+import java.lang.ref.WeakReference;
+import java.util.WeakHashMap;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.atomic.LongAdder;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 
 @Slf4j
@@ -38,7 +42,7 @@ public class IndexController {
 		Thread thread = new Thread(() -> {
 			
 			String s = inheritableThreadLocal.get();
-			log.info("inner local {}",s);
+			log.info("inner local {}", s);
 			
 		});
 		
@@ -54,13 +58,7 @@ public class IndexController {
 		// CLH 队列
 		LongAdder lss = new LongAdder();
 		
-		
-		AtomicReference<Long> atomicReference = new AtomicReference<>();
-		// atomicReference.accumulateAndGet(23L,)
-		
-		
-		
-		
+	
 		
 		
 		return "home";
