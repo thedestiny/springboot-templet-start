@@ -20,21 +20,32 @@ public class WeakReferenceTest {
 		 wf.get();//此时会返回null
 		 3. 弱引用可以和一个引用队列（ReferenceQueue）联合使用，如果弱引用所引用的对象被JVM回收，这个软引用就会被加入到与之关联的引用队列中
 		 * */
-		WeakReference<String> weakReference = new WeakReference<String>(new String("2333"));
+		WeakReference<Model> weakReference = new WeakReference<>(new Model());
+		
+		
 		// 应用场景 WeakHashMap threadLocal
-		String s = weakReference.get();
-		log.info("s is {}", s);
+		Model s = weakReference.get();
+		log.info("s is {}", s == null);
+		byte[] rr = new byte[3 * 1024 * 1024];
 		System.gc();
 		s = weakReference.get();
-		log.info("s is {}", s);
+		System.gc();
+		log.info("s is {}", s == null);
+		byte[] rr1 = new byte[5 * 1024 * 1024];
+		System.gc();
 		s = weakReference.get();
-		log.info("s is {}", s);
+		log.info("s is {}", s == null);
+		System.gc();
+		byte[] rr2 = new byte[5 * 1024 * 1024];
+	
 		s = weakReference.get();
-		log.info("s is {}", s);
+		
+		log.info("s is {}", s == null);
 		s = weakReference.get();
-		log.info("s is {}", s);
+		System.gc();
+		log.info("s is {}", s == null);
 		s = weakReference.get();
-		log.info("s is {}", s);
+		log.info("s is {}", s == null);
 		
 		// WeakHashMap<String, String> dd = new WeakHashMap<>();
 	}

@@ -5,12 +5,48 @@ import lombok.extern.slf4j.Slf4j;
 import java.lang.ref.PhantomReference;
 import java.lang.ref.Reference;
 import java.lang.ref.ReferenceQueue;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 public class PhantomReferenceTest {
 	
 	
-	public static void main(String[] args) {
+	private static final List<Object> LIST = new ArrayList<>();
+	private static final ReferenceQueue<Model> QUEUE = new ReferenceQueue<>();
+	
+	public static void main(String[] args) throws InterruptedException {
+		
+		PhantomReference<Model> reference = new PhantomReference<>(new Model(),QUEUE);
+		
+		new Thread(()->{
+			while (true){
+				LIST.add(new byte[1024*1024]);
+				try {
+					TimeUnit.SECONDS.sleep(1);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				System.out.println(reference.get());
+			}
+			
+		}).start();
+		
+		new Thread(()->{
+			
+			while (true){
+				Reference<? extends Model> poll = QUEUE.poll();
+				// 管理堆外内存
+				if (poll != null) {
+					System.out.println(" ------- 虚引用被回收了-----" + poll);
+				}
+				
+			}
+			
+		}).start();
+		
+		TimeUnit.SECONDS.sleep(1);
 		
 		/**
 		 
@@ -24,13 +60,13 @@ public class PhantomReferenceTest {
 		 pf.get();//永远返回null
 		 pf.isEnQueued();//返回是否从内存中已经删除
 		 */
-		ReferenceQueue<String> referenceQueue = new ReferenceQueue<>();
+		// ReferenceQueue<String> referenceQueue = new ReferenceQueue<>();
 		// 虚引用用于管理堆外内存 zero copy direct buffer netty 虚引用
-		PhantomReference<String> phantomReference = new PhantomReference<String>("233", referenceQueue);
-		String s = phantomReference.get();
-		log.info(" s is {}", s);
-		Reference<? extends String> poll = referenceQueue.poll();
-		log.info(" s is {}",poll);
+		// PhantomReference<String> phantomReference = new PhantomReference<String>("233", referenceQueue);
+		// String s = phantomReference.get();
+		// log.info(" s is {}", s);
+		// Reference<? extends String> poll = referenceQueue.poll();
+		// log.info(" s is {}",poll);
 		
 	}
 	
