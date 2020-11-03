@@ -85,6 +85,18 @@ public class CamelLock {
 		return Boolean.FALSE;
 	}
 	
+	private static Unsafe reflectGetUnsafe() {
+		try {
+			Class<?> clazz = Unsafe.class;
+			Field field = clazz.getDeclaredField("theUnsafe");
+			field.setAccessible(true);
+			return (Unsafe) field.get(clazz);
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+			return null;
+		}
+	}
+	
 	public final boolean cas(int except, int update) {
 		try {
 			Unsafe usf = reflectGetUnsafe();
@@ -115,16 +127,6 @@ public class CamelLock {
 		
 	}
 	
-	private static Unsafe reflectGetUnsafe() {
-		try {
-			Class<?> clazz = Unsafe.class;
-			Field field = clazz.getDeclaredField("theUnsafe");
-			field.setAccessible(true);
-			return (Unsafe) field.get(clazz);
-		} catch (Exception e) {
-			log.error(e.getMessage(), e);
-			return null;
-		}
-	}
+
 	
 }
