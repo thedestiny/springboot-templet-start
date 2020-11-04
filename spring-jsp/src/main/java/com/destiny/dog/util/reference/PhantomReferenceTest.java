@@ -8,6 +8,10 @@ import java.lang.ref.ReferenceQueue;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.StampedLock;
 
 @Slf4j
 public class PhantomReferenceTest {
@@ -18,11 +22,11 @@ public class PhantomReferenceTest {
 	
 	public static void main(String[] args) throws InterruptedException {
 		
-		PhantomReference<Model> reference = new PhantomReference<>(new Model(),QUEUE);
+		PhantomReference<Model> reference = new PhantomReference<>(new Model(), QUEUE);
 		
-		new Thread(()->{
-			while (true){
-				LIST.add(new byte[1024*1024]);
+		new Thread(() -> {
+			while (true) {
+				LIST.add(new byte[1024 * 1024]);
 				try {
 					TimeUnit.SECONDS.sleep(1);
 				} catch (InterruptedException e) {
@@ -33,9 +37,9 @@ public class PhantomReferenceTest {
 			
 		}).start();
 		
-		new Thread(()->{
+		new Thread(() -> {
 			
-			while (true){
+			while (true) {
 				Reference<? extends Model> poll = QUEUE.poll();
 				// 管理堆外内存
 				if (poll != null) {
@@ -47,6 +51,7 @@ public class PhantomReferenceTest {
 		}).start();
 		
 		TimeUnit.SECONDS.sleep(1);
+		
 		
 		/**
 		 
@@ -68,7 +73,49 @@ public class PhantomReferenceTest {
 		// Reference<? extends String> poll = referenceQueue.poll();
 		// log.info(" s is {}",poll);
 		
+		ReentrantLock reentrantLock = new ReentrantLock(true);
+		reentrantLock.lock();
+		reentrantLock.unlock();
+		// await -> wait signal -> notify
+		
+		ThreadLocal<String> local = new ThreadLocal<>();
+		
+		local.set("rrr");
+		
+		StampedLock stampedLock = new StampedLock();
+		
+		// CLH 队列锁 和 MCS 队列锁
+		
+		long l = stampedLock.readLock();
+		long l1 = stampedLock.writeLock();
+		
+		long l2 = stampedLock.tryOptimisticRead();
+		boolean validate = stampedLock.validate(l2);
+		
+		
+		AtomicLong atomicLong = new AtomicLong();
+		AtomicReference<Long> atomicReference = new AtomicReference<>();
+		// AtomicIntegerFieldUpdater updater
 	}
 	
+	
+	/*public void optimisticRead() {
+		// https://blog.csdn.net/qq_37939251/article/details/83536984
+		// https://blog.csdn.net/u010512429/article/details/80314721
+		long stamp = lock.tryOptimisticRead();
+		int c = balance;
+		// 这里可能会出现了写操作，因此要进行判断
+		if(!lock.validate(stamp)) {
+			// 要重新读取
+			stamp = lock.readLock();
+			try{
+				c = balance;
+			}
+			finally{
+				lock.unlockRead(stamp);
+			}
+		}
+		System.out.println("读取的值为:"+c);
+	}*/
 	
 }

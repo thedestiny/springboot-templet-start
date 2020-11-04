@@ -19,13 +19,11 @@ public class GoodsServiceImpl implements GoodsService {
 	/**
 	 * 同步信息
 	 */
-	
+	CamelLock sync = new CamelLock();
 	
 	@Override
 	public int order() {
 		
-		
-		CamelLock sync = new CamelLock();
 		try {
 			sync.lock();
 			Goods goods = goodsMapper.queryGoodsById(1L);
@@ -33,9 +31,11 @@ public class GoodsServiceImpl implements GoodsService {
 			if (goods != null && goods.getStock() > 0) {
 				goodsMapper.updateGoodsStock(1L, 1);
 			}
-		}catch (Exception e){
-			sync.unlock();
 			
+		}catch (Exception e){
+			log.info("e is ",e);
+		} finally {
+			sync.unlock();
 		}
 		
 		
