@@ -1,5 +1,7 @@
 package com.destiny.camel.util;
 
+import java.util.concurrent.atomic.LongAdder;
+
 /**
  * 汇编语言测试
  */
@@ -30,6 +32,12 @@ public class AssemblyLanguageTest {
 		// LockSupport.park();
 		
 		getInstance();
+		
+		LongAdder adder = new LongAdder();
+		adder.add(3);
+		adder.longValue();
+		
+		
 		
 		
 	}

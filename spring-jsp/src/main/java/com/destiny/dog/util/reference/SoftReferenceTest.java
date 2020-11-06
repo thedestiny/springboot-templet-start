@@ -10,6 +10,11 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class SoftReferenceTest {
 	
+	private long value = 0;
+	private long l1,l2,l3,l7;
+	
+	// long 8 *8 = 64
+	
 	public static void main(String[] args) throws InterruptedException {
 		
 		/**
