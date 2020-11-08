@@ -22,4 +22,14 @@
     </update>
 
 
+    <insert id="insert" parameterType="com.destiny.camel.entity.Goods">
+
+        insert into `tb_goods` (`id`,`good_name`,`stock`,`update_time`,`create_time`)
+        values (#{id}, #{goodName}, #{stock},#{updateTime},#{createTime} )
+
+    </insert>
+
+
+
+
 </mapper>

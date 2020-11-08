@@ -113,6 +113,12 @@
             <version>2.8.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.53.Final</version>
+        </dependency>
+
 
         <!-- dubbo-spring-boot-starter -->
         <!--<dependency>

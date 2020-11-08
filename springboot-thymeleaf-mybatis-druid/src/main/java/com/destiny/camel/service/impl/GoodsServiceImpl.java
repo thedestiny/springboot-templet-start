@@ -8,6 +8,7 @@ import com.destiny.camel.util.CamelLock;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
@@ -32,14 +33,24 @@ public class GoodsServiceImpl implements GoodsService {
 				goodsMapper.updateGoodsStock(1L, 1);
 			}
 			
-		}catch (Exception e){
-			log.info("e is ",e);
+		} catch (Exception e) {
+			log.info("e is ", e);
 		} finally {
 			sync.unlock();
 		}
 		
 		
-		
 		return 0;
+	}
+	
+	
+	@Override
+	@Transactional
+	public Integer insertGoods(Goods entity) {
+		
+		int num = goodsMapper.insert(entity);
+		int nn = 1 / 0;
+		
+		return num;
 	}
 }
