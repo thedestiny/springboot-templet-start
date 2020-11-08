@@ -33,12 +33,22 @@
             <version>1.18.10</version>
         </dependency>
 
+        <!-- junit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.13.1</version>
             <!--<scope>test</scope>-->
         </dependency>
+
+        <!-- junit-jupiter-api -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.7.0</version>
+            <scope>test</scope>
+        </dependency>
+
 
         <!-- slf4j-log4j12 -->
         <dependency>

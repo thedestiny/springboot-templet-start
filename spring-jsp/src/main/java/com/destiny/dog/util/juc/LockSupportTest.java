@@ -7,6 +7,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedTransferQueue;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TransferQueue;
 import java.util.concurrent.locks.Condition;
@@ -55,7 +56,10 @@ public class LockSupportTest {
 		transferQueue.poll();
 	 
 		transferQueue.transfer("e");
-	
+		
+		SynchronousQueue<String> synchronousQueue = new SynchronousQueue<>();
+		synchronousQueue.offer("3");
+		synchronousQueue.put("3");
 		
 	}
 	
