@@ -11,4 +11,11 @@ public interface GoodsService {
      * 插入数据
      * */
     Integer insertGoods(Goods entity);
+    
+    
+    /**
+     * 重试测试
+     * */
+    Integer retryExampleTest(String str) throws InterruptedException;
+    
 }

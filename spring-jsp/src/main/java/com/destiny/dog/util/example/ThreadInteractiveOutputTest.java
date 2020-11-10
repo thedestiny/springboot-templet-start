@@ -54,7 +54,6 @@ public class ThreadInteractiveOutputTest {
 				System.out.print(node + "->");
 				LockSupport.unpark(t1);
 				
-				
 			}
 		});
 		
@@ -72,12 +71,10 @@ public class ThreadInteractiveOutputTest {
 		char[] aI = "1234567".toCharArray();
 		char[] aC = "ABCDEFG".toCharArray();
 		
-		
 		Thread t1 = new Thread(() -> {
 			synchronized (obj) {
-				for (int i = 0, len = aI.length; i < len; i++) {
-					
-					System.out.println(aI[i] + "->");
+				for (char node :  aI) {
+					System.out.println(node + "->");
 					try {
 						obj.notify();
 						obj.wait();
@@ -88,11 +85,10 @@ public class ThreadInteractiveOutputTest {
 				obj.notify();
 			}
 		});
+		
 		Thread t2 = new Thread(() -> {
-			
 			synchronized (obj) {
 				for (char node : aC) {
-					
 					System.out.println(node + "->");
 					try {
 						obj.notify();
@@ -102,9 +98,9 @@ public class ThreadInteractiveOutputTest {
 					}
 					
 				}
+				obj.notify();
 			}
 			
-			obj.notify();
 		});
 		
 		t1.start();
@@ -133,9 +129,10 @@ public class ThreadInteractiveOutputTest {
 			try {
 				
 				for (char node : aI) {
-					System.out.println(node + "->");
+					System.out.print(node);
 					condition2.signal();
 					condition1.await();
+					
 				}
 				condition2.signal();
 				
@@ -153,7 +150,7 @@ public class ThreadInteractiveOutputTest {
 			try {
 				
 				for (char node : aC) {
-					System.out.println(node + "->");
+					System.out.print(node);
 					condition3.signal();
 					condition2.await();
 				}
@@ -172,7 +169,7 @@ public class ThreadInteractiveOutputTest {
 			try {
 				
 				for (char node : aA) {
-					System.out.println(node + "->");
+					System.out.print(node);
 					condition1.signal();
 					condition3.await();
 				}

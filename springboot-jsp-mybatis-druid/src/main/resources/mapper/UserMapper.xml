@@ -9,14 +9,14 @@
     useCache="false" 是否使用二级缓存
     -->
 
-    <select id="selectUserList" resultType="arraylist" parameterType="User" >
+    <select id="selectUserList" resultType="com.destiny.horse.entity.User" parameterType="com.destiny.horse.entity.User" >
         select * from `user`
         <where>
             <if test="id != null ">
                 id = #{id}
             </if>
-
         </where>
+
     </select>
 
 </mapper>

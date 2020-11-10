@@ -7,5 +7,8 @@ import java.util.List;
 
 public interface UserMapper {
 
-    List<User> selectUserList(User user);
+ 
+	List<User> selectUserList(User user);
+ 
+ 
 }

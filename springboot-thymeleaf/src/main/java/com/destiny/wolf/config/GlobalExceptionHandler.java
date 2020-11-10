@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.concurrent.locks.StampedLock;
 
 @Slf4j
 @RestControllerAdvice
@@ -33,7 +36,6 @@ public class GlobalExceptionHandler {
 	// 自定义异常
 	@ExceptionHandler(value = AppException.class)
 	public String appException(AppException exception, HttpServletRequest request){
-		
 		String msg = exception.getMsg();
 		return "异常信息 :: " + msg;
 		
