@@ -22,6 +22,12 @@ public class PhantomReferenceTest {
 	
 	public static void main(String[] args) throws InterruptedException {
 		
+		ThreadLocal<String> local = new ThreadLocal<>();
+		local.set("345");
+		String node = local.get();
+		System.out.println(node);
+		
+		
 		PhantomReference<Model> reference = new PhantomReference<>(new Model(), QUEUE);
 		
 		new Thread(() -> {
@@ -78,7 +84,7 @@ public class PhantomReferenceTest {
 		reentrantLock.unlock();
 		// await -> wait signal -> notify
 		
-		ThreadLocal<String> local = new ThreadLocal<>();
+		// ThreadLocal<String> local = new ThreadLocal<>();
 		
 		local.set("rrr");
 		

@@ -3,6 +3,8 @@ package com.destiny.dog.util.reference;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.ref.WeakReference;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.locks.ReentrantLock;
 
 @Slf4j
 public class WeakReferenceTest {
@@ -22,6 +24,14 @@ public class WeakReferenceTest {
 		 * */
 		WeakReference<Model> weakReference = new WeakReference<>(new Model());
 		
+		ReentrantLock reentrantLock = new ReentrantLock(true);
+		
+		AtomicLong atomicLong = new AtomicLong();
+		atomicLong.set(20);
+		atomicLong.compareAndSet(20,45);
+		// atomicLong.weakCompareAndSet(30);
+		long dd = atomicLong.addAndGet(23);
+		System.out.println(dd);
 		
 		// 应用场景 WeakHashMap threadLocal
 		Model s = weakReference.get();

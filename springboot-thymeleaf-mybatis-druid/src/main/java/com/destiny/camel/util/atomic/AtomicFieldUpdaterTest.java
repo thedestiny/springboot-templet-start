@@ -1,6 +1,7 @@
 package com.destiny.camel.util.atomic;
 
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
+import java.util.concurrent.atomic.LongAccumulator;
 
 public class AtomicFieldUpdaterTest {
 	
@@ -14,6 +15,7 @@ public class AtomicFieldUpdaterTest {
 		System.out.println(fieldUpdater.getAndIncrement(conan));
 		// 输出柯南现在的年龄
 		System.out.println(fieldUpdater.get(conan));
+		
 	}
 	
 	

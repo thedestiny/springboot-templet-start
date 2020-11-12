@@ -62,14 +62,16 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 	
 	// 针对 CamelException 进行重试，重试2次， 每次间隔时间是上次间隔时间的2倍,达到最大重试次数时调用recover方法
+	// delay 延迟时间进行调用
+	// value 间隔时间
 	@Override
 	@Retryable(value = CamelException.class,
 			recover = "recover",
-			maxAttempts = 2, backoff = @Backoff(delay = 500, multiplier = 2))
+			maxAttempts = 4, backoff = @Backoff(delay = 2000, value = 1000, multiplier = 2))
 	public Integer retryExampleTest(String str) throws InterruptedException {
-		
+		log.info("invoke retryExampleTest");
 		TimeUnit.SECONDS.sleep(1);
-		if (RandomUtil.randomInt(3, 4) < 3.9) {
+		if (RandomUtil.randomInt(3, 4) < 5) {
 			throw new CamelException("333");
 		}
 		return 0;

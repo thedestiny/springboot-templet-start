@@ -57,5 +57,15 @@ public class HomeController {
 		return jsonObject.toString();
 	}
 	
+	@GetMapping(value = "/retry")
+	@ResponseBody
+	public String retryTest() {
+		try {
+			return goodsService.retryExampleTest("1") + "";
+		} catch (Exception e) {
+			return "";
+		}
+	}
+	
 	
 }

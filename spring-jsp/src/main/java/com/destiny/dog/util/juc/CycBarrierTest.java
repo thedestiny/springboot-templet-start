@@ -51,6 +51,7 @@ public class CycBarrierTest {
 		
 		for (int i = 0; i < threadNum; i++) {
 			new TaskThread(barrier, i + 1).start();
+			// barrier.reset();
 		}
 	}
 	
