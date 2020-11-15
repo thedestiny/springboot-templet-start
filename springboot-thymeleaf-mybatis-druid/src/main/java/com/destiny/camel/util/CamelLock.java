@@ -4,27 +4,23 @@ import cn.hutool.core.util.ObjectUtil;
 import lombok.extern.slf4j.Slf4j;
 import sun.misc.Unsafe;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ConcurrentLinkedDeque;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.locks.LockSupport;
 
 @Slf4j
 public class CamelLock {
 	
-	/**
-	 * 记录加锁的次数
-	 */
+	// 记录加锁的次数 0 未加锁状态 大于 0 则已经处于加锁状态
 	private volatile int state = zero;
 	
+	// 查询当前锁状态
 	private int getState() {
 		return this.state;
 	}
 	
 	/**
-	 * 等待队列
+	 * 等待队列 cas 实现同步队列
 	 */
 	private ConcurrentLinkedDeque<Thread> linkedDeque = new ConcurrentLinkedDeque<Thread>();
 	
@@ -33,20 +29,23 @@ public class CamelLock {
 	 */
 	private Thread lockHolder;
 	
+	// 获取当前获取锁的线程
 	private Thread getLockHolder() {
 		return lockHolder;
 	}
 	
+	// 设置当前拥有锁的线程
 	private void setLockHolder(Thread lockHolder) {
 		this.lockHolder = lockHolder;
 	}
 	
+	// 加锁操作
 	public void lock() {
-		
+		// 尝试获取一把锁
 		if (acquire()) {
 			return;
 		}
-		
+		// 未获取到锁则将当前线程加入到等待队列中
 		Thread thread = Thread.currentThread();
 		linkedDeque.offer(thread);
 		
@@ -61,6 +60,7 @@ public class CamelLock {
 		}
 	}
 	
+	// 获取锁
 	private boolean acquire() {
 		Thread thread = Thread.currentThread();
 		int state = getState(); // 查询当前 state 的状态
@@ -82,19 +82,20 @@ public class CamelLock {
 		}
 		int state = getState();
 		if (cas(state, zero)) {
-			setLockHolder(null);
+			setLockHolder(null); // 唤醒队列中的一个线程继续获取锁
 			Thread peek = linkedDeque.peek();
 			if (ObjectUtil.isNotEmpty(peek)) {
 				LockSupport.unpark(peek);
 			}
 		}
 	}
+	
 	/**
 	 * 常量 0
-	 * */
+	 */
 	private static final int zero = 0;
 	
-	
+	// 反射方法拿到 unsafe 操作类
 	private static final Unsafe unnsafe = UnsafeInstance.reflectGetUnsafeObj();
 	
 	private static final long sateOffset;
@@ -102,6 +103,7 @@ public class CamelLock {
 	static {
 		
 		try {
+			// 获取 state 的内存地址偏移量
 			sateOffset = unnsafe.objectFieldOffset(CamelLock.class.getDeclaredField("state"));
 		} catch (Exception e) {
 			log.info("e is ", e);
@@ -110,11 +112,35 @@ public class CamelLock {
 		
 	}
 	
-	
+	// 比较交换更新值
 	public final boolean cas(int except, int update) {
 		return unnsafe.compareAndSwapInt(this, sateOffset, except, update);
 	}
 	
 	
+	static Integer num = 0;
 	
+	public static void main(String[] args) throws InterruptedException {
+		
+		CountDownLatch latch = new CountDownLatch(1000);
+		CamelLock lock = new CamelLock();
+		
+		for (int i = 0; i < 1000; i++) {
+			
+			new Thread(() -> {
+				lock.lock();
+				try {
+					num += 1;
+				} catch (Exception e) {
+				} finally {
+					latch.countDown();
+					lock.unlock();
+				}
+				
+			}).start();
+		}
+		// 等待所有任务结果并打印最终结果
+		latch.await();
+		System.out.println(num);
+	}
 }
