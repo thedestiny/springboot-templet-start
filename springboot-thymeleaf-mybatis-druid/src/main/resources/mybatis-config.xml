@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--*
+    properties
+    settings
+    typeAliases
+    typeHandlers
+    objectFactory
+    plugins
+    environments
+        environment
+           transactionManager
+           dataSource
+    databaseIdProvider
+    mappers
+
+    -->
+    <properties>
+
+    </properties>
+
+    <settings>
+        <!-- 打印查询语句 -->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!-- 这个配置使全局的映射器启用或禁用缓存 -->
+        <setting name="cacheEnabled" value="false"/>
+        <!-- 全局启用或禁用延迟加载。当禁用时，所有关联对象都会即时加载 -->
+        <setting name="lazyLoadingEnabled" value="false"/>
+        <setting name="aggressiveLazyLoading" value="true"/>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <setting name="multipleResultSetsEnabled" value="true"/>
+        <setting name="useColumnLabel" value="true"/>
+        <setting name="defaultExecutorType" value="REUSE"/>
+        <setting name="defaultStatementTimeout" value="25000"/>
+
+        <setting name="useGeneratedKeys" value="true"/>
+        <setting name="autoMappingBehavior" value="PARTIAL"/>
+        <setting name="autoMappingUnknownColumnBehavior" value="WARNING"/>
+        <setting name="defaultFetchSize" value="10000"/>
+        <setting name="safeRowBoundsEnabled" value="false"/>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="localCacheScope" value="SESSION"/>
+        <setting name="jdbcTypeForNull" value="OTHER"/>
+        <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
+    </settings>
+
+    <typeAliases>
+        <!--<typeAlias alias="Author" type="com.destiny.camel.entity.User"/>-->
+        <package name="dcom.destiny.camel.entity"/>
+    </typeAliases>
+
+    <typeHandlers>
+        <!--<typeHandler handler="org.mybatis.example.ExampleTypeHandler"/>-->
+    </typeHandlers>
+
+    <!-- 和Spring整合后environment配置都会被干掉 -->
+    <environments default="development">
+        <environment id="development">
+            <!-- 使用jdbc事务管理，目前由mybatis来管理 -->
+            <transactionManager type="JDBC"/>
+            <!-- 数据库连接池，目前由mybatis来管理 -->
+            <dataSource type="POOLED"><!--有关于mysql数据库的各种信息-->
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url"
+                          value="jdbc:mysql://localhost:3306/springboot_example?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;tinyInt1isBit=true&amp;serverTimezone=Asia/Shanghai"/>
+                <property name="username" value="root"/>
+                <property name="password" value="Myroot123!"/>
+            </dataSource>
+
+        </environment>
+    </environments>
+
+    <databaseIdProvider type="DB_VENDOR">
+        <property name="SQL Server" value="sqlserver"/>
+        <property name="DB2" value="db2"/>
+        <property name="Oracle" value="oracle" />
+    </databaseIdProvider>
+
+    <mappers>
+        <!--将操作配置文件User.xml系添加进mapper-->
+        <mapper resource="mapper/UserMapper.xml"/>
+    </mappers>
+
+
+</configuration>

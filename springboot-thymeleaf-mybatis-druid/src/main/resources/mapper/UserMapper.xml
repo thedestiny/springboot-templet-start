@@ -9,7 +9,7 @@
     useCache="false" 是否使用二级缓存
     -->
 
-    <select id="selectUserList" resultType="com.destiny.camel.entity.User" parameterType="User" >
+    <select id="selectUserList" resultType="com.destiny.camel.entity.User" parameterType="com.destiny.camel.entity.User" >
         select * from `tb_user`
         <where>
             <if test="id != null ">
@@ -17,6 +17,35 @@
             </if>
 
         </where>
+    </select>
+
+
+    <select id="queryUserList" resultType="com.destiny.camel.entity.User">
+
+        select * from `tb_user`
+        <where>
+            <if test="age != null ">
+                age > #{age}
+            </if>
+            <if test="weight != null ">
+                and weight > #{weight}
+            </if>
+        </where>
+
+    </select>
+
+    <select id="queryUserList1" resultType="com.destiny.camel.entity.User">
+
+        select * from `tb_user`
+        <where>
+            <if test="age != null ">
+                age > #{age}
+            </if>
+            <if test="weight != null ">
+                and weight > #{weight}
+            </if>
+        </where>
+
     </select>
 
 </mapper>
