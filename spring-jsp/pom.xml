@@ -19,25 +19,20 @@
         <junit.version>4.13.1</junit.version>
         <mybatis.version>3.4.5</mybatis.version>
         <!-- log4j日志文件管理包版本 -->
-       <!-- <slf4j.version>1.7.25</slf4j.version>
-        <log4j.version>1.2.17</log4j.version>-->
+        <!-- <slf4j.version>1.7.25</slf4j.version>
+         <log4j.version>1.2.17</log4j.version>-->
         <logback.version>1.2.3</logback.version>
     </properties>
 
     <dependencies>
 
-     <!--   <dependency>
+        <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
             <version>4.1.6.Final</version>
             <scope>compile</scope>
-        </dependency>-->
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>28.2-jre</version>
         </dependency>
+
 
         <!-- spring 依赖添加 -->
         <!-- spring-core -->
@@ -213,17 +208,17 @@
         </dependency>
         <!-- redis cache related.....end -->
 
-     <!--   <dependency>
-            <groupId>commons-dbutils</groupId>
-            <artifactId>commons-dbutils</artifactId>
-            <version>1.6</version>
-        </dependency>-->
+        <!--   <dependency>
+               <groupId>commons-dbutils</groupId>
+               <artifactId>commons-dbutils</artifactId>
+               <version>1.6</version>
+           </dependency>-->
 
-      <!--  <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-dbcp2</artifactId>
-            <version>2.1.1</version>
-        </dependency>-->
+        <!--  <dependency>
+              <groupId>org.apache.commons</groupId>
+              <artifactId>commons-dbcp2</artifactId>
+              <version>2.1.1</version>
+          </dependency>-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-expression</artifactId>
@@ -244,29 +239,29 @@
             <scope>provided</scope>
         </dependency>
 
-       <!-- <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-            <version>3.4.9</version>
-        </dependency>-->
+        <!-- <dependency>
+             <groupId>org.apache.zookeeper</groupId>
+             <artifactId>zookeeper</artifactId>
+             <version>3.4.9</version>
+         </dependency>-->
         <!-- dubbo -->
-    <!--    <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>dubbo</artifactId>
-            <version>2.5.3</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+        <!--    <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>2.5.3</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
 
-        <dependency>
-            <groupId>com.101tec</groupId>
-            <artifactId>zkclient</artifactId>
-            <version>0.10</version>
-        </dependency>-->
+            <dependency>
+                <groupId>com.101tec</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>0.10</version>
+            </dependency>-->
 
         <dependency>
             <groupId>joda-time</groupId>
@@ -275,21 +270,21 @@
         </dependency>
 
         <!--mongo 配置依赖 开始-->
-       <!-- <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-mongodb</artifactId>
-            <version>1.10.1.RELEASE</version>
-        </dependency>-->
+        <!-- <dependency>
+             <groupId>org.springframework.data</groupId>
+             <artifactId>spring-data-mongodb</artifactId>
+             <version>1.10.1.RELEASE</version>
+         </dependency>-->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.6</version>
         </dependency>
-       <!-- <dependency>
-            <groupId>commons-beanutils</groupId>
-            <artifactId>commons-beanutils</artifactId>
-            <version>1.9.2</version>
-        </dependency>-->
+        <!-- <dependency>
+             <groupId>commons-beanutils</groupId>
+             <artifactId>commons-beanutils</artifactId>
+             <version>1.9.2</version>
+         </dependency>-->
         <!--cglib-->
 
         <!--mongo 配置依赖 结束-->
@@ -306,53 +301,53 @@
             <version>2.8.5</version>
         </dependency>
 
-     <!--   <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.5.2</version>
-        </dependency>
+        <!--   <dependency>
+               <groupId>org.apache.httpcomponents</groupId>
+               <artifactId>httpclient</artifactId>
+               <version>4.5.2</version>
+           </dependency>
 
 
-        <dependency>
-            <groupId>commons-httpclient</groupId>
-            <artifactId>commons-httpclient</artifactId>
-            <version>3.1</version>
-        </dependency>-->
+           <dependency>
+               <groupId>commons-httpclient</groupId>
+               <artifactId>commons-httpclient</artifactId>
+               <version>3.1</version>
+           </dependency>-->
 
 
         <!-- https://mvnrepository.com/artifact/cglib/cglib -->
-       <!-- <dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib</artifactId>
-            <version>3.2.7</version>
-        </dependency>-->
+        <!-- <dependency>
+             <groupId>cglib</groupId>
+             <artifactId>cglib</artifactId>
+             <version>3.2.7</version>
+         </dependency>-->
 
-<!--
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-framework</artifactId>
-            <version>2.11.0</version>
-        </dependency>-->
+        <!--
+                <dependency>
+                    <groupId>org.apache.curator</groupId>
+                    <artifactId>curator-framework</artifactId>
+                    <version>2.11.0</version>
+                </dependency>-->
 
-      <!--  <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-recipes</artifactId>
-            <version>2.11.0</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-test</artifactId>
-            <version>2.12.0</version>
-        </dependency>
+        <!--  <dependency>
+              <groupId>org.apache.curator</groupId>
+              <artifactId>curator-recipes</artifactId>
+              <version>2.11.0</version>
+          </dependency>
 
 
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-all</artifactId>
-            <version>5.15.4</version>
-        </dependency>-->
+          <dependency>
+              <groupId>org.apache.curator</groupId>
+              <artifactId>curator-test</artifactId>
+              <version>2.12.0</version>
+          </dependency>
+
+
+          <dependency>
+              <groupId>org.apache.activemq</groupId>
+              <artifactId>activemq-all</artifactId>
+              <version>5.15.4</version>
+          </dependency>-->
 
         <!--<dependency>
             <groupId>org.springframework</groupId>
@@ -362,11 +357,11 @@
         </dependency>-->
 
 
-      <!--  <dependency>
-            <groupId>org.msgpack</groupId>
-            <artifactId>msgpack</artifactId>
-            <version>0.6.12</version>
-        </dependency>-->
+        <!--  <dependency>
+              <groupId>org.msgpack</groupId>
+              <artifactId>msgpack</artifactId>
+              <version>0.6.12</version>
+          </dependency>-->
 
 
         <dependency>

@@ -22,7 +22,8 @@
 
     <select id="queryUserList" resultType="com.destiny.camel.entity.User">
 
-        select * from `tb_user`
+        select *
+        from `tb_user`
         <where>
             <if test="age != null ">
                 age > #{age}
