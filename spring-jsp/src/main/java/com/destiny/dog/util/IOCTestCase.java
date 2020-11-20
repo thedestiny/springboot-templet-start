@@ -30,8 +30,6 @@ public class IOCTestCase {
 		log.info("context is {}", JSONObject.toJSONString(context));
 		
 		
-		
-		
 	}
 	
 	

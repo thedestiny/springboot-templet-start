@@ -6,6 +6,7 @@ import com.google.common.collect.Lists;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -112,8 +113,16 @@ public class LambdaTest {
         chm.put("d2","d");
         chm.put("d3","d");
         chm.put("d4","d");
-
-
-
+	
+	    ReentrantLock lock = new ReentrantLock();
+	    lock.lock();
+	    lock.lock();
+     
+     
     }
+    
+    
+    
+    
 }
+
