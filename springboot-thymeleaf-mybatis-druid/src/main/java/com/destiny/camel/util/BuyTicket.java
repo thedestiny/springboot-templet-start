@@ -1,5 +1,7 @@
 package com.destiny.camel.util;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.Exchanger;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -31,10 +33,11 @@ public class BuyTicket implements Runnable {
 	
 	
 	public static void main(String[] args) {
-	
-	
-	
-	
+		
+		
+		
+		HashMap<String,String> map = new HashMap<>();
+	    map.put("d","d");
 	
 	
 	

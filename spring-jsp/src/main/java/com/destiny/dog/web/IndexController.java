@@ -1,8 +1,11 @@
 package com.destiny.dog.web;
 
+import com.destiny.dog.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.lang.ref.PhantomReference;
 import java.lang.ref.ReferenceQueue;
@@ -29,6 +32,18 @@ public class IndexController {
 	
 	// 可继承的
 	public static final InheritableThreadLocal<String> inheritableThreadLocal = new InheritableThreadLocal<>();
+	
+	@GetMapping(value = "/user")
+	@ResponseBody
+	public User data(){
+		User user = new User();
+		user.setAge(34);
+		user.setHeight(3);
+		
+		return user;
+	}
+	
+	
 	
 	/**
 	 * 主界面

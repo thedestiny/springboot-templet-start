@@ -1,5 +1,6 @@
 package com.destiny.dog.entity;
 
+import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -14,7 +15,7 @@ public class User implements Serializable {
 
     private Integer age;
 
-    private Integer height;
+    private transient Integer height;
 
     private List<String> tags;
 
@@ -28,4 +29,17 @@ public class User implements Serializable {
 
     public User() {
     }
+	
+	
+	public static void main(String[] args) {
+	
+         User user = new User();
+         user.setHeight(34);
+         user.setAge(34);
+		 System.out.println(JSONObject.toJSONString(user));
+   
+ 
+ 
+	}
+ 
 }
