@@ -73,15 +73,25 @@ public class LambdaTest {
         // 3 map
         List<String> collect3 = collect2.stream().map(String::valueOf).collect(Collectors.toList());
 
-        // 4 fiatMap
+        // 4 flatMap
         User user1 = new User();
+        
         user1.setAge(34);
         user1.setTags(Lists.newArrayList("23","34","45"));
         User user2 = new User();
         user2.setAge(12);
         user2.setTags(Lists.newArrayList("13","14","15"));
-
-        List<String> collect4 = Stream.of(user1, user2).flatMap(node -> node.getTags().stream().map(String::intern)).collect(Collectors.toList());
+        
+        List<User> list = new ArrayList<>();
+        list.add(user1);
+        list.add(user2);
+	    // 根据某些内容去重
+        ArrayList<User> collect6 = list.stream().collect(Collectors.collectingAndThen(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(node -> node.getAge()))), ArrayList::new));
+	    
+        
+	    
+	
+	    List<String> collect4 = Stream.of(user1, user2).flatMap(node -> node.getTags().stream().map(String::intern)).collect(Collectors.toList());
         System.out.println(collect4);
 
         // 5 min max
