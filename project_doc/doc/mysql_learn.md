@@ -6,6 +6,8 @@ innodb_file_per_table 参数：
 InnoDB 默认情况下所有表的数据都存放在共享表空间 ibdata1 中，该参数决定了是否每为张表内的数据单独设置一个表空间。
 如果开启该功能，单独表空间中只存放数据、索引、插入缓存 Bitmap 页，其它数据包括回滚信息，插入缓存索引页，系统事务信息等还是存放在原来的共享表空间中。
 
+段 区 页 行
+
 段
 表空间由各个段组成，主要分为索引段，数据段以及回滚段。其中数据段存放在 B+ 树的叶子节点，索引段存放在 B+ 树的非叶子节点。
 
@@ -34,4 +36,8 @@ undo 页
 
 InnoDB 存储引擎中，数据是按照行进行存放的，最多可以存放 7992 条行记录
 
+sql 查询按照自定义顺序进行排序,如果不在记录中则排序在最前面
+select * from tab_name order by field(field_name, str1, str2, str3)
 
+执行计划 extra 
+Using where; Using temporary; Using filesort
