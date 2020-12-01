@@ -2,6 +2,8 @@ package com.destiny.dog.util;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.HashMap;
+
 @Slf4j
 public class JavaReferenceTest {
 	
@@ -14,6 +16,11 @@ public class JavaReferenceTest {
 		Integer d4 = 300;
 		System.out.println(d1 == d2);
 		System.out.println(d3 == d4);
+		
+		
+		HashMap<String, String> map = new HashMap<>();
+		map.put("dd", "rr");
+		
 		
 	}
 	
