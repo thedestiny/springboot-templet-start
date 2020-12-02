@@ -102,16 +102,17 @@ public class DogNioClient {
 				SocketChannel sc = (SocketChannel) key.channel();
 				
 				ByteBuffer buff = ByteBuffer.allocate(1024);
-				String content = "";
+				StringBuilder content = new StringBuilder();
 				while (sc.read(buff) > 0) {
 					buff.flip();
-					content += charset.decode(buff);
+					content.append(charset.decode(buff));
 				}
+				String cnt = content.toString();
 				//若系统发送通知名字已经存在，则需要换个昵称
-				if (USER_EXIST.equals(content)) {
+				if (USER_EXIST.equals(cnt)) {
 					nickName = "";
 				}
-				System.out.println(content);
+				System.out.println(cnt);
 				key.interestOps(SelectionKey.OP_READ);
 			}
 		}
