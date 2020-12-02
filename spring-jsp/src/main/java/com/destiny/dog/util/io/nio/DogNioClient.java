@@ -23,7 +23,7 @@ public class DogNioClient {
 	private static String USER_CONTENT_SPLIT = "#@#";
 	
 	
-	public DogNioClient() throws IOException{
+	public DogNioClient() throws IOException {
 		
 		// 不管三七二十一，先把路修好，把关卡开放
 		// 连接远程主机的IP和端口
@@ -35,24 +35,24 @@ public class DogNioClient {
 		client.register(selector, SelectionKey.OP_READ);
 	}
 	
-	public void session(){
+	public void session() {
 		//开辟一个新线程从服务器端读数据
 		new Reader().start();
 		//开辟一个新线程往服务器端写数据
 		new Writer().start();
 	}
 	
-	private class Writer extends Thread{
+	private class Writer extends Thread {
 		
 		@Override
 		public void run() {
-			try{
+			try {
 				//在主线程中 从键盘读取数据输入到服务器端
 				Scanner scan = new Scanner(System.in);
-				while(scan.hasNextLine()){
+				while (scan.hasNextLine()) {
 					String line = scan.nextLine();
-					if("".equals(line)) continue; //不允许发空消息
-					if("".equals(nickName)) {
+					if ("".equals(line)) continue; //不允许发空消息
+					if ("".equals(nickName)) {
 						nickName = line;
 						line = nickName + USER_CONTENT_SPLIT;
 					} else {
@@ -62,7 +62,7 @@ public class DogNioClient {
 					client.write(charset.encode(line));//client既能写也能读，这边是写
 				}
 				scan.close();
-			}catch(Exception e){
+			} catch (Exception e) {
 			
 			}
 		}
@@ -73,40 +73,42 @@ public class DogNioClient {
 	private class Reader extends Thread {
 		public void run() {
 			try {
-				
-				//轮询
-				while(true) {
-					int readyChannels = selector.select();
-					if(readyChannels == 0) continue;
-					Set<SelectionKey> selectedKeys = selector.selectedKeys();  //可以通过这个方法，知道可用通道的集合
-					Iterator<SelectionKey> keyIterator = selectedKeys.iterator();
-					while(keyIterator.hasNext()) {
-						SelectionKey key = (SelectionKey) keyIterator.next();
-						keyIterator.remove();
-						process(key);
+				// 事件的获取和消息的处理 轮询
+				while (true) {
+					// 查询可以处理的socket
+					int channels = selector.select();
+					if (channels > 0) {
+						// 内核空间 jvm空间 用户空间
+						Set<SelectionKey> selectedKeys = selector.selectedKeys();  //可以通过这个方法，知道可用通道的集合
+						Iterator<SelectionKey> keyIterator = selectedKeys.iterator();
+						while (keyIterator.hasNext()) {
+							SelectionKey key = keyIterator.next();
+							// 删除jvm 空间和用户空间的socket,否则会出现重复的情况，jvm 会在此基础之上做追加
+							keyIterator.remove();
+							// 处理事件
+							process(key);
+						}
 					}
 				}
-			}
-			catch (IOException io){
-			
+			} catch (IOException io) {
+				System.out.println("异常信息:" + io.getMessage());
 			}
 		}
 		
 		private void process(SelectionKey key) throws IOException {
-			if(key.isReadable()){
+			if (key.isReadable()) {
 				//使用 NIO 读取 Channel中的数据，这个和全局变量client是一样的，因为只注册了一个SocketChannel
 				//client既能写也能读，这边是读
-				SocketChannel sc = (SocketChannel)key.channel();
+				SocketChannel sc = (SocketChannel) key.channel();
 				
 				ByteBuffer buff = ByteBuffer.allocate(1024);
 				String content = "";
-				while(sc.read(buff) > 0)
-				{
+				while (sc.read(buff) > 0) {
 					buff.flip();
 					content += charset.decode(buff);
 				}
 				//若系统发送通知名字已经存在，则需要换个昵称
-				if(USER_EXIST.equals(content)) {
+				if (USER_EXIST.equals(content)) {
 					nickName = "";
 				}
 				System.out.println(content);
@@ -116,9 +118,7 @@ public class DogNioClient {
 	}
 	
 	
-	
-	public static void main(String[] args) throws IOException
-	{
+	public static void main(String[] args) throws IOException {
 		new DogNioClient().session();
 	}
 	
