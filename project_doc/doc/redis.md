@@ -32,3 +32,9 @@ volatile-ttl: 回收在过期集合的键，并且优先回收存活时间（TTL
 
 如果没有键满足回收的前提条件的话，策略volatile-lru, volatile-random以及volatile-ttl就和noeviction 差不多了。
 
+
+Redis 的瓶颈并不在 CPU，而在内存和网络
+执行命令的核心模块还是单线程
+
+Redis基于Reactor模式开发了网络事件处理器，这个处理器被称为文件事件处理器。它的组成结构为4部分：多个套接字、IO多路复用程序、文件事件分派器、事件处理器。
+因为文件事件分派器队列的消费是单线程的，所以Redis才叫单线程模型

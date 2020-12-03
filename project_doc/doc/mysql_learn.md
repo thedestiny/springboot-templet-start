@@ -41,3 +41,40 @@ select * from tab_name order by field(field_name, str1, str2, str3)
 
 执行计划 extra 
 Using where; Using temporary; Using filesort
+
+mysql 基本架构图
+缓存 缓存查询结果
+sql 语句和结果以键值对方式存储，缓存频繁失效标更新会导致缓存失效 命中率比较低
+
+连接器 管理连接验证权限
+show processlist 查看现在的链接，wait_timeout 默认8个小时
+show variables like 'wait_timeout'; 查询链接等待时间
+
+分析器 词法分析、语法分析
+
+
+优化器 执行计划索引选择
+选择索引 多变关联决定关联顺序
+rbo 基于规则优化 cbo 基于成本优化
+
+执行器 操作引擎返回结果
+
+存储引擎 存储数据，提供读写接口 
+
+redo log 数据修改先更新redo log 并更新内存， innodb 引擎会在适合时机记录到磁盘
+redo log 有固定大小，循环写数据
+redo log  
+
+undo log 是为了实现事务的原子性， undo log 实现 mvcc 
+在执行任何数据之前，先需要进行数据备份，然后进行修改，如果执行错误需要 rollback 
+
+bin log 是 server 层日志
+1 redo log 是innodb 特有的，bin log 是所有引擎都可以用的
+2 redo log 是物理日志，记录了数据页的修改 而bin log 是逻辑日志，记录语句的原始逻辑
+3 redo log 是循环写的，空间会用完 而 bin log 是可以追加的，不会产生覆盖
+
+bin log 会记录所有的逻辑操作，追加的方式写入，一般用于全量备份
+
+redo log 两阶段提交
+先写 redo log 再写 bin log 
+先写 bin log 再写 redo log 
