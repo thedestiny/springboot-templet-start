@@ -78,3 +78,25 @@ bin log 会记录所有的逻辑操作，追加的方式写入，一般用于全
 redo log 两阶段提交
 先写 redo log 再写 bin log 
 先写 bin log 再写 redo log 
+
+
+repeat('b',1024*1024*5) 重复函数 
+select @@max_allowed_packet;
+
+max_allowed_packet控制communication buffer最大尺寸，当发送的数据包大小超过该值就会报错，我们都知道，MySQL包括Server层和存储引擎，
+它们之间遵循2PC协议，Server层主要处理用户的请求：连接请求—>SQL语法分析—>语义检查—>生成执行计划—>执行计划—>fetch data；
+存储引擎层主要存储数据，提供数据读写接口。
+
+show profiles;
+show profile cpu,block io for query 1;  
+mysql.slow_log记录的是执行超过long_query_time的所有SQL，如果遵循MySQL开发规范，slow query不会太多，
+但是开启了log_queries_not_using_indexes=ON就会有好多full table scan的SQL被记录，这时slow_log表会很大，对于RDS来说，一般只保留一天的数据，
+在频繁insert into slow_log的时候，做truncate table slow_log去清理slow_log会导致MDL，影响MySQL稳定性。
+建议将log_output=FILE，开启slow_log， audit_log，这样就会将slow_log，audit_log写入文件，
+通过Go API处理这些文件将数据写入分布式列式数据库clickhouse中做统计分析。
+
+由于MySQL是单进程多线程模型，一个SQL语句无法利用多个cpu core去执行，这也就决定了MySQL比较适合OLTP（特点：大量用户访问、逻辑读，索引扫描，
+返回少量数据，SQL简单）业务系统，同时要针对MySQL去制定一些建模规范和开发规范，尽量避免使用Text类型，它不但消耗大量的网络和IO带宽，
+同时在该表上的DML操作都会变得很慢。另外建议将复杂的统计分析类的SQL，建议迁移到实时数仓OLAP中，例如目前使用比较多的clickhouse，
+里云的ADB，AWS的Redshift都可以，
+做到OLTP和OLAP类业务SQL分离，保证业务系统的稳定性。

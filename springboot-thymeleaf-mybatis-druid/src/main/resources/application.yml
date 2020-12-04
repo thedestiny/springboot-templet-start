@@ -45,6 +45,8 @@ logging:
   level:
      root: info
 
+
+
 xss:
   enabled: false
   excludes: index
@@ -63,3 +65,5 @@ mybatis:
 
 server:
   port: 9090
+  servlet:
+    context-path: /camel

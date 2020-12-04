@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.LockSupport;
 
 @Data
@@ -68,10 +69,15 @@ public class User implements Serializable {
 		userList.add(user1);
 		userList.add(user1);
 		userList.add(user1);
-		Map<Integer, List<User>> integerListMap = ServiceUtils.convertToListMap(Lists.newArrayList(32,44,56,67,89), userList, User::getHeight);
-		integerListMap.forEach((k,v) -> {
+		Map<Integer, List<User>> integerListMap = ServiceUtils.convertToListMap(Lists.newArrayList(32, 44, 56, 67, 89), userList, User::getHeight);
+		integerListMap.forEach((k, v) -> {
 			System.out.println(v);
 		});
+		
+		ConcurrentHashMap<String, String> chm = new ConcurrentHashMap<>();
+		chm.put("34", "56");
+		
+		
 		
 	}
 	
