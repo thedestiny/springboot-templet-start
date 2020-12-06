@@ -1,23 +1,34 @@
 package com.destiny.camel.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class User implements Serializable {
-
-   private Long id;
-   private String username;
-   private String salt;
-   private String nickname;
-   private String cellphone;
-   private String password;
-   private String idCard;
-   private Date birthday;
-   private Date createTime;
-   private Date updateTime;
-   private Integer age;
-   private BigDecimal weight;
+	
+	private Long id;
+	private String username;
+	private String salt;
+	private String nickname;
+	private String cellphone;
+	private String password;
+	private String idCard;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+	private Date birthday;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+	private Date createTime;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+	private Date updateTime;
+	private Integer age;
+	private BigDecimal weight;
 	
 	public String getPassword() {
 		return password;
@@ -76,53 +87,53 @@ public class User implements Serializable {
 	}
 	
 	public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public String getCellphone() {
-        return cellphone;
-    }
-
-    public void setCellphone(String cellphone) {
-        this.cellphone = cellphone;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", salt='" + salt + '\'' +
-                ", nickname='" + nickname + '\'' +
-                ", cellphone='" + cellphone + '\'' +
-                '}';
-    }
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public String getUsername() {
+		return username;
+	}
+	
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	public String getSalt() {
+		return salt;
+	}
+	
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+	
+	public String getNickname() {
+		return nickname;
+	}
+	
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	
+	public String getCellphone() {
+		return cellphone;
+	}
+	
+	public void setCellphone(String cellphone) {
+		this.cellphone = cellphone;
+	}
+	
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", username='" + username + '\'' +
+				", salt='" + salt + '\'' +
+				", nickname='" + nickname + '\'' +
+				", cellphone='" + cellphone + '\'' +
+				'}';
+	}
 }
