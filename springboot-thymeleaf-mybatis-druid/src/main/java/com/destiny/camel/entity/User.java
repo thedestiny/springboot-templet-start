@@ -136,4 +136,15 @@ public class User implements Serializable {
 				", cellphone='" + cellphone + '\'' +
 				'}';
 	}
+	
+	public static void main(String[] args) {
+		User us = new User();
+		us.setAge(34);
+		
+		System.out.println("eeee");
+		
+		
+	}
+	
+	
 }
