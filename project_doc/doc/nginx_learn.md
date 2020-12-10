@@ -133,3 +133,8 @@ location ~ /images/abc/ {
 location ~* /js/.*/\.js
 
 ```
+
+
+
+underscores_in_headers 默认 off 即默认忽略带下划线的 header 所以自定义 header 时最好使用带-的header
+这样做是为了避免把 headers 映射为 CGI 变量时出现歧义，因为破折号和下划线都会被映射为下划线，所以两者不好区分

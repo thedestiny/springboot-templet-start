@@ -128,6 +128,7 @@ public class User implements Serializable {
 	
 	@Override
 	public String toString() {
+		System.out.println("调用 user toString()");
 		return "User{" +
 				"id=" + id +
 				", username='" + username + '\'' +

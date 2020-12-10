@@ -2,6 +2,7 @@ package com.destiny.wolf.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.json.JSONUtil;
+import com.alibaba.fastjson.JSONObject;
 import com.destiny.wolf.entity.BookIndex;
 import com.destiny.wolf.service.BookIndexService;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -46,6 +48,10 @@ public class BookIndexServiceImpl extends IEsServiceImpl implements BookIndexSer
 		Arrays.stream(hits).forEach(hit -> {
 			Map<String, Object> sourceAsMap = hit.getSourceAsMap();
 			BookIndex lol = BeanUtil.mapToBean(sourceAsMap, BookIndex.class, true);
+			// 转换查询对象
+			BookIndex index = JSONObject.parseObject(hit.getSourceAsString(), BookIndex.class);
+			Map<String,String> map = new HashMap<>();
+			
 			lolList.add(lol);
 		});
 		return lolList;

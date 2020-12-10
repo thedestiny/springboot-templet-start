@@ -100,3 +100,12 @@ mysql.slow_log记录的是执行超过long_query_time的所有SQL，如果遵循
 同时在该表上的DML操作都会变得很慢。另外建议将复杂的统计分析类的SQL，建议迁移到实时数仓OLAP中，例如目前使用比较多的clickhouse，
 里云的ADB，AWS的Redshift都可以，
 做到OLTP和OLAP类业务SQL分离，保证业务系统的稳定性。
+
+id_log_file_0 
+write pos 是当前记录的位置，一边写一遍后移，是一个循环的写入的过程
+checkpoint 是当前要擦除的位置，也是不断往后推移并且循环的，擦除记录前需要将记录更新到数据文件中
+write pos 和 checkpoint 之前是可以写的部分，保存新的记录操作，如果 write pos 追上了 checkpoint 那么表示空间满了，
+不能继续执行更新操作 需要等待checkpoint 擦除一些记录然后才能写入
+ 
+数据库发生一次，之前提交的记录不会丢失，这个能力称之为 crash-safe 
+
