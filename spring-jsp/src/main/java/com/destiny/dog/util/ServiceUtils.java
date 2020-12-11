@@ -59,11 +59,21 @@ public class ServiceUtils {
 		}
 		
 		Map<ID, List<D>> resultMap = new HashMap<>();
-		
 		list.forEach(data -> resultMap.computeIfAbsent(mappingFunction.apply(data), id -> new LinkedList<>()).add(data));
-		
 		ids.forEach(id -> resultMap.putIfAbsent(id, Collections.emptyList()));
+		return resultMap;
+	}
+	
+	@NonNull
+	public static <ID, D> Map<ID, List<D>> convertToListMap(Collection<D> list, Function<D, ID> mappingFunction) {
+		Assert.notNull(mappingFunction, "mapping function must not be null");
 		
+		if (CollectionUtils.isEmpty(list)) {
+			return Collections.emptyMap();
+		}
+		
+		Map<ID, List<D>> resultMap = new HashMap<>();
+		list.forEach(data -> resultMap.computeIfAbsent(mappingFunction.apply(data), id -> new LinkedList<>()).add(data));
 		return resultMap;
 	}
 	

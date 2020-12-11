@@ -78,6 +78,8 @@ public class User implements Serializable {
 		chm.put("34", "56");
 		
 		
+		Map<Integer, List<User>> integerListMap1 = ServiceUtils.convertToListMap(userList, User::getAge);
+		System.out.println(integerListMap1);
 		
 	}
 	
