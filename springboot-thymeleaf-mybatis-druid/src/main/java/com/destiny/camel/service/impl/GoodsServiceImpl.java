@@ -27,7 +27,7 @@ public class GoodsServiceImpl implements GoodsService {
 	/**
 	 * 同步信息
 	 */
-	CamelLock sync = new CamelLock();
+	private CamelLock sync = new CamelLock();
 	
 	@Override
 	public int order() {

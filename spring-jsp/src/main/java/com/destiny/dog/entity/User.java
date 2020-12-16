@@ -81,6 +81,8 @@ public class User implements Serializable {
 		Map<Integer, List<User>> integerListMap1 = ServiceUtils.convertToListMap(userList, User::getAge);
 		System.out.println(integerListMap1);
 		
+		
+		
 	}
 	
 }

@@ -1,9 +1,11 @@
 package com.destiny.camel.web;
 import java.math.BigDecimal;
 
+import com.alibaba.fastjson.JSONObject;
 import com.destiny.camel.entity.User;
 import com.destiny.camel.event.MessageEvent;
 import com.destiny.camel.service.GoodsService;
+import com.destiny.camel.util.SpringContextUtils;
 import com.google.gson.JsonObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -85,6 +87,10 @@ public class HomeController {
 		
 		applicationContext.publishEvent(new MessageEvent("dd","这是一个请求消息"));
 		
+		ApplicationContext context = SpringContextUtils.getContext();
+		Object homeController = context.getBean("homeController");
+		
+		System.out.println(JSONObject.toJSONString(homeController));
 		
 		User user = new User();
 		user.setPassword("1244444");
