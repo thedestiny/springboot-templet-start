@@ -2,6 +2,7 @@ package com.destiny.camel.web;
 import java.math.BigDecimal;
 
 import com.alibaba.fastjson.JSONObject;
+import com.destiny.camel.config.BeanLifeCycDemo;
 import com.destiny.camel.entity.User;
 import com.destiny.camel.event.MessageEvent;
 import com.destiny.camel.service.GoodsService;
@@ -48,6 +49,8 @@ public class HomeController {
 	@RequestMapping(value = {"/", "home.html", "index.html"})
 	public String home(HttpServletRequest request) {
 		
+		BeanLifeCycDemo demo = applicationContext.getBean(BeanLifeCycDemo.class);
+		System.out.println(demo);
 		// sync.lock();
 		String url = request.getRequestURI();
 		String date = new Date().toString();
