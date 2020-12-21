@@ -8,6 +8,8 @@ import org.springframework.scheduling.annotation.AsyncConfigurerSupport;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -58,6 +60,12 @@ public class AsyncConfig extends AsyncConfigurerSupport {
 		
 		@Override
 		public void handleUncaughtException(Throwable throwable, Method method, Object... objects) {
+			
+			/**
+			 * transient Object[] elementData;
+			 * 不参与序列化，以实际的数据长度进行序列化，减少数据传输的数量
+			 * */
+			List<String> list = new ArrayList<>();
 			log.error("异步任务出差, method {} paeameters {}, exception {}", method.getName(), JSONObject.toJSONString(objects), throwable.getMessage());
 		}
 	}
