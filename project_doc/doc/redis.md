@@ -23,14 +23,26 @@ maxmemory 100mb # 限制内存最大使用大小 0 则是没有限制 64 位为 
 maxmemory-samples 5 # 回收检查的取样数量
 
 
-noeviction:返回错误当内存限制达到并且客户端尝试执行会让更多内存被使用的命令（大部分的写入指令，但DEL和几个例外）
-allkeys-lru: 尝试回收最少使用的键（LRU），使得新添加的数据有空间存放。
-volatile-lru: 尝试回收最少使用的键（LRU），但仅限于在过期集合的键,使得新添加的数据有空间存放。
-allkeys-random: 回收随机的键使得新添加的数据有空间存放。
-volatile-random: 回收随机的键使得新添加的数据有空间存放，但仅限于在过期集合的键。
-volatile-ttl: 回收在过期集合的键，并且优先回收存活时间（TTL）较短的键,使得新添加的数据有空间存放。
+###### Redis的回收策略
+```
+allkeys-lru：从数据集（server.db[i].dict）中挑选最近最少使用的键（LRU）淘汰
+volatile-lru：从已设置过期时间的数据集（server.db[i].expires）中挑选最近最少使用的数据淘汰
+volatile-random：从已设置过期时间的数据集（server.db[i].expires）中任意选择数据淘汰
+allkeys-random：从数据集（server.db[i].dict）中任意选择数据淘汰
+volatile-ttl：从已设置过期时间的数据集（server.db[i].expires）中挑选将要过期的数据淘汰
+no-enviction（驱逐）：禁止删除数据,返回错误当内存限制达到并且客户端尝试执行会让更多内存被使用的命令（大部分的写入指令，但DEL和几个例外）
 
 如果没有键满足回收的前提条件的话，策略volatile-lru, volatile-random以及volatile-ttl就和noeviction 差不多了。
+
+Redis过期key的清理策略
+（1）立即清理。在设置键的过期时间时，创建一个回调事件，当过期时间达到时，由时间处理器自动执行键的删除操作。
+（2）惰性清理。键过期了就过期了，不管。当读/写一个已经过期的key时，会触发惰性删除策略，直接删除掉这个过期key
+（3）定期清理。每隔一段时间，对expires字典进行检查，删除里面的过期键。默认每秒钟执行10次（HZ）
+惰性删除加上定期删除
+
+
+
+```
 
 
 Redis 的瓶颈并不在 CPU，而在内存和网络
@@ -38,3 +50,42 @@ Redis 的瓶颈并不在 CPU，而在内存和网络
 
 Redis基于Reactor模式开发了网络事件处理器，这个处理器被称为文件事件处理器。它的组成结构为4部分：多个套接字、IO多路复用程序、文件事件分派器、事件处理器。
 因为文件事件分派器队列的消费是单线程的，所以Redis才叫单线程模型
+
+#### redis数据结构的编码方式
+https://blog.csdn.net/snakorse/article/details/78154402
+
+```
+1 String
+int：8个字节的长整型。
+embstr：小于等于39个字节的字符串。
+raw：大于39个字节的字符串。
+embstr 不可修改,修改后变成raw格式
+
+2 List
+ziplist（压缩列表）：当哈希类型元素个数小于hash-max-ziplist-entries配置（默认512个）
+同时所有值都小于hash-max-ziplist-value配置（默认64个字节）时，Redis会使用ziplist作为哈希的内部实现。
+linkedlist（链表）：当列表类型无法满足ziplist的条件时，Redis会使用linkedlist作为列表的内部实现。
+都是双端列表,quicklist节点每个值都是用ziplist进行存储
+3.2 之前用 linkedList 3.2 之后用 quicklist
+
+
+3 Hash
+ziplist（压缩列表）：当哈希类型元素个数小于hash-max-ziplist-entries配置（默认512个），
+同时所有值都小于hash-max-ziplist-value配置（默认64个字节）时，Redis会使用ziplist作为哈希的内部实现
+ziplist使用更加紧凑的结构实现多个元素的连续存储，所以在节省内存方面比hashtable更加优秀。
+hashtable（哈希表）：当哈希类型无法满足ziplist的条件时，Redis会使用hashtable作为哈希的内部实现。
+因为此时ziplist的读写效率会下降，而hashtable的读写时间复杂度为O(1)。
+
+4 Set 
+intset（整数集合）：当集合中的元素都是整数且元素个数小于set-max-intset-entries配置（默认512个）时，
+Redis会选用intset来作为集合内部实现，从而减少内存的使用。
+hashtable（哈希表）：当集合类型无法满足intset的条件时，Redis会使用hashtable作为集合的内部实现。
+
+5 Zset 
+
+ziplist（压缩列表）：当有序集合的元素个数小于zset-max-ziplist-entries配置（默认128个）
+同时每个元素的值小于zset-max-ziplist-value配置（默认64个字节）时，Redis会用ziplist来作为有序集合的内部实现，
+ziplist可以有效减少内存使用。
+skiplist（跳跃表）：当ziplist条件不满足时，有序集合会使用skiplist作为内部实现，因为此时zip的读写效率会下降。
+
+```

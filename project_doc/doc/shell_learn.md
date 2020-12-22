@@ -88,3 +88,6 @@ echo
 
 
 ```
+
+磁盘io  iostat
+ssh -p 22 root@ip 
