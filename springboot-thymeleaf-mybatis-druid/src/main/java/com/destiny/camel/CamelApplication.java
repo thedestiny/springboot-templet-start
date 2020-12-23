@@ -1,10 +1,12 @@
 package com.destiny.camel;
 
 import com.destiny.camel.config.BeanLifeCycDemo;
+import com.destiny.camel.util.SpringContextUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Lazy;
@@ -41,6 +43,16 @@ public class CamelApplication {
 		
 		log.info("start CamelApplication !");
 		SpringApplication.run(CamelApplication.class, args);
+		
+		ApplicationContext context = SpringContextUtils.getContext();
+		Object camelFactoryBean = context.getBean("camelFactoryBean");
+		Object studentBeanTest = context.getBean("studentBeanTest");
+		Object student = context.getBean("studentBeanTest");
+		System.out.println(camelFactoryBean);
+		System.out.println(studentBeanTest);
+		System.out.println(student);
+		
+		
 	}
 	
 }
