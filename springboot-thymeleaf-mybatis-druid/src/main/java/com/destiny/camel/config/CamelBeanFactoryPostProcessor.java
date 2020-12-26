@@ -13,7 +13,7 @@ public class CamelBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
 	
 	/**
 	 * 修改 bean 信息
-	 * 
+	 *
 	 *
 	 */
 	@Override

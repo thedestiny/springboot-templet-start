@@ -1,5 +1,6 @@
 package com.destiny.camel.util;
 
+import cn.hutool.core.date.DateUtil;
 import lombok.extern.slf4j.Slf4j;
 import sun.misc.Unsafe;
 
@@ -19,6 +20,14 @@ public class UnsafeInstance {
 			log.error(e.getMessage(), e);
 			return null;
 		}
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		int i = DateUtil.thisDayOfWeek();
+		System.out.println(i);
+		
 		
 	}
 	
