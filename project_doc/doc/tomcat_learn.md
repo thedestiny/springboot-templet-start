@@ -21,3 +21,19 @@ https://blog.csdn.net/achudk/article/details/78925081
 
 push over ssh 
 Deploy to container Plugin
+
+linux 上修改文件格式
+vim file.txt 
+按 :
+输入 set ff = unix 或者 set fileformat= unix 
+
+免密登录配置
+```
+ssh-keygen -t rsa
+ssh-copy-id -i id_rsa.pub 192.168.0.xx
+chmod 644 authorized_keys
+vi /etc/ssh/sshd_config
+PermitRootLogin no
+
+```
+
