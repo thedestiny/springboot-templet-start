@@ -1,5 +1,4 @@
 package com.destiny.camel.web;
-import java.math.BigDecimal;
 
 import com.alibaba.fastjson.JSONObject;
 import com.destiny.camel.config.BeanLifeCycDemo;
@@ -15,10 +14,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Controller
@@ -32,6 +34,20 @@ public class HomeController {
 	@Autowired
 	private ApplicationContext applicationContext;
 	
+	/**
+	 * curl --location --request POST 'http://localhost:9090/camel/test?name=333344&id=44444' \
+	 * --header 'Content-Type: application/json' \
+	 * --data-raw '{
+	 *   "address":"ffffff"
+	 * }'
+	 * */
+	
+	@PostMapping(value = "/test")
+	@ResponseBody
+	public String test(@RequestBody String body, String id, String name) {
+		logger.info("body is {} id is {} name is {}", body, id, name);
+		return "ss";
+	}
 	
 	/**
 	 * 异步请求测试
@@ -82,13 +98,13 @@ public class HomeController {
 	
 	
 	/**
-	 *  home
-	 * */
+	 * home
+	 */
 	@GetMapping(value = "/home")
 	@ResponseBody
-	public User home(){
+	public User home() {
 		
-		applicationContext.publishEvent(new MessageEvent("dd","这是一个请求消息"));
+		applicationContext.publishEvent(new MessageEvent("dd", "这是一个请求消息"));
 		
 		ApplicationContext context = SpringContextUtils.getContext();
 		Object homeController = context.getBean("homeController");
@@ -112,7 +128,6 @@ public class HomeController {
 		return user;
 		
 	}
-	
 	
 	
 }
