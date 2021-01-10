@@ -2,8 +2,13 @@ package com.destiny.camel.util;
 
 import cn.hutool.poi.excel.ExcelUtil;
 import cn.hutool.poi.excel.ExcelWriter;
+import cn.hutool.poi.excel.StyleSet;
+import cn.hutool.poi.excel.cell.CellUtil;
+import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.formula.functions.T;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.IndexedColors;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +46,12 @@ public class ExportExcelTest {
 
         //数字从0开始算       前面两个数字是第几行到第几行合并    后面两个数字是第几列到第几列合并
         //第一行
+	
+	
+	    StyleSet style = writer.getStyleSet();
+	    
+	    writer.setDefaultRowHeight(24);
+	    
 
         writeCell(writer, 0, 0, false, null, "附录3");
         //第二行
@@ -48,12 +59,14 @@ public class ExportExcelTest {
 
 
         //第三行
-        writeCell(writer, 0, 2, true, writer.getHeadCellStyle(), "省份：");
-        writeCell(writer, 1, 2, false, writer.getHeadCellStyle(), "222");
-        writeCell(writer, 2, 2, true, writer.getHeadCellStyle(), "年度：");
-        writeCell(writer, 3, 2, false, writer.getHeadCellStyle(), "2020");
-        writeCell(writer, 4, 2, true, writer.getHeadCellStyle(), "填表联系人：");
-        writeCell(writer, 3, 2, false, writer.getHeadCellStyle(), "xxxx");
+	    Cell cell = writeCell(writer, 0, 2, false, style, "省份：");
+	    
+	    
+	    writeCell(writer, 1, 2, false,style, "222");
+        writeCell(writer, 2, 2, false, style, "年度：");
+        writeCell(writer, 3, 2, false, style, "2020");
+        writeCell(writer, 4, 2, false, style, "填表联系人：");
+        writeCell(writer, 3, 2, false, style, "xxxx");
         writer.merge(2, 2, 5, 7, "xxxx", false);
 
 
@@ -120,45 +133,45 @@ public class ExportExcelTest {
             for(int n = 1 ; n <= k; n++){
                 writer.merge(i, i, 0, 7, n + "、xxxx（"+n+"）",true);
                 i++;
-                writeCell(writer, 0, i, true, writer.getHeadCellStyle(), "xxxx：");
-                writeCell(writer, 1, i, false, writer.getHeadCellStyle(), "tym");
-                writeCell(writer, 2, i, true, writer.getHeadCellStyle(), "xxxx：");
-                writeCell(writer, 3, i, false, writer.getHeadCellStyle(), "spmc");
-                writeCell(writer, 4, i, true, writer.getHeadCellStyle(), "xxxx/xxxx：");
-                writeCell(writer, 5, i, false, writer.getHeadCellStyle(), "gcjk");
-                writeCell(writer, 6, i, true, writer.getHeadCellStyle(), "xxxx：");
-                writeCell(writer, 7, i, false, writer.getHeadCellStyle(), "cpbm");
+                writeCell(writer, 0, i, true, style, "xxxx：");
+                writeCell(writer, 1, i, false, style, "tym");
+                writeCell(writer, 2, i, true, style, "xxxx：");
+                writeCell(writer, 3, i, false, style, "spmc");
+                writeCell(writer, 4, i, true, style, "xxxx/xxxx：");
+                writeCell(writer, 5, i, false, style, "gcjk");
+                writeCell(writer, 6, i, true, style, "xxxx：");
+                writeCell(writer, 7, i, false, style, "cpbm");
                 i++;
 
-                writeCell(writer, 0, i, true, writer.getHeadCellStyle(), "xxxx：");
-                writeCell(writer, 1, i, false, writer.getHeadCellStyle(), "sjje");
-                writeCell(writer, 2, i, true, writer.getHeadCellStyle(), "xxxx：");
-                writeCell(writer, 3, i, false, writer.getHeadCellStyle(), "spmc");
-                writeCell(writer, 4, i, true, writer.getHeadCellStyle(), "xxxx：");
-                writeCell(writer, 5, i, false, writer.getHeadCellStyle(), "gcjk");
-                writeCell(writer, 6, i, true, writer.getHeadCellStyle(), "xxxx：");
-                writeCell(writer, 7, i, false, writer.getHeadCellStyle(), "cpbm");
+                writeCell(writer, 0, i, true, style, "xxxx：");
+                writeCell(writer, 1, i, false, style, "sjje");
+                writeCell(writer, 2, i, true, style, "xxxx：");
+                writeCell(writer, 3, i, false, style, "spmc");
+                writeCell(writer, 4, i, true, style, "xxxx：");
+                writeCell(writer, 5, i, false, style, "gcjk");
+                writeCell(writer, 6, i, true, style, "xxxx：");
+                writeCell(writer, 7, i, false, style, "cpbm");
                 i++;
 
-                writeCell(writer, 0, i, true, writer.getHeadCellStyle(), "xxxx：");
-                writeCell(writer, 1, i, false, writer.getHeadCellStyle(), "sjje");
-                writeCell(writer, 2, i, true, writer.getHeadCellStyle(), "xxxx：");
-                writeCell(writer, 3, i, false, writer.getHeadCellStyle(), "spmc");
-                writeCell(writer, 4, i, true, writer.getHeadCellStyle(), "xxxx：");
-                writeCell(writer, 5, i, false, writer.getHeadCellStyle(), "gcjk");
-                writeCell(writer, 6, i, true, writer.getHeadCellStyle(), "xxxx：");
-                writeCell(writer, 7, i, false, writer.getHeadCellStyle(), "cpbm");
+                writeCell(writer, 0, i, true, style, "xxxx：");
+                writeCell(writer, 1, i, false, style, "sjje");
+                writeCell(writer, 2, i, true, style, "xxxx：");
+                writeCell(writer, 3, i, false, style, "spmc");
+                writeCell(writer, 4, i, true, style, "xxxx：");
+                writeCell(writer, 5, i, false, style, "gcjk");
+                writeCell(writer, 6, i, true, style, "xxxx：");
+                writeCell(writer, 7, i, false, style, "cpbm");
 
                 i++;
 
-                writeCell(writer, 0, i, true, writer.getHeadCellStyle(), "xxxx：");
-                writeCell(writer, 1, i, false, writer.getHeadCellStyle(), "sjje");
-                writeCell(writer, 2, i, true, writer.getHeadCellStyle(), "xxxx：");
-                writeCell(writer, 3, i, false, writer.getHeadCellStyle(), "spmc");
-                writeCell(writer, 4, i, true, writer.getHeadCellStyle(), "xxxx：");
-                writeCell(writer, 5, i, false, writer.getHeadCellStyle(), "gcjk");
-                writeCell(writer, 6, i, true, writer.getHeadCellStyle(), "xxxx：");
-                writeCell(writer, 7, i, false, writer.getHeadCellStyle(), "cpbm");
+                writeCell(writer, 0, i, true, style, "xxxx：");
+                writeCell(writer, 1, i, false, style, "sjje");
+                writeCell(writer, 2, i, true, style, "xxxx：");
+                writeCell(writer, 3, i, false, style, "spmc");
+                writeCell(writer, 4, i, true, style, "xxxx：");
+                writeCell(writer, 5, i, false, style, "gcjk");
+                writeCell(writer, 6, i, true, style, "xxxx：");
+                writeCell(writer, 7, i, false, style, "cpbm");
 
                 i++;
 
@@ -177,14 +190,20 @@ public class ExportExcelTest {
      * @param isWriteStyle 是否写入样式
      * @param style  样式内容
      */
-    public static void writeCell(ExcelWriter writer, int x, int y, boolean isWriteStyle, CellStyle style, Object value) {
+    public static Cell writeCell(ExcelWriter writer, int x, int y, boolean isWriteStyle, StyleSet style, Object value) {
 
         //数字从0开始算       前面两个数字是第几行到第几行合并    后面两个数字是第几列到第几列合并
         //第一行
-        writer.writeCellValue(x, y, value);
+	
+	    Cell cell = writer.getOrCreateCell(x, y);
+        // writer.writeCellValue(x, y, value);
         if(isWriteStyle){
-            writer.setStyle(writer.getHeadCellStyle(), x, y);
+	        CellUtil.setCellValue(cell, value, writer.getStyleSet(), false);
+            // writer.setStyle(style, x, y);
+        } else {
+	        CellUtil.setCellValue(cell, value, style, false);
         }
+        return cell;
 
     }
 
