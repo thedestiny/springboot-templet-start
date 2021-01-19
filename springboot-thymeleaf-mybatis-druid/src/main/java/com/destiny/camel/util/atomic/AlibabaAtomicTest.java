@@ -30,6 +30,7 @@ import java.util.concurrent.atomic.LongAdder;
 @Threads(1000) // 开启 1000 个并发线程
 public class AlibabaAtomicTest {
 	
+	// 需要在 cmd 控制台执行: netsh winsock reset 重置
 	
 	public static void main(String[] args) throws RunnerException {
 		// 启动基准测试
