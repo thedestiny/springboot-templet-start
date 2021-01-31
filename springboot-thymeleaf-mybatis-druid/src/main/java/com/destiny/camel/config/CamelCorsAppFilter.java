@@ -42,4 +42,7 @@ public class CamelCorsAppFilter extends CorsFilter {
         source.registerCorsConfiguration("/**", config);
         return source;
     }
+    
+    
+    
 }

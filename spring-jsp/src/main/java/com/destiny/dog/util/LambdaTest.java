@@ -13,6 +13,12 @@ import java.util.stream.Stream;
 
 public class LambdaTest {
 
+	/**
+	 * 下界通配符 < ? super E>
+	 * 上界通配符 < ? extends E>
+	 *
+	* */
+	
     public static void main(String[] args) {
         Predicate<Integer> predicate = x -> x > 185;
         User student = new User("9龙", 23, 175);
@@ -21,7 +27,8 @@ public class LambdaTest {
 
         Consumer<String> consumer = System.out::println;
         consumer.accept("命运由我不由天");
-
+        // require response
+	    Function<User, String> function1 = (node) -> node.getName() + "";
         Function<User, String> function = User::getName;
         String name = function.apply(student);
         System.out.println(name);

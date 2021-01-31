@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -61,7 +62,8 @@ public class HomeController {
 		return jsonObject.toString();
 	}
 	
-	
+	// 允许跨域标志
+	@CrossOrigin(origins = {"http://localhost:4000"})
 	@RequestMapping(value = {"/", "home.html", "index.html"})
 	public String home(HttpServletRequest request) {
 		
