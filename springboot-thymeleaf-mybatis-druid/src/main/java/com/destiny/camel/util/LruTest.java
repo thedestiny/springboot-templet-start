@@ -55,4 +55,32 @@ public class LruTest {
 	}
 	
 	
+	@Test
+	public void test001(){
+		
+		
+		List<String> list = new ArrayList<>();
+		list.add("3");
+		list.add("4");
+		list.add("5");
+		list.add("6");
+		list.add("7");
+		list.add("8");
+		list.add("9");
+		list.add("10");
+		
+		// 原序列发送修改后,子序列循环时会发生报错
+		List<String> sub = list.subList(1,3);
+		
+		// list.add("11");
+		
+		System.out.println(list);
+		System.out.println(sub);
+		
+		
+		
+		
+		
+	}
+	
 }

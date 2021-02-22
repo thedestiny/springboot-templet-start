@@ -11,6 +11,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
 
@@ -44,6 +45,9 @@ public class AsyncConfig extends AsyncConfigurerSupport {
 		// 等待完成任务后销毁
 		taskExecutor.setWaitForTasksToCompleteOnShutdown(true);
 		taskExecutor.setAwaitTerminationSeconds(60);
+		
+		Executors.newFixedThreadPool(3);
+		
 		return taskExecutor;
 		
 	}
