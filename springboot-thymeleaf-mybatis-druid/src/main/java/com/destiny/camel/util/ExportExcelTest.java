@@ -5,6 +5,7 @@ import cn.hutool.poi.excel.ExcelUtil;
 import cn.hutool.poi.excel.ExcelWriter;
 import cn.hutool.poi.excel.StyleSet;
 import cn.hutool.poi.excel.cell.CellUtil;
+import org.apache.poi.hssf.usermodel.HSSFPrintSetup;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.formula.functions.T;
 import org.apache.poi.ss.usermodel.BorderStyle;
@@ -14,6 +15,7 @@ import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.PrintSetup;
 import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.ss.usermodel.Workbook;
 
@@ -47,15 +49,17 @@ public class ExportExcelTest {
         System.out.println(entTime-start);
 
     }
-
-
-
+    
 
     public static void layout(ExcelWriter writer, Object object, List<List<T>> lists) {
 
         //数字从0开始算       前面两个数字是第几行到第几行合并    后面两个数字是第几列到第几列合并
         //第一行
-	
+	    
+	    // 页面布局设置纸张方向
+	    PrintSetup printSetup = writer.getSheet().getPrintSetup();
+	    printSetup.setPaperSize(HSSFPrintSetup.A4_PAPERSIZE);
+	    printSetup.setLandscape(true); // 打印方向，true：横向，false：纵向(默认)
 	    
 	    StyleSet style = writer.getStyleSet();
 	
