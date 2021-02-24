@@ -41,6 +41,9 @@
     <!-- import db-->
     <import resource="classpath:/config/spring/applicationContext-druid.xml"/>
 
+    <import resource="classpath:/config/rocketmq-config.xml"/>
+
+
 
 
 </beans>

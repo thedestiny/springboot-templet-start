@@ -34,3 +34,15 @@ broker 消息中专角色，负责消息的存储和转发
 6 事务消息
 
 
+```bash
+
+启动 mq nameserver 
+.\bin\mqnamesrv.cmd
+ 
+启动 mq borker 
+.\bin\mqbroker.cmd -n localhost:9876 autoCreateTopicEnable=true
+ 
+ 
+
+```
+

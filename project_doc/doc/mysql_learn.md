@@ -496,3 +496,28 @@ hash 索引适合用于等值查询。
 普通索引 唯一索引 全文索引 联合索引 
 索引失效 
 列上进行函数计算、存在null值的条件、类型转换、not 条件
+
+
+redolog 是物理日志,因为数据都是在数据页的,记录的是数据页的变更
+binlog 是逻辑日志,简单理解为sql语句
+
+redo log落盘时机由innodb_flush_log_at_trx_commit控制
+innodb_flush_log_at_trx_commit=0:不写入磁盘
+innodb_flush_log_at_trx_commit=1:写入磁盘
+innodb_flush_log_at_trx_commit=2:写入os cache,1s后写入磁盘
+
+binlog落盘时机由sync_binlog控制
+sync_binlog=0:写入os cache
+sync_binlog=1:写入磁盘
+sync_binlog=N:N个事务后写入磁盘
+
+1 从磁盘文件加载数据到 buffer pool 缓冲池
+2 undo log file 写入旧值用于回滚数据
+3 执行器 buffer pool 中更新内存数据
+4 执行器 写入 redo log buffer 
+5 准备提交事务， redo log 写磁盘
+6 准备提交事务，bin log 写入磁盘
+7 redo log 写入本次 bin log 位置，添加 commit 标记
+8
+9 后台 io 线程随机刷脏数据页到磁盘文件
+
