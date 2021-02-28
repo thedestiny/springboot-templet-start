@@ -59,5 +59,14 @@ SOFT 软引用，移除基于垃圾回收器状态和软引用规则的对象
 WEAK 弱引用，更积极的移除基于垃圾收集器状态和弱引用规则对象
 
 
+Interceptor
+Executor         处理方法
+ParameterHandler 处理参数
+ResultSetHandler 处理返回结果集
+StatementHandler 构建sql
+
+
+
+
 
 

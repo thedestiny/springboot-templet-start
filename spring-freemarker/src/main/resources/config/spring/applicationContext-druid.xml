@@ -44,13 +44,13 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:/config/mybatis/mybatis-config.xml"/>
         <property name="mapperLocations" value="classpath:/mapper/*.xml"/>
-        <property name="typeAliasesPackage" value="com.destiny.example.entity"/>
+        <property name="typeAliasesPackage" value="com.destiny.cat.entity"/>
     </bean>
 
 
     <!-- mapperScannerConfigurer -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.destiny.example.mapper"/>
+        <property name="basePackage" value="com.destiny.cat.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 

@@ -5,31 +5,31 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <bean id="consumer"
-          class="org.apache.rocketmq.client.consumer.DefaultMQPushConsumer">
-        <constructor-arg name="consumerGroup" value="rocketmq001" />
-        <property name="namesrvAddr" value="127.0.0.1:9876" />
-    </bean>
+   <bean id="consumer"
+       class="org.apache.rocketmq.client.consumer.DefaultMQPushConsumer">
+       <constructor-arg name="consumerGroup" value="rocketmq001" />
+       <property name="namesrvAddr" value="127.0.0.1:9876" />
+   </bean>
 
-    <!--监听消息-->
-    <bean id="messageListener" class="com.destiny.cat.mq.MessageListener"/>
+   <!--监听消息-->
+   <bean id="messageListener" class="com.destiny.cat.mq.MessageListener"/>
 
 
-    <!--生产消息-->
-    <bean id="rocketMqProducer" class="com.destiny.cat.mq.RocketMqProducer"
-          init-method="init" lazy-init="false" />
+   <!--生产消息-->
+   <bean id="rocketMqProducer" class="com.destiny.cat.mq.RocketMqProducer"
+         init-method="init" lazy-init="false" />
 
-    <!-- 订阅topic是ROCKETMQ_TOPIC的消息  -->
-    <bean id="rocketmqConsumer" class="org.apache.rocketmq.client.consumer.DefaultMQPushConsumer" init-method="start" destroy-method="shutdown">
-        <property name="consumerGroup" value="rocketmq001"/>
-        <property name="namesrvAddr" value="127.0.0.1:9876"/>
-        <property name="messageListener" ref="messageListener"/>
-        <property name="subscription">
-            <map>
-                <!--<entry key="${rocketmq.topic}" value="${rocketmq.tags}" />-->
-                <entry key="ROCKETMQ_TOPIC" value="ROCKETMQ_START_TAG" />
-            </map>
-        </property>
-    </bean>
+   <!-- 订阅topic是ROCKETMQ_TOPIC的消息  -->
+   <bean id="rocketmqConsumer" class="org.apache.rocketmq.client.consumer.DefaultMQPushConsumer" init-method="start" destroy-method="shutdown">
+       <property name="consumerGroup" value="rocketmq001"/>
+       <property name="namesrvAddr" value="127.0.0.1:9876"/>
+       <property name="messageListener" ref="messageListener"/>
+       <property name="subscription">
+           <map>
+               <!--<entry key="${rocketmq.topic}" value="${rocketmq.tags}" />-->
+               <entry key="ROCKETMQ_TOPIC" value="ROCKETMQ_START_TAG" />
+           </map>
+       </property>
+   </bean>
 
 </beans>
