@@ -11,15 +11,24 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import java.nio.charset.Charset;
 import java.util.List;
+import java.util.concurrent.CompletionService;
+import java.util.concurrent.ExecutorCompletionService;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 
 @Configuration
 @EnableWebMvc
 public class WebConfiguration extends WebMvcConfigurerAdapter {
+	InheritableThreadLocal<String> threadLocal = new InheritableThreadLocal<>();
 	
 	
 	@Bean
-	public StringHttpMessageConverter stringHttpMessageConverter(){
+	public StringHttpMessageConverter stringHttpMessageConverter() {
+		
+		CompletionService service = new ExecutorCompletionService(new ThreadPoolExecutor(2,3,2, TimeUnit.SECONDS,new LinkedBlockingDeque<>(34)));
+		
 		return new StringHttpMessageConverter(Charset.forName("UTF-8"));
 	}
 	
@@ -41,6 +50,10 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
 	
 	@Override
 	public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+		
+		
+		
+		
 		converters.clear();
 		converters.add(stringHttpMessageConverter());
 		converters.add(fastJsonHttpMessageConverter());

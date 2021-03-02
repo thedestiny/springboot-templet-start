@@ -17,7 +17,7 @@
         <module>springboot-jsp-mybatis-druid-war</module>
         <module>spring-jsp</module>
         <module>spring-freemarker</module>
-        <module>spring-jsp-mybatisplus</module>
+        <module>spring-freemarker-mybatisplus</module>
         <module>springboot-freemarker-mybatisplus-hikari</module>
         <module>springboot-dynamic-datasource</module>
         <module>springboot-nacos-dubbo-consumer</module>

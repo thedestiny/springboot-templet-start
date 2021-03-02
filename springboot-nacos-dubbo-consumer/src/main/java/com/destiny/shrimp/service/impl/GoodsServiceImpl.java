@@ -3,7 +3,7 @@ package com.destiny.shrimp.service.impl;
 import com.destiny.shrimp.entity.Goods;
 import com.destiny.shrimp.mapper.GoodsMapper;
 import com.destiny.shrimp.service.GoodsService;
-import com.destiny.shrimp.util.CamelLock;
+import com.destiny.shrimp.utils.CamelLock;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

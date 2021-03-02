@@ -1,0 +1,2 @@
+org.springframework.boot.diagnostics.FailureAnalyzer=\
+com.destiny.camel.config.analyzer.PortInUseFailureAnalyzer

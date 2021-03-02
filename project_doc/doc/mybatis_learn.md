@@ -65,7 +65,9 @@ ParameterHandler 处理参数
 ResultSetHandler 处理返回结果集
 StatementHandler 构建sql
 
-
+SimpleExecutor 
+ReuseExecutor
+BatchExecutor
 
 
 
