@@ -84,3 +84,37 @@ GET /person_profile/_doc/_search
     }
   }
 }
+
+使用 alias 创建不同查询的视图
+POST /_alias
+{
+   "actions":[
+      {
+         "add":{
+            "index":"movies",
+             "alias":"high_rate_movies",
+             "filter":{
+                "range":{
+                   "rating":{ "gte" : 4 }
+                }
+             }
+         }
+      }
+   ]
+}
+
+
+POST /_reindex 
+{
+  "source":{
+     "index":"blogs"
+  },
+  "dest":{
+      "index":"blogs_fix",
+      "op_type":"create"
+  }
+
+}
+
+
+

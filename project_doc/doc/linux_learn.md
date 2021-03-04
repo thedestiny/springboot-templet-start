@@ -110,3 +110,26 @@ buffers是用来缓冲块设备做的，它只记录文件系统的元数据（m
 3 – 释放所有缓存
 
 
+free -h  人类可读的形式展示内存使用情况
+
+lscpu 
+
+redis 为什么快?
+1 纯内存操作，
+2 异步处理IO
+
+redis 执行命令的步骤
+接收。通过TCP接收到命令，可能会历经多次TCP包、ack、IO操作
+解析。将命令取出来
+执行。到对应的地方将value读出来
+返回。将value通过TCP返回给客户端，如果value较大，则IO负荷会更重
+
+timer 事件和 io 事件
+
+
+io 多路复用和事件驱动
+select
+poll
+epoll
+
+https://zhuanlan.zhihu.com/p/144805500

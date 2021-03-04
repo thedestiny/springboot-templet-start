@@ -38,3 +38,67 @@ java 对象模型
 JVM内存结构，和Java虚拟机的运行时区域有关。Java内存模型，和Java的并发编程有关。Java对象模型，和Java对象在虚拟机中的表现形式有关。
 
 
+
+
+
+```
+IOC 
+
+ClassPathXmlApplicationContext 调用 refresh
+
+调用方法
+AbstractApplicationContext.refresh()
+                          -> finishBeanFactoryInitialization() -> preInstantiateSingletons()
+DefaultListableBeanFactory.preInstantiateSingletons() -> getBean()
+AbstractBeanFactory.getBean -> doGetBean() -> getSingleton()
+                            -> doGetBean()
+                            -> getSingleton(beanName, lambda) -> DefaultSingletonBeanRegistry.getSingleton() -> singletonFactory.getObject()
+                            AbstractAutowireCapableBeanFactory.createBean()
+                            AbstractAutowireCapableBeanFactory.doCreateBean()
+                            AbstractAutowireCapableBeanFactory.createBeanInstance() -> instantiateBean()
+                                                               ->  AbstractAutowireCapableBeanFactory.instantiateBean() -> getInstantiationStrategy().instantiate()
+                            SimpleInstantiationStrategy.instantiate()   ->   BeanUtils.instantiateClass()
+                            AbstractAutowireCapableBeanFactory.addSingletonFactory(beanName,lambda -> getEarlyBeanReference )
+                            populateBean() -> applyPropertyValues()
+                            AbstractAutowireCapableBeanFactory.applyPropertyValues() -> resolveValueIfNecessary()
+                                         BeanDefinitionValueResolver.resolveValueIfNecessary(Object argName, @Nullable Object value) -> resolveReference()[RuntimeBeanReference]
+                                         BeanDefinitionValueResolver.resolveReference(Object argName, RuntimeBeanReference ref)  -> bean = this.beanFactory.getBean(resolvedName) 获取 bean信息
+                            bw.setPropertyValues(new MutablePropertyValues(deepCopy)); // 设置属性
+ 
+                            initializeBean() 初始化 bean
+                                       -> applyBeanPostProcessorsBeforeInitialization() // 后置处理器初始化前执行
+                                       -> invokeInitMethods() // 初始化方法 
+                                       -> applyBeanPostProcessorsAfterInitialization()  // 后置处理器初始化后执行
+                                       
+                            DefaultSingletonBeanRegistry.addSingleton()                  
+
+
+```
+
+
+```
+AOP 
+
+@EnableAspectJAutoProxy -> AspectJAutoProxyRegistrar
+AspectJAutoProxyRegistrar implements ImportBeanDefinitionRegistrar
+
+```
+
+```
+
+
+getBean
+ApplicationContext 
+AdvisedSupport
+AopConfig 
+Advice
+JdkDynamicAopProxy
+CglibDynamicAopProxy
+
+
+DefaultSingletonBeanRegistry
+
+https://www.processon.com/view/5fa5ced3e0b34d7a1a9b77bc
+
+```
+
