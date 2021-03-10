@@ -14,6 +14,7 @@ import org.springframework.retry.RetryListener;
 import org.springframework.retry.annotation.EnableRetry;
 import org.springframework.retry.listener.RetryListenerSupport;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Slf4j
@@ -22,6 +23,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @EnableAspectJAutoProxy
 @EnableTransactionManagement
+// redis 共享 session
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 86400*30)
 @MapperScan("com.destiny.camel.mapper")
 public class CamelApplication {
 	

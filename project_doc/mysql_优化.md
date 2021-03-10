@@ -280,8 +280,10 @@ MySQL可以很好的支持大数据量的存取，但是一般说来，数据库
 
 
 
+https://mp.weixin.qq.com/s/5p-1uVyfBhnHS7yQqBUMVA
 
 
+mysql 优化器会根据 io 成本和 cpu 成本来选择使用何种索引
 
 
 

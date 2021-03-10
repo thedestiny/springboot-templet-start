@@ -521,3 +521,7 @@ sync_binlog=N:N个事务后写入磁盘
 8
 9 后台 io 线程随机刷脏数据页到磁盘文件
 
+
+等待超时时间
+show session variables like 'wait_timeout';
+

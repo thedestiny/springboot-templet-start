@@ -172,4 +172,14 @@ io-threads-do-reads yes
 #配置线程数量，如果设为1就是主线程模式。
 io-threads 4
 
+
+Redis在编译时便会指定内存分配器；内存分配器可以是 libc 、jemalloc或者tcmalloc，
+默认是jemalloc。
+jemalloc作为Redis的默认内存分配器，在减小内存碎片方面做的相对比较好。
+渐进式 rehash hashtable 
+ 
+
 ```
+
+
+https://www.jianshu.com/p/1ac051c4184c
