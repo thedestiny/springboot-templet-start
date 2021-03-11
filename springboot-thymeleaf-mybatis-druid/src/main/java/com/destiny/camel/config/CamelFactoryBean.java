@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class CamelFactoryBean implements FactoryBean {
+public class CamelFactoryBean implements FactoryBean<UserBeanTest> {
 	
 	
 	@Override
-	public Object getObject() throws Exception {
+	public UserBeanTest getObject() throws Exception {
 		UserBeanTest userBeanTest = new UserBeanTest();
 		System.out.println(userBeanTest);
 		return userBeanTest;

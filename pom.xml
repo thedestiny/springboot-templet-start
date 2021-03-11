@@ -22,6 +22,7 @@
         <module>springboot-dynamic-datasource</module>
         <module>springboot-nacos-dubbo-consumer</module>
         <module>springboot-nacos-dubbo-provider</module>
+        <module>springboot-freestyle</module>
     </modules>
 
 

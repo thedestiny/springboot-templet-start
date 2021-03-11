@@ -18,7 +18,6 @@ public class AppClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
 	
 	
 	@Override
-	
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
 		// 处理I/O事件的异常
 		cause.printStackTrace();

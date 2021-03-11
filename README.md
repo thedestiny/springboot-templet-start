@@ -60,4 +60,5 @@
 
 ##### 2.11、springboot-nacos-dubbo-provider(lobster)
 
- 
+##### 2.12、springboot-freestyle(squirrel)
+
