@@ -29,8 +29,10 @@
 技术架构 spring5.2.8RELEASE、jsp、mybatis-plus，采用 tomcat 方式部署
 
 ##### 2.3、spring-jsp(fox)
-
 技术架构 spring5.2.8RELEASE、jsp、redis共享session，采用 tomcat 方式部署
+util
+
+
 
 ##### 2.4、springboot-jsp-mybatis-druid-war(eagle)
 
@@ -61,4 +63,5 @@
 ##### 2.11、springboot-nacos-dubbo-provider(lobster)
 
 ##### 2.12、springboot-freestyle(squirrel)
+
 

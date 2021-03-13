@@ -2,13 +2,12 @@ package com.destiny.dog.entity;
 
 import com.alibaba.fastjson.JSONObject;
 import com.destiny.dog.basic.BaseEntity;
-import com.destiny.dog.util.ServiceUtils;
+import com.destiny.dog.learn.ServiceUtils;
 import com.google.common.collect.Lists;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
