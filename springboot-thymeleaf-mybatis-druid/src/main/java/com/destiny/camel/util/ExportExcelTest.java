@@ -200,8 +200,7 @@ public class ExportExcelTest {
         writer.merge(10, 10, 2, 3, "2", false);
         writer.merge(10, 10, 4, 5, "3", false);
         writer.merge(10, 10, 6, 7, "4", false);
-
-
+        
 
         //第12行
         writer.merge(11, 11, 0, 7, "三、xxxx",true);

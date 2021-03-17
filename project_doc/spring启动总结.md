@@ -273,13 +273,20 @@ AnnotationAwareAspectJAutoProxyCreator
        动态代理有  ：   jdk动态代理（基于接口来实现）、CGlib（基于类实现）。 
 
 ```											
-							
+https://zhuanlan.zhihu.com/p/95217578
 						
-						
-					
-				
-				
-				
+###### 自动装配
+@SpringBootApplication 启动类注解
+@EnableAutoConfiguration 自动配置注解
+@Import(AutoConfigurationImportSelector.class) 自动导入配置文件的选择器
+selectImports()
+getCandidateConfigurations() 加载 spring.factories 文件
+读取配置类 ConditionOnClass 
+
+线程数量设置的太小，会导致程序不能充分地利用系统资源。线程数量设置太大，又可能带来过度的资源竞争和上下文切换带来的额外消耗。
+
+time slice 时间片
+
 			
 
 		

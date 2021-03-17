@@ -28,4 +28,9 @@ public class UserServiceImpl implements UserService {
         }
         return new User();
     }
+	
+	@Override
+	public List<User> selectUserList() {
+		return userMapper.selectUserList(new User());
+	}
 }

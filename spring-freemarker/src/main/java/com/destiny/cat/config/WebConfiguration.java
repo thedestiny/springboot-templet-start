@@ -21,8 +21,8 @@ import java.util.concurrent.TimeUnit;
 @Configuration
 @EnableWebMvc
 public class WebConfiguration extends WebMvcConfigurerAdapter {
-	InheritableThreadLocal<String> threadLocal = new InheritableThreadLocal<>();
 	
+	InheritableThreadLocal<String> threadLocal = new InheritableThreadLocal<>();
 	
 	@Bean
 	public StringHttpMessageConverter stringHttpMessageConverter() {

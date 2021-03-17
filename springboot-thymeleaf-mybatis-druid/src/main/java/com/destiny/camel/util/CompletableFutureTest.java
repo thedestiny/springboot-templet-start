@@ -17,6 +17,7 @@ public class CompletableFutureTest {
 	 * 用多线程优化性能，其实不过就是将串行操作变成并行操作。 当遇到某些
 	 * 异步化 用多线程优化性能这个核心方案得以实施的基础
 	 * CompletableFuture java8 以后提供的异步编程
+	 *
 	 */
 	
 	public static void main(String[] args) {

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Controller
 public class IndexController {
@@ -26,7 +27,6 @@ public class IndexController {
 	@RequestMapping(value = {"/", "home.html", "index.html"})
 	public String home(HttpServletRequest request) {
 		
-		new BigDecimal(0.3);
 		
 		String uri = request.getRequestURI();
 		User user = userService.findUserById(1L);
@@ -39,6 +39,9 @@ public class IndexController {
 	@RequestMapping(value = "/index/data")
 	@ResponseBody
 	public String index() {
+		
+		List<User> userList = userService.selectUserList();
+		userList.stream().forEach(node -> System.out.println(node));
 		return "333344";
 	}
 	

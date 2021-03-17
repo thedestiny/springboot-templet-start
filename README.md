@@ -23,6 +23,9 @@
 
 ##### 2.1、spring-freemarker(cat)
 技术架构 spring5.2.8RELEASE、freemarker、redis共享session，采用 tomcat 方式部署
+mybatis plugins 字段脱敏 打印生成 sql 
+
+
 
 ##### 2.2、spring-jsp-mybatis-plus(dog)
 

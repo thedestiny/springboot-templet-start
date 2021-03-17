@@ -4,9 +4,10 @@ PRO=`cd \` dirname $0 \` cd .. ;  pwd `
 # 输出当前文件目录
 echo "current project path is  ->  $PRO"
 
-cd .. 
+cd ..
 
 rm -rf $PRO/logs
 rm -rf $PRO/.idea
-# 删除 .iml 文件
+# 删除 .iml 文件 和 target 文件夹
 find $PRO -name "*.iml"  | xargs rm -f
+find $PRO -name "target"  | xargs rm -f

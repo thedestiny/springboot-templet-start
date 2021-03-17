@@ -3,6 +3,7 @@ package com.destiny.squirrel.utils;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,7 +48,6 @@ public class LambdaJavaTest {
 		
 		ConcurrentHashMap<String,String> chm = new ConcurrentHashMap<>(23,4.0f,3);
 		chm.put("34","rt");
-		
 		
 	}
 	
