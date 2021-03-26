@@ -151,3 +151,26 @@ zk 分布式锁和队列1
 https://mp.weixin.qq.com/s/WN0Q1hUicyCng5VCv83Rsg
 zk 分布式锁和队列2
 https://mp.weixin.qq.com/s/OLSmUp_d0VO3kaFkRUmiHg
+
+
+###### zk 的 watcher 机制
+客户端可以通过znode 上设置 watch 实现znode 的监听， watcher 是一个一次性触发器，当监听的节点数据发送变化时，通知客户端
+zk 只通知有数据变化，不通知变化的内容
+
+1 客户端线程
+2 客户端watchManager 
+3 zk的服务器，回调是串行同步的
+
+崩溃恢复和广播模式
+zk 是主从模式
+
+网络分区时，是选择A还是C
+zk是分布式协调服务
+
+eureka 保证AP,节点是平等的
+
+
+
+
+
+

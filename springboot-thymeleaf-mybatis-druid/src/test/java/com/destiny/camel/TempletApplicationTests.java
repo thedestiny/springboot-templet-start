@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -20,14 +22,23 @@ public class TempletApplicationTests {
 	@Test
 	public void test001(){
 		
-		Goods entity = new Goods();
-		entity.setId(4L);
-		entity.setGoodName("测试");
-		entity.setStock(4);
-		entity.setCreateTime(new Date());
-		entity.setUpdateTime(new Date());
+	
 		
-		goodsService.insertGoods(entity);
+		// goodsService.insertGoods(entity);
+		
+		List<Goods> list = new ArrayList<>();
+		
+		for (int i = 0; i < 4 ; i++) {
+			Goods entity = new Goods();
+			// entity.setId(4L);
+			entity.setGoodName("测试");
+			entity.setStock(4);
+			entity.setCreateTime(new Date());
+			entity.setUpdateTime(new Date());
+			list.add(entity);
+		}
+		
+		goodsService.insertGoodsList(list);
 		
 	}
 	

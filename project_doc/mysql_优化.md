@@ -286,6 +286,19 @@ https://mp.weixin.qq.com/s/5p-1uVyfBhnHS7yQqBUMVA
 mysql 优化器会根据 io 成本和 cpu 成本来选择使用何种索引
 
 
+索引下推 index push down 
+mrr 范围查找读取 multi range read between and 或者范围查找是会 
+
+
+
+innodb_flush_log_at_trx_commit
+可以定义mysql的事务提交方式
+mysql写文件有2块缓存。一块是自己定义在内存的log buffer, 另一个是磁盘映射到内存的os cache。
+mysql可以 调用 flush 主动将log buffer 刷新到磁盘内存映射，也可以调用 fsync 强制操作系同步磁盘映射文件到磁盘。
+还可以同时调用 flush + fsync, 将缓存直接落盘。
+innodb_flush_log_at_trx_commit = 0 就是每秒调用 flush + fsync ，定时器自己维护。
+innodb_flush_log_at_trx_commit = 1 就是实时调用 flush + fsync 没法批处理，性能很低。
+innodb_flush_log_at_trx_commit = 2 就是实时flush ,定时 fsync 交给OS维护定时器。
 
 
 

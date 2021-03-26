@@ -524,4 +524,36 @@ sync_binlog=N:N个事务后写入磁盘
 
 等待超时时间
 show session variables like 'wait_timeout';
+查看允许的最大数据包
+show VARIABLES like '%max_allowed_packet%';
+SHOW VARIABLES LIKE '%general%';
+配置通用日志
+set global general_log=on;
+set global general_log_file='/tmp/general.log';
+[mysqld] 下配置
+general_log-file=D:\mysql-5.7.22-winx64\gen.log
+general_log=1 
+
+
+```
+# 重写批量插入statement
+rewriteBatchedStatements=true
+# 允许多行查询
+allowMultiQueries=true 
+# 设置字符集
+useUnicode=true&characterEncoding=utf8
+# 是否开启ssl
+useSSL=false
+# tinyint 转为 boolean
+tinyInt1isBit=true
+# 设置连接的时区
+serverTimezone=Asia/Shanghai
+
+
+statement
+preparedStatement
+ServerPreparedStatement
+CallableStatement
+
+```
 

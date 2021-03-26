@@ -22,6 +22,10 @@
         </filter>
     </appender>
 
+    <logger name="com.destiny" level="DEBUG">
+        <appender-ref ref="STD"/>
+    </logger>
+
     <root level="DEBUG">
         <appender-ref ref="STD" />
         <appender-ref ref="FILE_APPENDER" />

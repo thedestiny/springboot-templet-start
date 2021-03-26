@@ -1,8 +1,10 @@
 package com.destiny.dog.learn.example;
 
 import org.junit.Test;
+import org.springframework.aop.framework.AopContext;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedTransferQueue;
@@ -203,6 +205,8 @@ public class ThreadInteractiveOutputTest {
 		
 		ConcurrentLinkedQueue<String> linkedQueue = new ConcurrentLinkedQueue<>();
 		
+		ConcurrentSkipListMap<String,String> skipListMap = new ConcurrentSkipListMap<>();
+		skipListMap.put("r","r");
 		
 		// transferQueue.transfer(new Character((char)3));
 		

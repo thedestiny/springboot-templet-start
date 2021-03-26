@@ -186,8 +186,21 @@ Redis在编译时便会指定内存分配器；内存分配器可以是 libc 、
 默认是jemalloc。
 jemalloc作为Redis的默认内存分配器，在减小内存碎片方面做的相对比较好。
 渐进式 rehash hashtable 
- 
+ https://www.jianshu.com/p/1ac051c4184c
 
 ```
 
-https://www.jianshu.com/p/1ac051c4184c
+###### redis 主从同步原理
+
+1 slave 的 slave of 向 master 节点同步数据，判断是否为第一次复制
+2 向master 发送 psync 命令， master 返回 fullsync runid offset , runid 主节点的运行id，offset 表示当前主节点的偏移量，执行全量同步
+3 向master 发送 psync runid offset 命令，复制偏移量， master 判断是否是自己的 runid, 是的话增量，不是的话全量
+4 master 维护了一条缓存队列，重写 aof , bgrewrite 时进程阻塞， 
+
+
+
+
+
+
+
+

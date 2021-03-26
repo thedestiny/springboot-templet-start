@@ -61,7 +61,7 @@ mybatis:
   configuration:
     cache-enabled: false
     map-underscore-to-camel-case: true
-
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 server:
   port: 9090

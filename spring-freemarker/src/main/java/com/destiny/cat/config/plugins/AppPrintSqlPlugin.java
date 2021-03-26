@@ -1,13 +1,14 @@
 package com.destiny.cat.config.plugins;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.date.TimeInterval;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.cache.CacheKey;
 import org.apache.ibatis.executor.Executor;
-import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.mapping.ParameterMapping;
@@ -42,14 +43,26 @@ public class AppPrintSqlPlugin implements Interceptor {
 	 */
 	@Override
 	public Object intercept(Invocation invocation) throws Throwable {
-		System.out.println("invocation" + invocation);
+		
+		log.info("invocation is {}", JSONObject.toJSONString(invocation));
+		
 		Object[] args = invocation.getArgs();
 		MappedStatement statement = (MappedStatement) args[0];
-		StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
-		// statement.getBoundSql()
-		BoundSql boundSql = statementHandler.getBoundSql();
-		String sql = boundSql.getSql(); //获取到SQL 注意当前SQL是没有被设置参数过的SQL
-		log.info("printSql {}", printSql(sql, boundSql));
+		Object parameter = args[1];
+		BoundSql boundSql = statement.getBoundSql(parameter);
+		Configuration configuration = statement.getConfiguration();
+		TimeInterval timer = DateUtil.timer();
+		try {
+			return invocation.proceed();
+		} catch (Exception e) {
+		
+		} finally {
+			
+			long cost = timer.intervalSecond();
+			log.info("cost time is {} and sql is \n{}", cost, getSql(configuration, boundSql));
+		}
+		
+		//获取到SQL 注意当前SQL是没有被设置参数过的SQL
 		return invocation.proceed();
 	}
 	

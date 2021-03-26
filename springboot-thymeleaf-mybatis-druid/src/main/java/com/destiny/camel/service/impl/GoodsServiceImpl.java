@@ -8,6 +8,8 @@ import com.destiny.camel.mapper.GoodsMapper;
 import com.destiny.camel.service.GoodsService;
 import com.destiny.camel.util.CamelLock;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.executor.Executor;
+import org.apache.ibatis.session.ExecutorType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Recover;
@@ -15,6 +17,8 @@ import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Statement;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
@@ -56,9 +60,19 @@ public class GoodsServiceImpl implements GoodsService {
 	public Integer insertGoods(Goods entity) {
 		
 		int num = goodsMapper.insert(entity);
-		int nn = 1 / 0;
+		// int nn = 1 / 0;
 		
 		return num;
+	}
+	
+	@Override
+	@Transactional
+	public Integer insertGoodsList(List<Goods> entityList) {
+		// ExecutorType.BATCH
+		// Executor batch simple reuse cache
+		// Statement
+		
+		return goodsMapper.insertEntityList(entityList);
 	}
 	
 	// 针对 CamelException 进行重试，重试2次， 每次间隔时间是上次间隔时间的2倍,达到最大重试次数时调用recover方法

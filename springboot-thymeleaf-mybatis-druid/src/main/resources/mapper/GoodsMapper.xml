@@ -30,6 +30,16 @@
     </insert>
 
 
+    <insert id="insertEntityList" keyProperty="id" useGeneratedKeys="true">
+
+         insert into `tb_goods` (`good_name`,`stock`,`update_time`,`create_time`) values
+         <foreach collection="list" item="node" separator=",">
+             ( #{node.goodName}, #{node.stock},#{node.updateTime},#{node.createTime} )
+         </foreach>
+
+
+    </insert>
+
 
 
 </mapper>

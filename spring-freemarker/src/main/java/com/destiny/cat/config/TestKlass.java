@@ -1,8 +1,10 @@
 package com.destiny.cat.config;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class TestKlass {
 	
@@ -10,9 +12,14 @@ public class TestKlass {
 		
 		
 		ArrayList<String> list = new ArrayList<>();
+		HashMap<String,String> map = new HashMap<>();
+		map.put("rr","rr");
+		
 		list.add("er");
 		list.add("es");
 		list.add("ed");
+		
+		System.out.println(1<<16);
 		
 		for(String node : list){
 			System.out.println( node);

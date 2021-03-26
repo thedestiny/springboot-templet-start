@@ -2,6 +2,8 @@ package com.destiny.camel.service;
 
 import com.destiny.camel.entity.Goods;
 
+import java.util.List;
+
 public interface GoodsService {
 
 
@@ -11,6 +13,11 @@ public interface GoodsService {
      * 插入数据
      * */
     Integer insertGoods(Goods entity);
+    
+    /**
+     * 批量插入数据
+     * */
+    Integer insertGoodsList(List<Goods> entityList);
     
     
     /**

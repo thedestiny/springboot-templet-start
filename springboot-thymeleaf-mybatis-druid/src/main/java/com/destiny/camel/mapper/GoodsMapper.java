@@ -4,6 +4,8 @@ package com.destiny.camel.mapper;
 import com.destiny.camel.entity.Goods;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 public interface GoodsMapper {
 
 
@@ -15,4 +17,9 @@ public interface GoodsMapper {
 	 * 插入数据
 	 * */
 	Integer insert(Goods entity);
+	
+	/**
+	 * 批量插入
+	 * */
+	Integer insertEntityList(List<Goods> entityList);
 }
