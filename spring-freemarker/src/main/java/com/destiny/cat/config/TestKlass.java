@@ -10,6 +10,7 @@ public class TestKlass {
 	
 	public static void main(String[] args) {
 		
+		int numLen = 23_334_399;
 		
 		ArrayList<String> list = new ArrayList<>();
 		HashMap<String,String> map = new HashMap<>();

@@ -6,6 +6,7 @@ spring:
 
   #连接池配置
   datasource:
+    params: useUnicode=true&characterEncoding=utf8&useSSL=false&tinyInt1isBit=true&serverTimezone=Asia/Shanghai&allowMultiQueries=true&rewriteBatchedStatements=true
     driver-class-name: com.mysql.cj.jdbc.Driver
     druid:
       validationQuery: SELECT 1
@@ -44,6 +45,7 @@ logging:
   # config: classpath:logback.xml
   level:
      root: info
+
 
 
 

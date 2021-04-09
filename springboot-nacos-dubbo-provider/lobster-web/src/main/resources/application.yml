@@ -126,5 +126,7 @@ dubbo:
   protocol:
     name: dubbo
     port: 20880
+    # 传输的大小
+    # payload:
   scan:
     base-packages: com.destiny.lobster.service.api

@@ -17,7 +17,15 @@ do
    echo "node is ::  $node"
 done
 
+# 获取进程号
+process_list=`netstat -ntlp | awk '{if ($7 !~ /-/) print $7}' | awk -F '/' ' NR>2 {print $1}'`
 
+for pd in $process_list
+do
+  echo "process is $pd"
+done
 
+# 删除前两行
+sed -i '1,2d' filename
 
-
+sed -i '$d' filename

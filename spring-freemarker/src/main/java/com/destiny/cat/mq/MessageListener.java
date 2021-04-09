@@ -16,6 +16,12 @@ public class MessageListener implements MessageListenerConcurrently {
 	
 	@Override
 	public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> list, ConsumeConcurrentlyContext context) {
+		
+		list.forEach(node -> {
+			System.out.println(node);
+		});
+		
+		
 		return null;
 	}
 }

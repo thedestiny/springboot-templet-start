@@ -3,6 +3,7 @@ package com.destiny.rabbit.config;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
@@ -13,6 +14,7 @@ import java.util.Date;
 // https://blog.csdn.net/weixin_37703281/article/details/102751544
 
 @Slf4j
+@Component
 public class RabbitObjFieldHandler implements MetaObjectHandler {
 	
 	public static final String CREATETIME = "createTime";
@@ -20,6 +22,7 @@ public class RabbitObjFieldHandler implements MetaObjectHandler {
 	
 	@Override
 	public void insertFill(MetaObject metaObject) {
+		log.info("RabbitObjFieldHandler start ");
 		handle(CREATETIME, metaObject, new Date());
 		handle(UPDATETIME, metaObject, new Date());
 	}

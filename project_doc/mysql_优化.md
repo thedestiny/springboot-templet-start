@@ -302,12 +302,45 @@ innodb_flush_log_at_trx_commit = 2 就是实时flush ,定时 fsync 交给OS维�
 
 
 
+mysql 子查询使用了临时表，使用完之后再删除，join 表使用了嵌套查询，使用小表驱动大表。
+使用in 来代替关联查询，百万级别的表查询时，join 的性能会下降
+max_allowed_packet 修改传输包大小
+
+反范式的设计规则，使用冗余设计
+
+
+https://blog.csdn.net/qq_39885372/article/details/104177922
+
+extra 信息
+using filesort  文件排序，排序字段未见索引  
+using temporary 使用临时表
+using index     使用索引 
+using where     使用查询条件
+using mrr 
+
+
+分为两种情况,查询的条件和字段是否是联合索引,是
+左模糊
+!= 
+查询列上进行计算
+查询的条件和联合索引的顺序不同,会被优化
 
 
 
+###### mysql 插入数据
+```
+1、insert ignore into
+当插入数据时，如果出现错误或者重复数据，只是将警告形式返回，忽略掉信息
+2、on duplicate key update
+当插入重复数据时执行 update
+INSERT INTO user (name) VALUES ('telami') ON duplicate KEY UPDATE id = id 
+3、insert … select … where not exist
+根据select的条件判断是否插入，可以不光通过primary 和unique来判断，也可通过其它条件。例如：
+INSERT INTO user (name) SELECT 'telami' FROM dual WHERE NOT EXISTS (SELECT id FROM user WHERE id = 1) 
+4、replace into
+如果存在primary or unique相同的记录，则先删除掉。再插入新记录。
+REPLACE INTO user SELECT 1, 'telami' FROM books 
 
 
-
-
-
+```
 

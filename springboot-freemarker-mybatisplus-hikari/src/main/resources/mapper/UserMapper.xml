@@ -23,12 +23,12 @@
         <id column="create_time" property="createTime"/>
         <id column="update_time" property="updateTime"/>
 
-
     </resultMap>
 
 
     <sql id="sql_columns">
-        `id`, `username`, `password`, `salt`, `nickname`, `cellphone`, `id_card`, `birthday`, `age`, `weight`, `create_time`, `update_time`
+        `id`, `username`, `password`, `salt`, `nickname`, `cellphone`, `id_card`,
+        `birthday`, `age`, `weight`, `create_time`, `update_time`
     </sql>
 
 

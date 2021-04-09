@@ -23,3 +23,10 @@
 14、RocketMQ在交易支付场景如何做到消息零丢失？
 
 https://juejin.cn/post/6938924519793000456
+
+
+```bash
+# java_opts 配置
+JAVA_OPTS='-Djava.security.egd=file:/dev/./urandom -server -Xms256m -Xmx496m -Dfile.encoding=UTF-8'
+
+```

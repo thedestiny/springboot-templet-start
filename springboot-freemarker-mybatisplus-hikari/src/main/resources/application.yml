@@ -45,8 +45,7 @@ logging:
   level:
     root: debug
     com.destiny.rabbit: debug
-
-# config: classpath:logback-back.xml
+  # config: classpath:bak/logback-back.xml
 
 
 #公共配置与profiles选择无关
@@ -72,9 +71,20 @@ mybatis-plus:
     default-statement-timeout: 10000
     # interceptors:
     #    - com.destiny.rabbit.config.plugins.RabbitMyBatisPlusInterceptor
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
   type-handlers-package: com.destiny.rabbit.config.typehandler
-
+  executor-type: batch
 
 server:
   port: 8990
-
+  tomcat:
+    # 最大最小的工作线程数量
+    threads:
+      max: 200
+      min-spare: 10
+    accept-count: 100
+    uri-encoding: UTF-8
+    connection-timeout: 300s
+    max-http-form-post-size: 4MB
+    max-connections: 8192
+    basedir: ./test
