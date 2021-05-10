@@ -169,6 +169,12 @@
             <version>${junit.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.destiny</groupId>
+            <artifactId>destiny-spring-boot-starter</artifactId>
+            <version>1.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>

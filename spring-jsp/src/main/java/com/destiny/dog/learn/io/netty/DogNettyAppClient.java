@@ -54,7 +54,10 @@ public class DogNettyAppClient {
 	
 	
 	public static void main(String[] args) throws Exception {
+
+
 		new DogNettyAppClient("127.0.0.1", 18080).run();
+
 	}
 	
 	

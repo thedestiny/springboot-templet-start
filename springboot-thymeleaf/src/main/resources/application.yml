@@ -11,3 +11,19 @@ spring:
     cache: false
 server:
   port: 8970
+
+com:
+  destiny:
+    leopard:
+      enabled: true
+      age: 34
+      birthday: 1990-04-05
+      hobby-list:
+        - "足球"
+        - "台球"
+      tag-map:
+        - key001=ddd
+        - key002=444
+      user-name: 小明
+      weight: 34.8
+

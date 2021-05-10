@@ -68,3 +68,5 @@ util
 ##### 2.12、springboot-freestyle(squirrel)
 
 
+##### 2.13、springboot-destiny-starter(leopard)
+豹子 starter 项目示例 

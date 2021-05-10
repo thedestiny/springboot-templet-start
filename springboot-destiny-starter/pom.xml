@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <!-- <parent>
+        <artifactId>springboot-templet-start</artifactId>
+        <groupId>com.destiny</groupId>
+        <version>1.0</version>
+    </parent>-->
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.destiny</groupId>
+    <artifactId>destiny-spring-boot-starter</artifactId>
+    <version>1.0</version>
+
+
+    <properties>
+        <java.version>1.8</java.version>
+        <springboot.version>2.3.10.RELEASE</springboot.version>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>${springboot.version}</version>
+        </dependency>
+
+        <!-- optional是Maven依赖jar时的一个选项，表示该依赖是可选的，项目之间依赖不传递。
+        不设置optional（默认）或者optional是false，表示传递依赖。
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+            <version>${springboot.version}</version>
+        </dependency>
+
+
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
