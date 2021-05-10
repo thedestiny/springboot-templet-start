@@ -22,8 +22,8 @@ com:
         - "足球"
         - "台球"
       tag-map:
-        - key001=ddd
-        - key002=444
+         key001:ddd
+         key002:444
       user-name: 小明
       weight: 34.8
 
