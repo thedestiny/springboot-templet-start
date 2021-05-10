@@ -17,7 +17,7 @@
         <maven.compiler.target>1.7</maven.compiler.target>
         <spring.version>5.2.8.RELEASE</spring.version>
         <junit.version>4.13.1</junit.version>
-        <mybatis.version>3.4.5</mybatis.version>
+        <mybatis.version>3.5.6</mybatis.version>
         <!-- log4j日志文件管理包版本 -->
         <!-- <slf4j.version>1.7.25</slf4j.version>
          <log4j.version>1.2.17</log4j.version>-->
@@ -149,25 +149,25 @@
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
-            <version>1.6.0</version>
+            <version>1.7.0</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-web</artifactId>
-            <version>1.6.0</version>
+            <version>1.7.0</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-ehcache</artifactId>
-            <version>1.6.0</version>
+            <version>1.7.0</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring</artifactId>
-            <version>1.6.0</version>
+            <version>1.7.0</version>
         </dependency>
 
         <dependency>
@@ -391,7 +391,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>28.1-jre</version>
+            <version>29.0-jre</version>
             <scope>compile</scope>
         </dependency>
 
