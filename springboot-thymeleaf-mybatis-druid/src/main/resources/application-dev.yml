@@ -3,3 +3,18 @@ spring:
     url: jdbc:mysql://localhost:3306/springboot_example?${spring.datasource.params}
     username: root
     password: Myroot123!
+  redis:
+    database: 0
+    password: tianhe
+    port: 6579
+    lettuce:
+      pool:
+        max-wait: -1ms
+        max-active: 8
+        time-between-eviction-runs: 30s
+        max-idle: 8
+        min-idle: 0
+
+    ssl: false
+    timeout: 300000ms
+    client-name: destiny-client
