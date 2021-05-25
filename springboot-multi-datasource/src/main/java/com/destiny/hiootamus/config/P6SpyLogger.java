@@ -1,4 +1,4 @@
-package com.destiny.seal.config;
+package com.destiny.hiootamus.config;
 
 import com.p6spy.engine.spy.appender.MessageFormattingStrategy;
 import lombok.extern.slf4j.Slf4j;

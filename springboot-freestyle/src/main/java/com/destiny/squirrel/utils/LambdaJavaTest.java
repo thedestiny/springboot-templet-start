@@ -1,5 +1,6 @@
 package com.destiny.squirrel.utils;
 
+import com.google.common.collect.Lists;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -50,6 +51,17 @@ public class LambdaJavaTest {
 		chm.put("34","rt");
 		
 	}
+
+	@Test
+	public void test002(){
+
+		List<String> list = Lists.newArrayList("2","5","6");
+		String s = list.stream().filter(node -> node.equals("5")).findAny().orElse(null);
+		System.out.println(s);
+
+
+	}
+
 	
 	
 }

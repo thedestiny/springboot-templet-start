@@ -29,7 +29,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @MapperScan("com.destiny.camel.mapper")
 public class CamelApplication {
 	
-	
+	// https://blog.csdn.net/f641385712/article/details/89673753 事务配置
 	@Bean
 	public RetryListener retryListener() {
 		log.info("retry listener !");
