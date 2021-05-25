@@ -16,3 +16,5 @@ springboot-thymeleaf/src/test/java/com/example/
 
 # 忽略配置文件上传
 application-dev.yml
+
+.DS_Store
