@@ -71,4 +71,4 @@ util
 ##### 2.13、springboot-destiny-starter(leopard)
 豹子 starter 项目示例 
 ##### 2.14、springboot-dynamic-datasource(hiootamus)
-多数据源接入项目示例 
+河马 多数据源接入项目示例 

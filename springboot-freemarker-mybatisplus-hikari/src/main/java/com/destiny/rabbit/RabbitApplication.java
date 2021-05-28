@@ -1,14 +1,10 @@
 package com.destiny.rabbit;
 
-import com.destiny.rabbit.utils.RabbitSpringContextUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.core.env.StandardEnvironment;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Slf4j
@@ -68,7 +64,18 @@ public class RabbitApplication {
 	 * web server
 	 *
 	 * */
-	
+	/**
+	 * AQS
+	 * https://mp.weixin.qq.com/s/Vz3xLwKpodyU5RN9ERGgbA
+	 * Synchronized
+	 * https://mp.weixin.qq.com/s/0_5DLbBhA8MsgVAwXVv_Aw
+	 *
+	 * https://mp.weixin.qq.com/s/BAZ3jBxDR29tycDf9pCkBA
+	 * https://mp.weixin.qq.com/s/2Eirpozx3HO0JHhhqWSTKg
+	 * https://mp.weixin.qq.com/s/N9yqjWJVXX_5-V3-nbglBQ
+	 * https://mp.weixin.qq.com/s/J-rbiYXGJNLPtkP98WyLBw
+	 * https://mp.weixin.qq.com/s/XZPrqzbS-KVKKvYMNMz6sg
+	 * */
 	
 	
 	public static void main(String[] args) {
@@ -77,9 +84,8 @@ public class RabbitApplication {
 		
 		// StandardEnvironment standardEnvironment =
 		
-		ConfigurableApplicationContext run = SpringApplication.run(RabbitApplication.class, args);
-		RabbitSpringContextUtils.setApplicationContext(run);
-		
+		SpringApplication.run(RabbitApplication.class, args);
+
 	}
 	
 }

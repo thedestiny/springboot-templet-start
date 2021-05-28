@@ -6,4 +6,8 @@ import com.destiny.rabbit.entity.User;
 public interface UserService extends IService<User> {
 	
 	User queryUserByNameAndAge(String username, Integer age);
+
+	void updateUserInfo();
+
+	void updateUserInfo2();
 }

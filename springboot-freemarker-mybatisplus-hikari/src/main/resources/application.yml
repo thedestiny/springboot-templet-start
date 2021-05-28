@@ -43,8 +43,11 @@ spring:
 
 logging:
   level:
-    root: debug
+    root: info
+    org.springframework: info
+    sun: info
     com.destiny.rabbit: debug
+    com.destiny.rabbit.mapper: debug
   # config: classpath:bak/logback-back.xml
 
 

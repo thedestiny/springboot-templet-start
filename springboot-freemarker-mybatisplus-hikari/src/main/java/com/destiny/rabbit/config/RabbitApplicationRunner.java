@@ -8,12 +8,12 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class RabbitApplicationRunner implements ApplicationRunner {
-	
-	
-	@Override
-	public void run(ApplicationArguments args) throws Exception {
-	
-	}
-	
-	
+
+
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        log.info(" running {}", args);
+    }
+
+
 }
