@@ -18,3 +18,5 @@ springboot-thymeleaf/src/test/java/com/example/
 application-dev.yml
 
 .DS_Store
+*.log
+temp_logs
