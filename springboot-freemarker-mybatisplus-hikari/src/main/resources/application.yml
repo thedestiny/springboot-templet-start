@@ -43,12 +43,17 @@ spring:
 
 logging:
   level:
-    root: info
-    org.springframework: info
-    sun: info
-    com.destiny.rabbit: debug
-    com.destiny.rabbit.mapper: debug
+    root: debug
+    #org: info
+    #sun: info
+    com.destiny: debug
+    #com: info
+    #mybatis: debug
+    #main.blog.mapper: debug
+    #com.destiny.rabbit.mapper: debug
   # config: classpath:bak/logback-back.xml
+  file:
+    path: temp_logs
 
 
 #公共配置与profiles选择无关

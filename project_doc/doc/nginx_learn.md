@@ -1,3 +1,5 @@
+https://mp.weixin.qq.com/s/aTJkcrvyylZ_ixMPM7-B9Q
+
 查看nginx 版本
 ./nginx  -v 
 启动 nginx 

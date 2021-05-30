@@ -43,8 +43,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 		user.setNickname("fvddd");
 
 		log.info("execute !");
-
-
+		baseMapper.updateById(user);
+        user.setNickname("4444444");
 		// int num = 1/0;
 		// this.test();
 		//updateUserInfo2();
@@ -58,7 +58,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 		}).start();
 
 		try {
-			TimeUnit.SECONDS.sleep(30);
+			TimeUnit.SECONDS.sleep(3);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

@@ -1,3 +1,13 @@
+##### netty 
+并发高 传输快 封装好 
+
+BIO 等待客户端发数据的过程是阻塞的，一个线程只能处理一个请求
+socket 建立好之后将其交给 selector,后者遍历请求所有的socket,一旦
+
+https://www.jianshu.com/p/b9f3f6a16911
+页缓存和socket缓冲区
+
+
 ###### NIO 
 socket 可以支持阻塞和非阻塞
 accept 属于系统调用 x80 软中断 空循环问题，需要减少系统调用
