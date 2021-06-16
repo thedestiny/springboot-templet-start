@@ -45,8 +45,8 @@ public class SquirrelApplication {
 		log.info("calculate sum is = " + sum);
 		
 		/* 条件装配 */
-		String hello = context.getBean("helloWord",String.class);
-		log.info("hello = " + hello);
+		// String hello = context.getBean("helloWord",String.class);
+		// log.info("hello = " + hello);
 		
 	}
 	

@@ -91,7 +91,10 @@ public class CompletableFutureTest {
 		// CompletionStage 接口里面描述 AND 汇聚关系，
 		// 主要是 thenCombine、thenAcceptBoth 和 runAfterBoth 系列的接口
 		
-		
+
+
+
+
 		
 	}
 	
