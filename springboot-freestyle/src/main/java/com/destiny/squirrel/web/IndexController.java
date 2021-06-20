@@ -15,6 +15,11 @@ import java.util.Map;
 @RestController
 public class IndexController {
 
+    /**
+     * 测试注入依赖 animalKlassMap，根据service 名称和实现类进行导入
+     * catService -> CatService
+     * dogService -> DogService
+     * */
     @Autowired
     private Map<String, AnimalKlass> animalKlassMap;
 
