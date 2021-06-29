@@ -98,3 +98,7 @@ jsp -l
 cd /proc/进程号/许多线程号
 
 strace -ff out 
+
+
+网络IO 
+![](./images/123344455555321.png)
