@@ -117,3 +117,35 @@ show index from victory_etf_rate
 
 innodb_flush_log_at_trx_commit 
 sync_binlog
+
+https://www.cnblogs.com/dubhlinn/p/10735015.html
+
+
+set @@auto_increment_offset = 1;     -- 起始值
+set @@auto_increment_increment = 2;  -- 步长
+
+
+```$xslt
+
+# 一致性协议
+https://mp.weixin.qq.com/s/ZyW3GupsCPN4cEGPBMofuw
+# 缓存池
+https://www.jianshu.com/p/c6a154c83560
+
+
+LRU List 管理已经读取的页
+
+数据放置位置在5/8处,比例为37%
+show variables like 'innodb_old_blocks_pct';
+数据放置在冷区时需要经过一段时间才能放进热区，默认为1000ms
+show variables like 'innodb_old_blocks_time';
+
+commit point 
+check point 
+
+
+```
+
+
+
+

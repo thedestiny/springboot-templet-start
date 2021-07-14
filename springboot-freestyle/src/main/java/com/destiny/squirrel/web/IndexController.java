@@ -1,13 +1,11 @@
 package com.destiny.squirrel.web;
 
+import com.destiny.squirrel.config.ResponseResult;
 import com.destiny.squirrel.entity.User;
 import com.destiny.squirrel.service.AnimalKlass;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -37,7 +35,8 @@ public class IndexController {
 
 
     @GetMapping(value = "/")
-    public String home(User user) {
+    @ResponseResult
+    public Object home(User user) {
 
         log.info("user is {}", user);
 
@@ -45,10 +44,6 @@ public class IndexController {
             value.eat();
             System.out.println(key + " and " + value);
         });
-
-
-
-
 
         return "333";
     }

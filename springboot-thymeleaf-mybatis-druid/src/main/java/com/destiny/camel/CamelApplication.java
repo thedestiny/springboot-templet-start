@@ -40,7 +40,11 @@ public class CamelApplication {
 	@Lazy
 	public BeanLifeCycDemo demo() {
 		log.info("create bean ");
+		Object obj = new Object();
+
 		return new BeanLifeCycDemo();
+
+
 	}
 	
 	
