@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    username: root
+    password: Myroot123!
+    jdbc-url: jdbc:mysql://localhost:3306/springboot_example?useUnicode=true&characterEncoding=utf8&useSSL=false&tinyInt1isBit=true&serverTimezone=Asia/Shanghai&allowMultiQueries=true&rewriteBatchedStatements=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    pool-name: second-pool
+    maximum-pool-size: 300
+    minimum-idle: 2
+    connection-timeout: 50000
+    max-lifetime: 3000
+    connection-test-query: select 1
+    idle-timeout: 3000
+    hikari:
+      jdbc-url: ${spring.datasource.jdbc-url}
+      username: root
+      password: Myroot123!
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      pool-name: squirrel-pool
+      maximum-pool-size: 300
+      minimum-idle: 3
+      connection-timeout: 40000
+      connection-test-query: select 1
+      idle-timeout: 400000
+    url: ${spring.datasource.jdbc-url}

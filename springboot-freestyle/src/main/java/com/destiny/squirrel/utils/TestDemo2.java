@@ -1,11 +1,14 @@
 package com.destiny.squirrel.utils;
 
+import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.util.StrUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
+import java.io.File;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -71,21 +74,28 @@ public class TestDemo2 {
 
     public static void main(String[] args) {
 
-        String test = "";
+        String test = FileUtil.readString(new File("/Users/admin/IdeaProjects/learn/github/springboot-templet-start/springboot-freestyle/src/main/resources/test.txt"), "utf8");
 
-       // System.out.println(getTextFromHtml(test));
+        // System.out.println(getTextFromHtml(test));
 
         BigDecimal decimal = new BigDecimal(0);
         BigDecimal decimal1 = new BigDecimal(0.3);
         System.out.println(decimal);
         String test1 = "";
 
-        List<String> lst = null;
-        System.out.println(lst.isEmpty());
+        Document parse = Jsoup.parse(test);
+        Elements elements = parse.getElementsByClass("ie-fix");
+        for(Element node : elements){
+            String text = node.text();
+            // text = text.replace("---------------------------------------------------------------------------------- ","").replace("实用标准 文案大全 ","");
+            text = text.replace("百度文库 - 让每个人平等地提升自我","");
+            if(StrUtil.isBlank(text)){
+                continue;
+            }
+            System.out.println(text);
 
+        }
 
-        Document parse = Jsoup.parse(test1);
-        System.out.println(parse.text());
 
 
     }
