@@ -1,6 +1,7 @@
 package com.destiny.cormorant;
 
 import lombok.extern.slf4j.Slf4j;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
@@ -10,6 +11,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
  * @Date 2021-08-06 5:33 PM
  */
 @Slf4j
+@MapperScan("com.destiny.cormorant.mapper")
 @SpringBootApplication
 public class CormorantApplication {
 

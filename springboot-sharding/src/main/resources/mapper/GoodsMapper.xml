@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.destiny.cormorant.mapper.GoodsMapper">
+
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.destiny.cormorant.model.Goods">
+        <id column="id" property="id" />
+        <result column="goods_name" property="goodsName" />
+        <result column="price" property="price" />
+        <result column="create_time" property="createTime" />
+        <result column="image" property="image" />
+        <result column="supplier" property="supplier" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, goods_name, price, create_time, image, supplier
+    </sql>
+
+
+    <insert id="insertEntityList" parameterType="ArrayList">
+        INSERT INTO t_goods (id,goods_name,price,create_time,image,supplier)
+        VALUES
+        <foreach collection="list" item="e" separator=",">
+            (#{e.id},#{e.goodsName},#{e.price},#{e.createTime},#{e.image},#{e.supplier})
+        </foreach>
+    </insert>
+
+    <insert id="insertEntity" parameterType="com.destiny.cormorant.model.Goods">
+        INSERT INTO t_goods (id,goods_name,price,create_time,image,supplier)
+        VALUES
+        (#{id},#{goodsName},#{price},#{createTime},#{image},#{supplier})
+    </insert>
+
+    <update id="updateEntityById" parameterType="com.destiny.cormorant.model.Goods">
+        UPDATE t_goods
+        <set>
+            <if test="goodsName != null">
+                  goods_name = #{goodsName},
+            </if>
+            <if test="price != null">
+                  price = #{price},
+            </if>
+            <if test="createTime != null">
+                  create_time = #{createTime},
+            </if>
+            <if test="image != null">
+                  image = #{image},
+            </if>
+            <if test="supplier != null">
+                  supplier = #{supplier}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+
+    <update id="updateSelectiveById" parameterType="com.destiny.cormorant.model.Goods">
+        UPDATE t_goods
+        SET
+                goods_name = #{goodsName},
+                price = #{price},
+                create_time = #{createTime},
+                image = #{image},
+                supplier = #{supplier}
+        WHERE id = #{id}
+    </update>
+
+
+
+
+</mapper>

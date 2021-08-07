@@ -1,5 +1,29 @@
 server:
   port: 9893
+
 spring:
   config:
-    name: app
+    name: application
+  profiles:
+    active: dev
+  main:
+    allow-bean-definition-overriding: true
+
+logging:
+  level:
+    root: debug
+    com.destiny: debug
+mybatis-plus:
+  global-config:
+    banner: true
+    db-config:
+      id-type: assign_id
+      update-strategy: not_null
+      insert-strategy: not_null
+      select-strategy: not_null
+
+  mapper-locations: classpath:/mapper/*.xml
+  configuration:
+    cache-enabled: false
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.destiny.cormorant.moddel
