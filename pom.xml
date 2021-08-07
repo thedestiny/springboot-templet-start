@@ -25,6 +25,7 @@
         <module>springboot-nacos-dubbo-provider</module>
         <module>springboot-freestyle</module>
         <module>springboot-destiny-starter</module>
+        <module>springboot-sharding</module>
     </modules>
 
 

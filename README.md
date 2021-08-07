@@ -72,3 +72,6 @@ util
 豹子 starter 项目示例 
 ##### 2.14、springboot-dynamic-datasource(hiootamus)
 河马 多数据源接入项目示例 
+
+##### 2.15 springboot-sharding(cormorant)
+鸬鹚 分库分表项目示例
