@@ -15,8 +15,7 @@ public class AppClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
 	protected void channelRead0(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) throws Exception {
 		System.out.println("接收到的消息：" + byteBuf.toString(CharsetUtil.UTF_8));
 	}
-	
-	
+
 	@Override
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
 		// 处理I/O事件的异常
