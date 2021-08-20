@@ -26,9 +26,6 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
 	
 	@Bean
 	public StringHttpMessageConverter stringHttpMessageConverter() {
-		
-		CompletionService service = new ExecutorCompletionService(new ThreadPoolExecutor(2,3,2, TimeUnit.SECONDS,new LinkedBlockingDeque<>(34)));
-		
 		return new StringHttpMessageConverter(Charset.forName("UTF-8"));
 	}
 	

@@ -1,9 +1,14 @@
 package com.destiny.squirrel.utils;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.io.IoUtil;
+import cn.hutool.core.io.resource.ResourceUtil;
 import cn.hutool.core.util.StrUtil;
 
+import java.io.BufferedReader;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @Description 解析数据
@@ -16,10 +21,32 @@ public class AnalyzeDataUtils {
 
     public static void main(String[] args) {
 
-        String text = "";
+        // 读取文件数据
+        BufferedReader readerData = ResourceUtil.getUtf8Reader("test_data.txt");
+        // 读取文件
+        String read = IoUtil.read(readerData);
+        // System.out.println(read);
+        analyzeTNode(read);
 
-        analyzeTNode(text);
+    }
 
+    /**
+     * 匹配包路径
+     */
+    private static String matchPack(String text) {
+
+        // String str = "中华人民共和国，简称（中国）。";
+        // Matcher mat = Pattern.compile("(?<=\\（)(\\S+)(?=\\）)").matcher(text); //此处是中文输入的（）
+        Pattern compile = Pattern.compile("(?<=\\()(\\S+)(?=\\))");
+        Matcher mat = compile.matcher(text); //此处是中文输入的（）
+        List<String> result = new ArrayList<>();
+        while (mat.find()) {
+            result.add(mat.group());
+        }
+        if (CollUtil.isNotEmpty(result)) {
+            return result.get(result.size() - 1);
+        }
+        return "";
     }
 
 
@@ -29,11 +56,7 @@ public class AnalyzeDataUtils {
         int arrLen = 0;
 
         for (String node : text.split("\n")) {
-            if (node.contains("Anonymous in ")) {
-                continue;
-            }
-            String name = node.replaceAll("\\(.*\\)", "");
-            String tmp = name.replace(BL, "*");
+            String tmp = node.replace(BL, "*");
             lst.add(tmp);
             int count = StrUtil.count(tmp, "*");
             if (count >= arrLen) {
@@ -68,10 +91,13 @@ public class AnalyzeDataUtils {
      */
     private static TNode formatNode(int count, String node) {
         TNode tmpNode = new TNode();
-        tmpNode.setOrigin(node);
+        String name = node.replaceAll("\\(.*\\)", "");
+        tmpNode.setName(name);
         tmpNode.setLevel(count);
-        tmpNode.setMethod(node.split("\\.")[1]);
-        tmpNode.setKlass(node.split("\\.")[0]);
+        tmpNode.setMethod(name.split("\\.")[1]);
+        tmpNode.setKlass(name.split("\\.")[0]);
+        tmpNode.setPack(matchPack(node));
+        tmpNode.setOrigin(node);
         return tmpNode;
     }
 
@@ -87,7 +113,7 @@ public class AnalyzeDataUtils {
         while (CollUtil.isNotEmpty(stack)) {
 
             TNode cur = stack.pop();
-            levelList[cur.getLevel()] = cur.getOrigin();
+            levelList[cur.getLevel()] = cur.getName();
 
             if (CollUtil.isEmpty(cur.getChildList())) {
                 printInvoke(levelList, cur.getLevel());
@@ -111,10 +137,16 @@ public class AnalyzeDataUtils {
         for (int num = 0; num <= level; num++) {
             buffer.append(levelList[num]).append("\t");
         }
-        System.out.println(buffer.toString());
+
+        String output = buffer.toString();
+        String sub = StrUtil.sub(output, 0, output.length() - 1);
+
+        if(!sub.contains("Test.")){
+            System.out.println(sub);
+        }
+        // System.out.println(buffer.toString());
         // System.out.println(levelList[level]);
     }
-
 
 
 }

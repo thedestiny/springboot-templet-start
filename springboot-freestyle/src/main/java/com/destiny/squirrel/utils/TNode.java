@@ -15,6 +15,7 @@ import java.util.List;
 public class TNode {
 
     private int level;
+    private String name;
     private String klass;
     private String method;
     private String pack;
