@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
  * @Author liangwenchao
  * @Date 2021-07-07 10:51 AM
  */
-public class TestDemo2 {
+public class HtmlReadUtils {
 
     private static final String REG_EX_SCRIPT = "<script[^>]*?>[\\s\\S]*?<\\/script>";        /* 定义script的正则表达式 */
     private static final String REG_EX_STYLE = "<style[^>]*?>[\\s\\S]*?<\\/style>";          /* 定义style的正则表达式 */

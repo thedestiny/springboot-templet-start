@@ -28,7 +28,7 @@ public class IndexController {
         log.info("user is {}", user);
 
         animalKlassMap.forEach((key, value) -> {
-            System.out.println(key + " and " + value);
+            log.info(key + " and " + value);
         });
         return "333";
     }
@@ -42,10 +42,23 @@ public class IndexController {
 
         animalKlassMap.forEach((key, value) -> {
             value.eat();
-            System.out.println(key + " and " + value);
+            log.info(key + " and " + value);
         });
 
         return "333";
     }
+
+    /**
+     * http://xxxx:8000/test/xxx.yyy.zzz
+     *
+     * */
+    @GetMapping(value = "/api/test/{xxx:.+}")
+    public String temp(@PathVariable(value = "xxx") String xxx){
+        log.info(xxx);
+        return "ss";
+    }
+
+
+
 
 }
