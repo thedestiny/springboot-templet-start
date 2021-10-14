@@ -1,5 +1,11 @@
 package com.destiny.squirrel.utils;
 
+import com.google.common.collect.Lists;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @Description
  * @Author liangwenchao
@@ -37,34 +43,109 @@ public class Demo {
         listNode11.next = listNode12;
         listNode12.next = listNode13;
 
-        System.out.println(listNode1.toString());
+        // System.out.println(listNode1.toString());
 
-        print(listNode1, 2, 3);
+        print1(listNode1, 2, 3);
+
+        // ListNode listNode = reverseBetween(listNode1, 1, 13);
+        // System.out.println(listNode);
+
+        ListNode dd = createList();
+
+        System.out.println(dd);
+
+
+        String[] words = {"a", "ap", "app"};
+
+    }
+
+    public static void test001(String[] words) {
+
+        Arrays.sort(words,(a,b) -> a.length() - b.length());
+
 
     }
 
 
+    private static ListNode createList() {
+
+        List<String> objects = Lists.newArrayList("4", "5", "6");
+
+        ListNode list = new ListNode();
+        ListNode pre = list;
+
+        for (String node : objects) {
+            pre.next = new ListNode(Integer.valueOf(node));
+            pre = pre.next;
+        }
+        return list.next;
+
+    }
+
+    public static ListNode reverseBetween(ListNode head, int left, int right) {
+        // 设置 dummyNode 是这一类问题的一般做法
+        ListNode dummyNode = new ListNode(-1);
+        dummyNode.next = head;
+
+        ListNode pre = dummyNode;
+        for (int i = 0; i < left - 1; i++) {
+            pre = pre.next;
+        }
+
+        ListNode cur = pre.next;
+        ListNode next;
+        for (int i = 0; i < right - left; i++) {
+            next = cur.next;
+            cur.next = next.next;
+            next.next = pre.next;
+            pre.next = next;
+        }
+        return dummyNode.next;
+    }
+
+    public static void print1(ListNode head, int n, int m) {
+
+        ListNode dumpy = head;
+        ListNode cur = head;
+        ListNode tail = dumpy;
+
+        int cntN = n;
+        int cntM = m;
+
+
+        while (cur != null) {
+
+            while (cur != null && cntN-- > 0) {
+                tail = cur;
+                cur = cur.next;
+            }
+
+            while (cur != null && cntM-- > 0) {
+                cur = cur.next;
+            }
+
+            tail.next = cur;
+            cntN = n;
+            cntM = m;
+
+        }
+
+        System.out.println(dumpy);
+
+    }
+
     public static void print(ListNode head, int n, int m) {
 
-
-        int len = 0;
-        ListNode tmp = head;
-        while (tmp != null) {
-            len += 1;
-            tmp = tmp.next;
-        }
 
         int cnt = 1;
         int sum = n + m;
 
         ListNode result = new ListNode();
         ListNode cur = null;
-        ListNode tail = null;
 
         while (head != null) {
             if (cnt % sum <= n && cnt % sum > 0) {
                 System.out.println(head.val);
-
                 if (cnt == 1) {
                     result.val = head.val;
                     cur = new ListNode();
@@ -80,10 +161,31 @@ public class Demo {
 
         }
 
-        cur = null;
+
+        int size = size(result);
+        int cntt = 1;
+        ListNode tmp = result;
+        while (tmp != null) {
+            if (cntt == size) {
+                result.next = null;
+                break;
+            }
+            tmp = tmp.next;
+            result = result.next;
+            cntt++;
+        }
 
         System.out.println(result);
 
+    }
+
+    public static int size(ListNode tmp) {
+        int len = 0;
+        while (tmp != null) {
+            len += 1;
+            tmp = tmp.next;
+        }
+        return len;
     }
 
 
@@ -113,7 +215,7 @@ public class Demo {
             String result = "";
             ListNode head = this;
             while (head != null) {
-                result += head.val + "-";
+                result += head.val + "- ";
                 head = head.next;
             }
             return result;
