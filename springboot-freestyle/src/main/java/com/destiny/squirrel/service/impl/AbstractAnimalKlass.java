@@ -13,4 +13,6 @@ public abstract class AbstractAnimalKlass implements AnimalKlass {
     public void eat() {
 
     }
+
+
 }

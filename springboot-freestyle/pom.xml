@@ -127,6 +127,18 @@
             <version>5.7.8</version>
         </dependency>
 
+        <!-- 解析java 代码结构 AST 抽象语法树 -->
+        <dependency>
+            <groupId>com.thoughtworks.qdox</groupId>
+            <artifactId>qdox</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.javaparser</groupId>
+            <artifactId>javaparser-core</artifactId>
+            <version>3.23.0</version>
+        </dependency>
 
     </dependencies>
 

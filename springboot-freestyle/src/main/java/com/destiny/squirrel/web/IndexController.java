@@ -22,6 +22,9 @@ public class IndexController {
     private Map<String, AnimalKlass> animalKlassMap;
 
 
+    /**
+     * 主页面
+     * */
     @PostMapping(value = "/index")
     public String index(@RequestBody User user) {
 
@@ -50,7 +53,6 @@ public class IndexController {
 
     /**
      * http://xxxx:8000/test/xxx.yyy.zzz
-     *
      * */
     @GetMapping(value = "/api/test/{xxx:.+}")
     public String temp(@PathVariable(value = "xxx") String xxx){

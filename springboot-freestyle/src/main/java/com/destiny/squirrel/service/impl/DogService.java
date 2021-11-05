@@ -1,6 +1,5 @@
 package com.destiny.squirrel.service.impl;
 
-import com.destiny.squirrel.service.AnimalKlass;
 import org.springframework.stereotype.Service;
 
 /**
