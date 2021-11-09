@@ -6,3 +6,18 @@ spring:
 
 server:
   port: 8978
+
+
+app:
+  username: 李晓明
+  age: 20
+  birthday: 1991-12-25 00:00:00
+  weight: 23.0
+  hobbyList:
+    - dsd
+    - 445
+    - ddd
+  tags:
+    tas: dd
+    tre: rt
+    ope: 34

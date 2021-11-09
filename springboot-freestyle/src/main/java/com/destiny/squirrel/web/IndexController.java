@@ -1,5 +1,6 @@
 package com.destiny.squirrel.web;
 
+import com.destiny.squirrel.config.AppConfig;
 import com.destiny.squirrel.config.ResponseResult;
 import com.destiny.squirrel.entity.User;
 import com.destiny.squirrel.service.AnimalKlass;
@@ -21,6 +22,8 @@ public class IndexController {
     @Autowired
     private Map<String, AnimalKlass> animalKlassMap;
 
+    @Autowired
+    private AppConfig appConfig;
 
     /**
      * 主页面
@@ -29,6 +32,7 @@ public class IndexController {
     public String index(@RequestBody User user) {
 
         log.info("user is {}", user);
+        log.info("config {}", appConfig.toString());
 
         animalKlassMap.forEach((key, value) -> {
             log.info(key + " and " + value);
@@ -40,9 +44,7 @@ public class IndexController {
     @GetMapping(value = "/")
     @ResponseResult
     public Object home(User user) {
-
         log.info("user is {}", user);
-
         animalKlassMap.forEach((key, value) -> {
             value.eat();
             log.info(key + " and " + value);

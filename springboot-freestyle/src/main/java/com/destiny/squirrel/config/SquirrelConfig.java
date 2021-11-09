@@ -9,5 +9,7 @@ public class SquirrelConfig {
 	public String squirrel(){
 		return "squirrel bean";
 	}
-	
+
+
+
 }
