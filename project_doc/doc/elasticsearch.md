@@ -1,4 +1,5 @@
 
+# es 新手指南  https://www.knowledgedict.com/tutorial/elasticsearch-query.html
 
 ``
 批量插入数据
@@ -103,7 +104,6 @@ POST /_alias
    ]
 }
 
-
 POST /_reindex 
 {
   "source":{
@@ -116,5 +116,20 @@ POST /_reindex
 
 }
 
+
+```
+
+# 索引设置 
+PUT /my_temp_index
+{
+    "settings": {
+        "number_of_shards" : 1, # 每个索引的主分片数，默认为5
+        "number_of_replicas" : 0 # 每个主分片的副本数，默认为 1 
+    }
+}
+# 查询索引的结构
+GET /my_temp_index/_mapping?pretty
+
+```
 
 

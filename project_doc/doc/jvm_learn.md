@@ -35,11 +35,13 @@ Parallel 吞吐量优先
 CMS回收器:低延迟 标记清除算法
 cms+serialO
 
--XX：+UseConcMarkSweepGc 使用 cms
--XX：CMS1nitiatingOccupanyFraction 设置堆内存使用率的阈值
--XX：ParallelCMSThreads 设置 cms 垃圾回收器的线程数
--XX：CMSFullGCsBeforeCompaction设置在执行多少次Full GC后对内存空间进行压缩整理
--XX： +UseCMSCompactAtFullCollection用于指定在执行完Full GC后对内存空间进行压缩整理，
+-XX+UseConcMarkSweepGc 使用 cms
+-XX:CMS1nitiatingOccupanyFraction=75 设置堆内存使用率的阈值超过75%时才开始进行回收，默认75%
+-XX:+UseCMSInitiatingOccupancyOnly 只使用设定的值进行回收，如果不指定jvm第一次指定值，后续则自动调整
+-XX:ParallelCMSThreads=3 设置 cms 垃圾回收器的线程数
+-XX:+CMSScavengeBeforeRemark 在CMS GC回收前启动一次ygc，目的在于减少old gen对ygc gen的引用，降低remark时的开销-----一般CMS的GC耗时 80%都在remark阶段
+-XX:CMSFullGCsBeforeCompaction设置在执行多少次Full GC后对内存空间进行压缩整理
+-XX:+UseCMSCompactAtFullCollection用于指定在执行完Full GC后对内存空间进行压缩整理，
 以此避免内存碎片的产生。不过由于内存压缩整理过程无法并发执行，所带来的问题就是停顿时间变得更长了。
 
 G1 垃圾回收器
@@ -52,6 +54,11 @@ G1 垃圾回收器
 -XX：Ini tiatingHeapOccupancyPercent 设置触发并发GC周期的Java堆占用率阈值。超过此值，就触发GC。默认值是45。
 
 
+8-13:-XX:+UseConcMarkSweepGC
+8-13:-XX:CMSInitiatingOccupancyFraction=75
+8-13:
+
+浮动垃圾
 
 
 
