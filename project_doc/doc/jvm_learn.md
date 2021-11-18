@@ -54,9 +54,21 @@ G1 垃圾回收器
 -XX：Ini tiatingHeapOccupancyPercent 设置触发并发GC周期的Java堆占用率阈值。超过此值，就触发GC。默认值是45。
 
 
-8-13:-XX:+UseConcMarkSweepGC
-8-13:-XX:CMSInitiatingOccupancyFraction=75
-8-13:
+dump 内存信息当发生 oom情况 设置信息导出的路径
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:HeapDumpPath=data
+错误日志地址
+-XX:ErrorFile=logs/hs_err_pid%p.log
+
+
+8:-XX:+PrintGCDetails
+8:-XX:+PrintGCDateStamps
+8:-XX:+PrintTenuringDistribution
+8:-XX:+PrintGCApplicationStoppedTime
+8:-Xloggc:logs/gc.log
+8:-XX:+UseGCLogFileRotation
+8:-XX:NumberOfGCLogFiles=32
+8:-XX:GCLogFileSize=64m
 
 浮动垃圾
 
