@@ -8,6 +8,7 @@
         <version>2.3.3.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.destiny</groupId>
     <artifactId>springboot-thymeleaf-mybatis-druid</artifactId>
     <version>1.0</version>
