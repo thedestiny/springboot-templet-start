@@ -25,3 +25,41 @@ Direct exchange、Fanout exchange、Topic exchange、Headers exchange
 与Exchange绑定时指定的键值对进行匹配；如果完全匹配则消息会路由到该队列，否则不会路由到该队列。headers属性是一个键值对，可以是Hashtable，键值对的
 值可以是任何类型。而fanout，direct，topic 的路由键都需要要字符串形式的。
 ```
+
+生产者 消费者 消息 
+交换器 队列 绑定 路由键 
+路由键 绑定键 最长255个字符
+porducer routekey exchange queue consumer 
+消费者收到的每一条消息都需要确认（手动确认或者自动确认）
+
+虚拟主机 类似于 tomcat host 
+vhost 
+```
+# 号匹配多个.  mark.#   mark.value.1
+* 只匹配一个   *.info   jvm.info 
+
+```
+
+解耦 异步处理 削峰填谷
+伸缩 扩展 
+
+一个连接 tcp/ip  多个信道 
+一个队列 多个消费者 
+
+队列超过最大长度 且 拒绝消费 且 requeue = false 
+
+
+    消息被拒绝(basic.reject / basic.nack)，并且requeue = false
+    消息TTL过期
+    队列达到最大长度
+
+队列参数 args 
+x-message-ttl  消息的ttl
+x-max-length  队列的最大长度
+x-max-length-bytes 消息的最大字节数
+x-overflow 溢出时处理方式 可能的值是 drop-head (默认)或 reject-publish 删除头部或者拒绝发布
+```
+Map<String, Object> args = new HashMap<String, Object>();
+args.put("x-max-length", 10);
+channel.queueDeclare("myqueue", false, false, false, args);
+```
