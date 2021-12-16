@@ -1,2 +1,28 @@
 server:
   port: 9097
+
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin
+    virtual-host: /
+    listener:
+      simple:
+        concurrency: 5
+        # simple ack 方式 auto manual none
+        acknowledgeMode: manual
+        prefetch: 10
+        retry:
+          enabled: true   # 允许消息消费失败的重试
+          max-attempts: 3   # 消息最大重试传递次数
+          initial-interval: 2000ms  # 初始间隔，第一次和第二次尝试重试间隔
+          max-interval: 10000ms  # 消息重试最大传递间隔
+        default-requeue-rejected: true  # true 超过次数后重回队列 false 进入死信队列
+
+    # 发布者确认和 发布者到达确认
+    publisher-confirm-type: correlated
+    publisher-returns: true
+    template:
+      mandatory: true
