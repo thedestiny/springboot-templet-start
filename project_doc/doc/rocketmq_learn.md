@@ -77,3 +77,39 @@ start mqbroker.cmd -n 127.0.0.1:9876 autoCreateTopicEnable=true
 
 ```
 
+
+
+```
+消息类型  普通消息 顺序消息 事务消息
+发送方式  同步发送 异步发送 单向发送
+
+DefaultMQProducer 和 TransactionMQProducer
+于生产普通消息、顺序消息(分区有序和全局有序)、单向消息、批量消息、延迟消息，后者主要用于生产事务消息
+
+1 客户端重试机制 retryTimesWhenSendFailed
+2 broker-发送延迟机制 发送延迟容错开关 sendLatencyFaultEnable 默认为关闭的状态
+3 broker 保证  同步复制和异步复制
+
+DefaultMQProducer 是生产者的默认实现模式
+
+延迟消息实现类 ScheduleMessageService
+# 设置消息延迟级别
+setDelatTimeLevel()
+
+sendOneway 发送单向消息
+
+批量发送 
+消息最好小于1MB 
+同一批批量消息 tpoic waitStoreMsg 属性必须一致
+批量消息不支持延迟消息
+
+
+集群消费
+广播消费
+可靠消费
+重试-死信机制 重试16次  RETRY消费者组  DLQ消费者组
+
+
+
+```
+

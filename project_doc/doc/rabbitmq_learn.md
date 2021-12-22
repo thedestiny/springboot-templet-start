@@ -63,3 +63,12 @@ Map<String, Object> args = new HashMap<String, Object>();
 args.put("x-max-length", 10);
 channel.queueDeclare("myqueue", false, false, false, args);
 ```
+
+
+##### 确保消息不丢失
+```
+1 确保消息到MQ,采用发送方的确认模式
+2 确保消息路由到正确的队列 路由失败通知
+3 确保消息在队里能够给存储
+4 确保消息能从队列中正确的投递到消费者 手动确认-> 交给消费者进行确认
+```
