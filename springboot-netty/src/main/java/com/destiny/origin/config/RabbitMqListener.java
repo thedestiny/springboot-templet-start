@@ -1,4 +1,4 @@
-package com.destiny.hedghog.config;
+package com.destiny.origin.config;
 
 import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;

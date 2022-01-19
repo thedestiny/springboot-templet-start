@@ -1,4 +1,4 @@
-package com.destiny.hedghog.config;
+package com.destiny.origin.config;
 
 import org.springframework.amqp.core.ExchangeBuilder;
 import org.springframework.amqp.core.*;

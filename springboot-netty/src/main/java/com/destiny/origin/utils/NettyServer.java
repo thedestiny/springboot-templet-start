@@ -1,4 +1,4 @@
-package com.destiny.hedghog.utils;
+package com.destiny.origin.utils;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;

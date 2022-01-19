@@ -1,0 +1,11 @@
+server:
+  port: 9890
+  tomcat:
+    uri-encoding: UTF-8
+
+app:
+  info:
+    name : 小明12
+    age: 12
+    birthday: 2022-01-22
+    weight: 23.4

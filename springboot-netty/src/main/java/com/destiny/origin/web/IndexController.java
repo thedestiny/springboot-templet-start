@@ -1,4 +1,4 @@
-package com.destiny.hedghog.web;
+package com.destiny.origin.web;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;

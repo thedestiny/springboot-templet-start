@@ -1,4 +1,4 @@
-package com.destiny.hedghog;
+package com.destiny.origin;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,15 +12,14 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
  */
 
 @Slf4j
-@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
-public class HedghogApplication {
+public class OriginApplication {
 
 
     public static void main(String[] args) {
 
         log.info("start app HedghogApplication --> ");
         SpringApplicationBuilder builder = new SpringApplicationBuilder();
-        builder.sources(HedghogApplication.class)
+        builder.sources(OriginApplication.class)
                 .run(args);
 
     }

@@ -27,6 +27,7 @@
         <module>springboot-destiny-starter</module>
         <module>springboot-sharding</module>
         <module>springboot-netty</module>
+        <module>springboot-config</module>
     </modules>
 
 
