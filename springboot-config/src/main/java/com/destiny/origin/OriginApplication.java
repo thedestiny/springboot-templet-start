@@ -12,12 +12,13 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
  */
 
 @Slf4j
+@SpringBootApplication
 public class OriginApplication {
 
 
     public static void main(String[] args) {
 
-        log.info("start app HedghogApplication --> ");
+        log.info("start app origin app  --> ");
         SpringApplicationBuilder builder = new SpringApplicationBuilder();
         builder.sources(OriginApplication.class)
                 .run(args);
