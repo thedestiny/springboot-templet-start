@@ -9,3 +9,12 @@ app:
     age: 12
     birthday: 2022-01-22
     weight: 23.4
+    height: 32
+    user_pets:
+      - dog
+      - cat
+    user_ext:
+      learn: maths
+      hobby: runing
+    money: 23
+

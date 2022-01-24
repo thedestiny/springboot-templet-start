@@ -4,6 +4,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AdviceMode;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 
 /**
  * @Description springboot application
@@ -13,6 +18,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 
 @Slf4j
 @SpringBootApplication
+@EnableTransactionManagement(proxyTargetClass = false, mode = AdviceMode.PROXY)
 public class OriginApplication {
 
 
@@ -20,10 +26,15 @@ public class OriginApplication {
 
         log.info("start app origin app  --> ");
         SpringApplicationBuilder builder = new SpringApplicationBuilder();
-        builder.sources(OriginApplication.class)
+        ConfigurableApplicationContext run = builder.sources(OriginApplication.class)
                 .run(args);
+
+        ThreadPoolTaskExecutor bean = run.getBean(ThreadPoolTaskExecutor.class);
+        System.out.println(bean);
 
     }
 
 
 }
+
+
