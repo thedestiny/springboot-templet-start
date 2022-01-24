@@ -75,3 +75,6 @@ util
 
 ##### 2.15 springboot-sharding(cormorant)
 鸬鹚 分库分表项目示例
+
+redis 主从复制
+https://www.cnblogs.com/kismetv/p/9236731.html
