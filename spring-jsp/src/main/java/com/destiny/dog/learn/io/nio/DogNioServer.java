@@ -25,6 +25,7 @@ import java.util.Set;
 public class DogNioServer {
 	
 	private int port = 8080;
+
 	private Charset charset = Charset.forName("UTF-8");
 	//用来记录在线人数，以及昵称
 	private static HashSet<String> users = new HashSet<String>();
