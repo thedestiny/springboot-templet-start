@@ -57,14 +57,14 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.4.3</version>
+            <version>5.7.21</version>
         </dependency>
 
         <!-- netty-all -->
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
-            <version>4.1.53.Final</version>
+            <version>4.1.54.Final</version>
         </dependency>
 
         <dependency>
