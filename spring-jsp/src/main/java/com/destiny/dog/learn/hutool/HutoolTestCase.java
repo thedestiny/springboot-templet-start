@@ -2,7 +2,6 @@ package com.destiny.dog.learn.hutool;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.convert.Convert;
-import cn.hutool.core.date.BetweenFormater;
 import cn.hutool.core.date.DateField;
 import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.date.DateTime;
@@ -224,7 +223,7 @@ public class HutoolTestCase {
 		long betweenDay = DateUtil.between(date11, date12, DateUnit.DAY);
 		
 		//Level.MINUTE表示精确到分
-		String formatBetween = DateUtil.formatBetween(date11, date12, BetweenFormater.Level.MINUTE);
+		// String formatBetween = DateUtil.formatBetween(date11, date12, BetweenFormater.Level.MINUTE);
 		
 		TimeInterval timer = DateUtil.timer();
 		
