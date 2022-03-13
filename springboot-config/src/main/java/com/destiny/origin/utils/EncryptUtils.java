@@ -7,7 +7,6 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.asymmetric.KeyType;
 import cn.hutool.crypto.asymmetric.RSA;
 import lombok.extern.slf4j.Slf4j;
-import sun.jvm.hotspot.utilities.Assert;
 
 import java.nio.charset.Charset;
 import java.security.PrivateKey;

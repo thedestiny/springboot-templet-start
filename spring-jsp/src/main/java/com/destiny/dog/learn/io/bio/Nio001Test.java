@@ -24,16 +24,13 @@ public class Nio001Test {
         // 绑定端口
         server.bind(new InetSocketAddress(port));
         server.configureBlocking(false);
-        // 开门迎客，排队叫号大厅开始工作
+        // Selector.open
         Selector selector = Selector.open();
-        //告诉服务叫号大厅的工作人员，你可以接待了（事件）
+        // 注册事件
         server.register(selector, SelectionKey.OP_ACCEPT);
-
         System.out.println("服务已启动，监听端口是：" + port);
-
         // 轮询
         while (true) {
-
             // 轮询,查看当前的链接数量
             int wait = selector.select();
             if (wait == 0) continue; //如果没有链接接入，进入下一次循环
@@ -43,8 +40,7 @@ public class Nio001Test {
             Iterator<SelectionKey> iterator = keys.iterator();
             while (iterator.hasNext()) {
                 SelectionKey key = (SelectionKey) iterator.next();
-                //处理一个，号码就要被消除，打发他走人（别在服务大厅占着茅坑不拉屎了）
-                //过号不候
+                // 删除已经处理的内容，防止重复处理
                 iterator.remove();
                 //处理逻辑
                 process(selector, key);
@@ -54,7 +50,7 @@ public class Nio001Test {
 
 
     private static void process(Selector selector, SelectionKey key) throws IOException {
-        //判断客户端确定已经进入服务大厅并且已经可以实现交互了
+        //判断客户端确定已经可以准备接收信息
         if (key.isAcceptable()) {
             // 事件传过来的key
             ServerSocketChannel server = (ServerSocketChannel) key.channel();
@@ -78,7 +74,6 @@ public class Nio001Test {
             byte[] data = buff.array();
             String message = new String(data);
             System.out.println("receive" + message);
-
             // 返回信息
             ByteBuffer outBuf = ByteBuffer.wrap(("client.".concat(message)).getBytes());
             client.write(outBuf);

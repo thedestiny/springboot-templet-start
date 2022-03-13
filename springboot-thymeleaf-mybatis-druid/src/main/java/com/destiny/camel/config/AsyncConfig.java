@@ -31,22 +31,21 @@ public class AsyncConfig extends AsyncConfigurerSupport {
 	public Executor getAsyncExecutor() {
 		
 		ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
-		// 存活时间
+		// 线程池维护线程所允许的空闲时间
 		taskExecutor.setKeepAliveSeconds(60);
 		// 核心线程数 最大线程数 核心线程超时关闭 队列最大容量
 		taskExecutor.setCorePoolSize(2);
 		taskExecutor.setMaxPoolSize(10);
-		taskExecutor.setAllowCoreThreadTimeOut(true);
 		taskExecutor.setQueueCapacity(20);
+		// 允许核心线程超时
+		taskExecutor.setAllowCoreThreadTimeOut(true);
 		// 线程前缀
-		taskExecutor.setThreadNamePrefix("camel-async-");
+		taskExecutor.setThreadNamePrefix("app-async-");
 		// 拒绝策略，直接丢弃
 		taskExecutor.setRejectedExecutionHandler(new ThreadPoolExecutor.DiscardPolicy());
 		// 等待完成任务后销毁
 		taskExecutor.setWaitForTasksToCompleteOnShutdown(true);
 		taskExecutor.setAwaitTerminationSeconds(60);
-		
-		Executors.newFixedThreadPool(3);
 		
 		return taskExecutor;
 		

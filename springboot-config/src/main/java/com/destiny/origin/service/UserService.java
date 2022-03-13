@@ -1,5 +1,7 @@
 package com.destiny.origin.service;
 
+import java.util.concurrent.Future;
+
 /**
  * @Description
  * @Author liangwenchao
@@ -15,4 +17,6 @@ public interface UserService {
 
 
     public Integer modifyUserInfo();
+
+    Future<String> asyncTask();
 }

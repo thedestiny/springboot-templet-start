@@ -80,9 +80,6 @@ redis 主从复制
 https://www.cnblogs.com/kismetv/p/9236731.html
 
 ```
-springboot项目开发小技巧
-https://www.cnblogs.com/gaomanito/p/11120164.html
 
-https://www.jianshu.com/p/7122e6bef7f7
 
 ```

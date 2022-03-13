@@ -3,6 +3,29 @@ server:
   tomcat:
     uri-encoding: UTF-8
 
+
+mybatis-plus:
+  global-config:
+    banner: true
+    db-config:
+      capital-mode: true
+      id-type: auto
+      update-strategy: NOT_NULL
+      insert-strategy: NOT_NULL
+
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.destiny.origin.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: true
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_victory?useUnicode=true&characterEncoding=utf8&useSSL=false&tinyInt1isBit=true
+    username: root
+    password: 123456
+
 app:
   info:
     name : 小明12
