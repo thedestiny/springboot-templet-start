@@ -12,6 +12,7 @@ public class DogClassPathXmlApplicationContext extends ClassPathXmlApplicationCo
 	
 	
 	@Override
+
 	protected void initPropertySources() {
 		logger.info("扩展 initPropertySources");
 		getEnvironment().setRequiredProperties("username");

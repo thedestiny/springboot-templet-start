@@ -2,7 +2,6 @@ package com.destiny.origin.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
@@ -17,7 +16,7 @@ import java.util.Iterator;
  */
 @Slf4j
 @Component
-public class AppBeanDefinitionConfig implements BeanFactoryPostProcessor , BeanDefinitionRegistryPostProcessor {
+public class AppBeanDefinitionConfig implements BeanDefinitionRegistryPostProcessor {
 
     @Override
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
