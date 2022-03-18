@@ -7,7 +7,9 @@ import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 /**
  * @Description
@@ -32,5 +34,18 @@ public class AppBeanDefinitionConfig implements BeanDefinitionRegistryPostProces
         while (iterator.hasNext()){
             System.out.println("factory :: " + iterator.next());
         }
+    }
+
+    public static void main(String[] args) {
+
+        Map<String,String> he = new HashMap<>();
+        he.put("name","123");
+        Map<String,String> he1 = new HashMap<>();
+        he1.putAll(he);
+        he1.put("name","456");
+        System.out.println(he);
+        System.out.println(he1);
+
+
     }
 }

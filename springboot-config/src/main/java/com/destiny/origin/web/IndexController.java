@@ -33,13 +33,23 @@ public class IndexController {
     @Autowired
     private UserService userService;
 
-    @GetMapping(value = "config")
+    // http://localhost:9890/api/config
+    @GetMapping(value = {"config", "config1"})
     @ResponseBody
     public String config() {
         log.info(" config {}", JSONObject.toJSONString(config));
         return JSONObject.toJSONString(config);
     }
 
+    // http://localhost:9890/api/config?constant=123
+    // http://localhost:9890/api/config?constant=xxx
+    // @GetMapping(value = "config", params = "constant=123")
+    @GetMapping(value = "config", params = "constant")
+    @ResponseBody
+    public String config1() {
+        log.info(" config {}", JSONObject.toJSONString(config));
+        return JSONObject.toJSONString(config);
+    }
     /**
      * 查询传入请求头参数
      *
