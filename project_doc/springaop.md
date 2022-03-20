@@ -60,7 +60,7 @@ aop
  
  AbstractAutoProxyCreator.setBeanFactory()
  AbstractAutoProxyCreator.有后置处理器的逻辑；
- AbstractAdvisorAutoProxyCreator.setBeanFactory()-》initBeanFactory()
+ AbstractAdvisorAutoProxyCreator.setBeanFactory() -> initBeanFactory()
  AnnotationAwareAspectJAutoProxyCreator.initBeanFactory()
  
  流程：
@@ -91,7 +91,8 @@ aop
  			1）、遍历获取容器中所有的Bean，依次创建对象getBean(beanName);
  				getBean->doGetBean()->getSingleton()->
  			2）、创建bean
- 				【AnnotationAwareAspectJAutoProxyCreator在所有bean创建之前会有一个拦截，InstantiationAwareBeanPostProcessor，会调用postProcessBeforeInstantiation()】
+ 				【AnnotationAwareAspectJAutoProxyCreator在所有bean创建之前会有一个拦截，InstantiationAwareBeanPostProcessor，
+ 				会调用postProcessBeforeInstantiation()】
  				1）、先从缓存中获取当前bean，如果能获取到，说明bean是之前被创建过的，直接使用，否则再创建；
  					只要创建好的Bean都会被缓存起来
  				2）、createBean（）;创建bean；
@@ -189,6 +190,7 @@ aop
 ```
 
 ##### bean的生命周期
+
 ```
 
  bean的生命周期：

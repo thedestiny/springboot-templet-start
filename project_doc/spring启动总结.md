@@ -28,7 +28,7 @@ Spring容器的refresh()【创建刷新】;
 	BeanFactoryPostProcessor：BeanFactory的后置处理器。在BeanFactory标准初始化之后执行的；
 	两个接口：BeanFactoryPostProcessor、BeanDefinitionRegistryPostProcessor
 	1）、执行BeanFactoryPostProcessor的方法；
-		先执行BeanDefinitionRegistryPostProcessor
+		先执行 BeanDefinitionRegistryPostProcessor
 		1）、获取所有的BeanDefinitionRegistryPostProcessor；
 		2）、看先执行实现了PriorityOrdered优先级接口的BeanDefinitionRegistryPostProcessor、
 			postProcessor.postProcessBeanDefinitionRegistry(registry)
@@ -74,7 +74,7 @@ Spring容器的refresh()【创建刷新】;
 8、initApplicationEventMulticaster();初始化事件派发器；
 		1）、获取BeanFactory
 		2）、从BeanFactory中获取applicationEventMulticaster的ApplicationEventMulticaster；
-		3）、如果上一步没有配置；创建一个SimpleApplicationEventMulticaster
+		3）、如果上一步没有配置；创建一个 SimpleApplicationEventMulticaster
 		4）、将创建的ApplicationEventMulticaster添加到BeanFactory中，以后其他组件直接自动注入
 9、onRefresh();留给子容器（子类）
 		1、子类重写这个方法，在容器刷新的时候可以自定义逻辑；
@@ -286,6 +286,10 @@ getCandidateConfigurations() 加载 spring.factories 文件
 线程数量设置的太小，会导致程序不能充分地利用系统资源。线程数量设置太大，又可能带来过度的资源竞争和上下文切换带来的额外消耗。
 
 time slice 时间片
+
+https://www.jianshu.com/p/f95d4d0a8a9c
+
+https://www.jianshu.com/p/8588da02da31
 
 			
 
