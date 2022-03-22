@@ -39,10 +39,10 @@ aop
  三步：
  	1）、将业务逻辑组件和切面类都加入到容器中；告诉Spring哪个是切面类（@Aspect）
  	2）、在切面类上的每一个通知方法上标注通知注解，告诉Spring何时何地运行（切入点表达式）
-  3）、开启基于注解的aop模式；@EnableAspectJAutoProxy
+    3）、开启基于注解的aop模式；@EnableAspectJAutoProxy
   
  AOP原理：【看给容器中注册了什么组件，这个组件什么时候工作，这个组件的功能是什么？】
- 		@EnableAspectJAutoProxy；
+ 		@EnableAspectJAutoProxy
  1、@EnableAspectJAutoProxy是什么？
  		@Import(AspectJAutoProxyRegistrar.class)：给容器中导入AspectJAutoProxyRegistrar
  			利用AspectJAutoProxyRegistrar自定义给容器中注册bean；BeanDefinetion
