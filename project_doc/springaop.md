@@ -467,4 +467,18 @@ https://blog.csdn.net/mamamalululu00000000/article/details/107233549
 https://blog.csdn.net/qq_38526573/article/details/88091702
 
 
+AbstractAutowireCapableBeanFactory.resolveBeforeInstantiation
+doCreateBean
+
+填充属性
+populateBean(beanName, mbd, instanceWrapper);
+  postProcessPropertyValues
+初始化 bean 
+exposedObject = initializeBean(beanName, exposedObject, mbd);
+
+postProcessProperties 方法运行时机，主要是在填充属性的时候，在 populateBean 里面进行调用，主要是在填充属性之前进行相关操作
+
+
+
+
 ```

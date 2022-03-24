@@ -7,6 +7,7 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
+import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -31,6 +32,15 @@ public class AppInstantiationAwareConfig implements InstantiationAwareBeanPostPr
     @Override
     public Object postProcessBeforeInstantiation(Class<?> klass, String beanName) throws BeansException {
         log.info("实例化之前 bean {} and klass {}", beanName, klass.getSimpleName());
+        if (klass == Student.class) {
+            log.info("klass {} beanName: {} 执行 post-process-before-instantiation 方法", klass.getSimpleName(), beanName);
+            Enhancer enhancer = new Enhancer();
+            enhancer.setSuperclass(klass);
+            enhancer.setCallback(new AppBeanMethodInterceptor());
+            Student bean = (Student) enhancer.create();
+            return bean;
+        }
+
         return null;
     }
 
