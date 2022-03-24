@@ -1,22 +1,11 @@
 package com.destiny.origin;
 
-import com.destiny.origin.event.NoticeListener;
 import lombok.extern.slf4j.Slf4j;
-import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
-import org.springframework.beans.factory.support.DefaultSingletonBeanRegistry;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.*;
-import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
@@ -40,8 +29,6 @@ public class OriginApplication {
         SpringApplicationBuilder builder = new SpringApplicationBuilder();
         // ConfigurableApplicationContext run =
         builder.sources(OriginApplication.class).run(args);
-
-        ResourcePatternResolver resolver = new ResourcePatternResolver();
 
         BeanDefinition definition = new AbstractBeanDefinition() {
             @Override
@@ -67,16 +54,16 @@ public class OriginApplication {
 
 
 //        DispatcherServlet servlet = new DispatcherServlet();
-      ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+//      ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 
 
 
-        AnnotationConfigApplicationContext context1 = new AnnotationConfigApplicationContext();
+//        AnnotationConfigApplicationContext context1 = new AnnotationConfigApplicationContext();
 
-        ClassPathBeanDefinitionScanner scanner = new ClassPathBeanDefinitionScanner("");
+//        ClassPathBeanDefinitionScanner scanner = new ClassPathBeanDefinitionScanner("");
 
 
-        ConfigurationClassPostProcessor processor = new ConfigurationClassPostProcessor();
+//        ConfigurationClassPostProcessor processor = new ConfigurationClassPostProcessor();
 //
 //        ApplicationContext context1 = new AnnotationConfigApplicationContext(OriginApplication.class);
 //        NoticeListener bean = context1.getBean(NoticeListener.class);
