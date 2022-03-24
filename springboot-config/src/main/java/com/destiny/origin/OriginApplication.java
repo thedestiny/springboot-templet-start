@@ -2,8 +2,6 @@ package com.destiny.origin;
 
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -30,22 +28,22 @@ public class OriginApplication {
         // ConfigurableApplicationContext run =
         builder.sources(OriginApplication.class).run(args);
 
-        BeanDefinition definition = new AbstractBeanDefinition() {
-            @Override
-            public AbstractBeanDefinition cloneBeanDefinition() {
-                return null;
-            }
-
-            @Override
-            public void setParentName(String s) {
-
-            }
-
-            @Override
-            public String getParentName() {
-                return null;
-            }
-        };
+//        BeanDefinition definition = new AbstractBeanDefinition() {
+//            @Override
+//            public AbstractBeanDefinition cloneBeanDefinition() {
+//                return null;
+//            }
+//
+//            @Override
+//            public void setParentName(String s) {
+//
+//            }
+//
+//            @Override
+//            public String getParentName() {
+//                return null;
+//            }
+//        };
 
 //        SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
 //        AbstractApplicationContext ct = new AnnotationConfigApplicationContext();

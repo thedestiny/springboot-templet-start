@@ -25,8 +25,8 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/db_victory?useUnicode=true&characterEncoding=utf8&useSSL=false&tinyInt1isBit=true
     username: root
-    # password: 123456
-    password: Myroot123!
+    password: 123456
+    # password: Myroot123!
     hikari:
       idle-timeout: 300
       connection-test-query: select 1

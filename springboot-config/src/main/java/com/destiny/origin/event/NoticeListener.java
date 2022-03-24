@@ -10,6 +10,8 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Component
 public class NoticeListener implements ApplicationListener<AppOriginEvent> {
+
+
     @Override
     public void onApplicationEvent(AppOriginEvent event) {
         log.info(" pub task event !");

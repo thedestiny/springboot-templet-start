@@ -22,7 +22,6 @@ import java.util.Map;
 @Component
 public class AppInstantiationAwareConfig implements InstantiationAwareBeanPostProcessor {
 
-
     @Override
     public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
         log.info("实例化之后 bean {}", beanName);
@@ -30,14 +29,14 @@ public class AppInstantiationAwareConfig implements InstantiationAwareBeanPostPr
     }
 
     @Override
-    public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
-        log.info("实例化之前 bean {}", beanName);
+    public Object postProcessBeforeInstantiation(Class<?> klass, String beanName) throws BeansException {
+        log.info("实例化之前 bean {} and klass {}", beanName, klass.getSimpleName());
         return null;
     }
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        log.info("初始化之后 bean {}", beanName);
+        log.info("初始化之后 bean {} and beanName {} ", bean, beanName);
         return null;
     }
 
