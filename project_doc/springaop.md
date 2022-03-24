@@ -463,4 +463,8 @@ BeanFactory是个Factory，也就是IOC容器或对象工厂，FactoryBean是个
 初始化 Initialization
 销毁 Destruction
 
+https://blog.csdn.net/mamamalululu00000000/article/details/107233549
+https://blog.csdn.net/qq_38526573/article/details/88091702
+
+
 ```

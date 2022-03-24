@@ -1,12 +1,13 @@
 package com.destiny.origin.config;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.PlatformTransactionManager;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 /**
@@ -19,9 +20,9 @@ import javax.sql.DataSource;
 @Component
 public class AppTransConfig {
 
-    @Autowired
+    @Resource
+    @Qualifier(value = "hikariDataSource")
     private DataSource dataSource;
-
 
     // 声明一个事务管理器
     @Bean("platformTransactionManager")
