@@ -13,6 +13,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 
 /**
+ * @ConditionalOnProperty
  * @Description
  * @Author liangwenchao
  * @Date 2022-01-21 2:20 PM
