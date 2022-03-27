@@ -22,13 +22,11 @@ import java.util.Map;
 @Slf4j
 @Component
 public class AppInstantiationAwareConfig implements InstantiationAwareBeanPostProcessor {
-
     @Override
     public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
         log.info("实例化之后 bean {}", beanName);
         return false;
     }
-
     @Override
     public Object postProcessBeforeInstantiation(Class<?> klass, String beanName) throws BeansException {
         log.info("实例化之前 bean {} and klass {}", beanName, klass.getSimpleName());
@@ -37,26 +35,21 @@ public class AppInstantiationAwareConfig implements InstantiationAwareBeanPostPr
             Enhancer enhancer = new Enhancer();
             enhancer.setSuperclass(klass);
             enhancer.setCallback(new AppBeanMethodInterceptor());
-            Student bean = (Student) enhancer.create();
-            return bean;
+            return (Student) enhancer.create();
         }
-
         return null;
     }
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        log.info("初始化之后 bean {} and beanName {} ", bean, beanName);
+        log.info("初始化之后 bean {} and beanName {} ", beanName, bean);
         return null;
     }
-
-
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         log.info("初始化之前 bean {}", beanName);
         return null;
     }
-
     @Override
     public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName) throws BeansException {
         log.info("进行数据性设置 bean {}", beanName);
