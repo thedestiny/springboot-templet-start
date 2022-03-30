@@ -19,7 +19,7 @@
         <spring.version>5.2.8.RELEASE</spring.version>
         <junit.version>4.13.1</junit.version>
         <mybatis.version>3.5.6</mybatis.version>
-        <logback.version>1.2.3</logback.version>
+        <logback.version>1.2.9</logback.version>
 
     </properties>
 
