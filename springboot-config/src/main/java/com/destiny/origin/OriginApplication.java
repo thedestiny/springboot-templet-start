@@ -2,8 +2,10 @@ package com.destiny.origin;
 
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.aop.framework.AopProxyFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
@@ -17,7 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @MapperScan(value = "com.destiny.origin.mapper")
 // 开启注解事务管理，等同于xml配置文件中的 <tx:annotation-driven />
 @EnableTransactionManagement// (proxyTargetClass = false, mode = AdviceMode.ASPECTJ)
-// @EnableAspectJAutoProxy// (exposeProxy = false)
+@EnableAspectJAutoProxy// (exposeProxy = false)
 public class OriginApplication {
 
 
@@ -27,6 +29,7 @@ public class OriginApplication {
         SpringApplicationBuilder builder = new SpringApplicationBuilder();
         // ConfigurableApplicationContext run =
         builder.sources(OriginApplication.class).run(args);
+
 
 //        BeanDefinition definition = new AbstractBeanDefinition() {
 //            @Override
@@ -46,7 +49,7 @@ public class OriginApplication {
 //        };
 
 //        SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
-//        AbstractApplicationContext ct = new AnnotationConfigApplicationContext();
+//         AbstractApplicationContext ct = new AnnotationConfigApplicationContext();
 //
 //        DefaultSingletonBeanRegistry registry = new DefaultSingletonBeanRegistry();
 

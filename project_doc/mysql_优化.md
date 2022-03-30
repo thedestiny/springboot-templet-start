@@ -344,3 +344,39 @@ REPLACE INTO user SELECT 1, 'telami' FROM books
 
 ```
 
+###### mysql 服务监控
+
+cpu 使用率 
+内存使用率
+磁盘使用率
+iops 使用率 Input/Output Per Second
+连接数
+
+
+```
+show  variables like  '%optimizer_switch%'
+index_merge=on,
+index_merge_union=on,
+index_merge_sort_union=on,
+index_merge_intersection=on,
+engine_condition_pushdown=on,
+index_condition_pushdown=on,
+mrr=on,
+mrr_cost_based=on,
+block_nested_loop=on,
+batched_key_access=off,
+materialization=on,
+semijoin=on,
+loosescan=on,
+firstmatch=on,
+duplicateweedout=on,
+subquery_materialization_cost_based=on,
+use_index_extensions=on,
+condition_fanout_filter=on,
+derived_merge=on
+
+```
+
+
+
+

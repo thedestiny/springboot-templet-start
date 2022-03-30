@@ -1,6 +1,7 @@
 package com.destiny.origin.web;
 
 import com.alibaba.fastjson.JSONObject;
+import com.destiny.origin.anno.LogRecord;
 import com.destiny.origin.config.AppConfig;
 import com.destiny.origin.event.AppOriginEvent;
 import com.destiny.origin.service.UserService;
@@ -36,6 +37,7 @@ public class IndexController {
     // http://localhost:9890/api/config
     @GetMapping(value = {"config", "config1"})
     @ResponseBody
+    @LogRecord
     public String config() {
         log.info(" config {}", JSONObject.toJSONString(config));
         return JSONObject.toJSONString(config);

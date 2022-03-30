@@ -146,6 +146,8 @@ check point
 
 ```
 
+查询是否为共享表空间
+show variables like 'innodb_file_per_table'; 
 
 
 

@@ -91,14 +91,14 @@ aop
  			1）、遍历获取容器中所有的Bean，依次创建对象getBean(beanName);
  				getBean->doGetBean()->getSingleton()->
  			2）、创建bean
- 				【AnnotationAwareAspectJAutoProxyCreator在所有bean创建之前会有一个拦截，InstantiationAwareBeanPostProcessor，
+ 				【AnnotationAwareAspectJAutoProxyCreator 在所有bean创建之前会有一个拦截，InstantiationAwareBeanPostProcessor，
  				会调用postProcessBeforeInstantiation()】
  				1）、先从缓存中获取当前bean，如果能获取到，说明bean是之前被创建过的，直接使用，否则再创建；
  					只要创建好的Bean都会被缓存起来
  				2）、createBean（）;创建bean；
  					AnnotationAwareAspectJAutoProxyCreator 会在任何bean创建之前先尝试返回bean的实例
  					【BeanPostProcessor是在Bean对象创建完成初始化前后调用的】
- 					【InstantiationAwareBeanPostProcessor是在创建Bean实例之前先尝试用后置处理器返回对象的】
+ 					【 InstantiationAwareBeanPostProcessor 是在创建Bean实例之前先尝试用后置处理器返回对象的】
  					1）、resolveBeforeInstantiation(beanName, mbdToUse);解析BeforeInstantiation
  						希望后置处理器在此能返回一个代理对象；如果能返回代理对象就使用，如果不能就继续
  						1）、后置处理器先尝试返回对象；
@@ -172,7 +172,7 @@ aop
  		2）、 @EnableAspectJAutoProxy 会给容器中注册一个组件 AnnotationAwareAspectJAutoProxyCreator
  		3）、AnnotationAwareAspectJAutoProxyCreator是一个后置处理器；
  		4）、容器的创建流程：
- 			1）、registerBeanPostProcessors（）注册后置处理器；创建AnnotationAwareAspectJAutoProxyCreator对象
+ 			1）、registerBeanPostProcessors（）注册后置处理器；创建 AnnotationAwareAspectJAutoProxyCreator 对象
  			2）、finishBeanFactoryInitialization（）初始化剩下的单实例bean
  				1）、创建业务逻辑组件和切面组件
  				2）、AnnotationAwareAspectJAutoProxyCreator拦截组件的创建过程
@@ -480,5 +480,15 @@ postProcessProperties 方法运行时机，主要是在填充属性的时候，�
 
 
 
+
+```
+
+
+```
+Spring提供了两种方式来生成代理对象: JDKProxy和Cglib，具体使用哪种方式生成由AopProxyFactory根据AdvisedSupport对象的配置来决定。
+默认的策略是如果目标类是接口，则使用JDK动态代理技术，否则使用Cglib来生成代理。下面我们来研究一下Spring如何使用JDK来生成代理对象，
+具体的生成代码放在JdkDynamicAopProxy这个类中，直接上相关代码：
+
+Spring 采用两种方式来生成代理对象，需要根据 AopProxyFactory 
 
 ```
