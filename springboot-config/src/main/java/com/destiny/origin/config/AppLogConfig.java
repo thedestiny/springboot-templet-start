@@ -35,8 +35,8 @@ public class AppLogConfig {
     }
 
 
-    @Around("pointCut1()")
-    public Object around(ProceedingJoinPoint point) throws Throwable {
+    @Around(value = "pointCut()&&@annotation(logRecord)", argNames = "point,logRecord")
+    public Object around(ProceedingJoinPoint point, LogRecord logRecord) throws Throwable {
 
         //获取方法参数值数组
         Object[] params = point.getArgs();
@@ -48,7 +48,6 @@ public class AppLogConfig {
         log.trace("jobName :: task {} cost {} ms execute params {}", jobName, timer.interval(), params);
         return result;
     }
-
 
 
 }

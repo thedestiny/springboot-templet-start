@@ -175,7 +175,7 @@ aop
  			1）、registerBeanPostProcessors（）注册后置处理器；创建 AnnotationAwareAspectJAutoProxyCreator 对象
  			2）、finishBeanFactoryInitialization（）初始化剩下的单实例bean
  				1）、创建业务逻辑组件和切面组件
- 				2）、AnnotationAwareAspectJAutoProxyCreator拦截组件的创建过程
+ 				2）、AnnotationAwareAspectJAutoProxyCreator 拦截组件的创建过程
  				3）、组件创建完之后，判断组件是否需要增强
  					是：切面的通知方法，包装成增强器（Advisor）;给业务逻辑组件创建一个代理对象（cglib）；
  		5）、执行目标方法：
