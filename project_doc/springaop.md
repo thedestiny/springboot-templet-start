@@ -491,4 +491,51 @@ Spring提供了两种方式来生成代理对象: JDKProxy和Cglib，具体使�
 
 Spring 采用两种方式来生成代理对象，需要根据 AopProxyFactory 
 
+
+BeanPostProcessor 应用场景 PropertyPlaceHolderConfigure
+
+# 注册 bean 
+invokeBeanFactoryPostProcessors
+    @EnableAspectJAutoProxy
+       AspectJAutoProxyRegistrar.registerBeanDefinitions
+           AopConfigUtils.registerAspectJAnnotationAutoProxyCreatorIfNecessary
+		       registerOrEscalateApcAsRequired(AnnotationAwareAspectJAutoProxyCreator.class, registry, source);
+                    AopConfigUtils.registerOrEscalateApcAsRequired
+
+
+# 调用
+finishBeanFactoryInitialization
+     AbstractAutoProxyCreator.postProcessAfterInitialization
+         AbstractAutoProxyCreator.wrapIfNecessary
+             AbstractAutoProxyCreator.getAdvicesAndAdvisorsForBean
+                  AbstractAdvisorAutoProxyCreator.getAdvicesAndAdvisorsForBean
+                        AbstractAdvisorAutoProxyCreator.findEligibleAdvisors
+                  	           AbstractAdvisorAutoProxyCreator.findCandidateAdvisors();
+                  	               AnnotationAwareAspectJAutoProxyCreator.findCandidateAdvisors
+                  	               BeanFactoryAspectJAdvisorsBuilder.buildAspectJAdvisors  
+                  	                    ReflectiveAspectJAdvisorFactory.getAdvisors
+                  	                         ReflectiveAspectJAdvisorFactory.getPointcut 获取切点的注解信息
+                  	                         new InstantiationModelAwarePointcutAdvisorImpl 
+                  	                                instantiateAdvice
+                  	                                     ReflectiveAspectJAdvisorFactory.getAdvice 获取 advice 
+                  	                                         switch
+                  	                                             AspectJAroundAdvice
+                  	                                                AbstractAspectJAdvice.invokeAdviceMethod
+                  	                                             AspectJMethodBeforeAdvice
+                  	                                             AspectJAfterAdvice
+                  	                                             AspectJAfterReturningAdvice
+                  	                                             AspectJAfterThrowingAdvice
+                  		       AbstractAdvisorAutoProxyCreator.findAdvisorsThatCanApply(candidateAdvisors, beanClass, beanName);
+             AbstractAutoProxyCreator.createProxy
+                   AbstractAutoProxyCreator.buildAdvisors
+                   proxyFactory.getProxy(classLoader)
+                        DefaultAopProxyFactory.createAopProxy
+                               JdkDynamicAopProxy.getProxy
+                               ObjenesisCglibAopProxy.getProxy
+                               
+                                 
+                        
+https://blog.csdn.net/qq_36882793/article/details/119823785                   
+                      
+
 ```
