@@ -26,16 +26,14 @@ public class AppLogConfig {
      */
     @Pointcut("execution(* com.destiny.origin.web..*(..))")
     public void pointCut() {
-        log.info(" init pointCut");
     }
 
     @Pointcut("@annotation(com.destiny.origin.anno.LogRecord)")
     private void pointCut1() {
-        log.info("切点");
     }
 
 
-    @Around(value = "pointCut()&&@annotation(logRecord)", argNames = "point,logRecord")
+    @Around(value = "pointCut()&&@annotation(logRecord) || within(com.destiny.origin.anno.LogRecord)", argNames = "point,logRecord")
     public Object around(ProceedingJoinPoint point, LogRecord logRecord) throws Throwable {
 
         //获取方法参数值数组
