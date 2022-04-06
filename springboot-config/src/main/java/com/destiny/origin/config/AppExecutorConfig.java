@@ -3,6 +3,7 @@ package com.destiny.origin.config;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
+import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,6 +31,7 @@ public class AppExecutorConfig implements AsyncConfigurer, SchedulingConfigurer 
     // 获取异步线程池执行器
     @Override
     public Executor getAsyncExecutor() {
+
 
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         // 存活时间
