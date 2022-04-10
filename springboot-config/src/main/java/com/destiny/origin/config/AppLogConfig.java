@@ -33,19 +33,19 @@ public class AppLogConfig {
     }
 
 
-    @Around(value = "pointCut()&&@annotation(logRecord) || within(com.destiny.origin.anno.LogRecord)", argNames = "point,logRecord")
-    public Object around(ProceedingJoinPoint point, LogRecord logRecord) throws Throwable {
-
-        //获取方法参数值数组
-        Object[] params = point.getArgs();
-        String jobName = point.getTarget().getClass().getName();
-        //获取方法参数类型数组
-
-        TimeInterval timer = DateUtil.timer();
-        Object result = point.proceed(params);
-        log.trace("jobName :: task {} cost {} ms execute params {}", jobName, timer.interval(), params);
-        return result;
-    }
+//    @Around(value = "pointCut()&&@annotation(logRecord) || within(com.destiny.origin.anno.LogRecord)", argNames = "point,logRecord")
+//    public Object around(ProceedingJoinPoint point, LogRecord logRecord) throws Throwable {
+//
+//        //获取方法参数值数组
+//        Object[] params = point.getArgs();
+//        String jobName = point.getTarget().getClass().getName();
+//        //获取方法参数类型数组
+//
+//        TimeInterval timer = DateUtil.timer();
+//        Object result = point.proceed(params);
+//        log.trace("jobName :: task {} cost {} ms execute params {}", jobName, timer.interval(), params);
+//        return result;
+//    }
 
 
 }
