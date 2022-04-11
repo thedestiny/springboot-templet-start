@@ -557,6 +557,18 @@ CallableStatement
 
 ```
 
+https://blog.csdn.net/wangdamingll/article/details/107348038
 
+
+想必你已经知道了MySQL的Buffer Pool机制以及MySQL组织数据的最小单位是数据页。
+并且你也知道了 数据页在Buffer Pool中是以LRU链表的数据结构组织在一起的。
+
+MySQL也是存在预读机制的！当Buffer Pool中存储着一个区中13个连续的数据页时，你再去这个区里面读取，
+MySQL就会将这个区里面所有的数据页都加载进Buffer Pool中的LRU链表中。(然后可能你根本不会使用这些被预读的数据页)
+
+当你顺序的访问了一个区中大于innndb_read_ahead_threshold=56个数据页时，MySQL会自动帮你将下一个相邻区中的数据页读入LRU链表中。
+(这个机制默认是被关闭的)
+
+mysql通过free list，lru list，flush list来区分free数据块、冷数据块。 
 
 
