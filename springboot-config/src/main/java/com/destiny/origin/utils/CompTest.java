@@ -1,6 +1,7 @@
 package com.destiny.origin.utils;
 
 import cn.hutool.core.util.RandomUtil;
+import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.*;
@@ -24,6 +25,19 @@ public class CompTest {
 //        });
 //        log.info("thenApply result is {}", thenApply.get());
 //        log.info("thenApplyAsync result is {}", thenApplyAsync.get());
+
+//        CompletableFuture<Void> thenAccept = future.thenAccept((params) -> {
+//            log.info("thenAccept supplyAsync {}", params);
+//        });
+//        CompletableFuture<Void> thenRun = future.thenRun(() -> {
+//            log.info("thenRun supplyAsync ");
+//        });
+//
+//        // 抛出异常信息
+//        CompletableFuture<String> exceptionally = future.exceptionally((ex) -> {
+//            log.info("error information " + ex.getLocalizedMessage());
+//            return ex.getMessage();
+//        });
     }
 
 
@@ -33,20 +47,26 @@ public class CompTest {
             log.info("supplyAsync");
             return "supplyAsync";
         });
-        CompletableFuture<Void> thenAccept = future.thenAccept((params) -> {
-            log.info("thenAccept supplyAsync {}", params);
-        });
-        CompletableFuture<Void> thenRun = future.thenRun(() -> {
-            log.info("thenRun supplyAsync ");
-        });
 
-        future.exceptionally((ex) -> {
+        // 抛出异常信息
+        CompletableFuture<String> exceptionally = future.exceptionally((ex) -> {
             log.info("error information " + ex.getLocalizedMessage());
-            return CompletableFuture.completedFuture(ex.getMessage());
+            return ex.getMessage();
+        });
+        // 返回结果
+        CompletableFuture<String> whenComplete = future.whenComplete((res, ex) -> {
+            if (StrUtil.isNotBlank(res)) {
+                log.info("task execute result {}", res);
+            }
+            if (res != null) {
+                log.info("task error info {}", ex.getMessage());
+            }
         });
 
-        log.info("thenApply result is {}", thenAccept.get());
-        log.info("thenApplyAsync result is {}", thenRun.get());
+        // future.handleAsync()
+
+        log.info("whenComplete result is {}", whenComplete.get());
+        log.info("exceptionally result is {}", exceptionally.get());
 
 
 
