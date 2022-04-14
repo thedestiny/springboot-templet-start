@@ -150,4 +150,7 @@ check point
 show variables like 'innodb_file_per_table'; 
 
 
+https://www.cnblogs.com/leizia/p/16063406.html
+
+
 

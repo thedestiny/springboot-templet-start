@@ -30,3 +30,6 @@ https://juejin.cn/post/6938924519793000456
 JAVA_OPTS='-Djava.security.egd=file:/dev/./urandom -server -Xms256m -Xmx496m -Dfile.encoding=UTF-8'
 
 ```
+
+多线程相关知识
+https://mp.weixin.qq.com/s/M4TB8NfbiPJ2wodhi_1akw
