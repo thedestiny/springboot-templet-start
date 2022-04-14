@@ -33,6 +33,36 @@ public class CompletableFutureTest {
      * 异步任务结束时，会自动回调某个对象的方法；
      * 异步任务出错时，会自动回调某个对象的方法；
      * 主线程设置好回调后，不再关心异步任务的执行。
+     *
+     * 异步任务 supplyAsync / runAsync 是否带返回值的异步任务 相当于 submit Callable 和 Runnable
+     * 可以指定执行异步任务的Executor实现，如果不指定，默认使用ForkJoinPool.commonPool()，如果机器是单核的，则默认使用ThreadPerTaskExecutor，该类是一个内部类，每次执行execute都会创建一个新线程
+     * thenApply / thenApplyAsync 异步回调执行
+     * 前者是是一个返回结果的线程来执行，可以理解为同步，后者就是异步来执行
+     * thenAccept / thenRun 接收上一个任务返回值作为入参，无返回值 后者 不接受参数，无返回值
+     *
+     * exceptionally 异常处理
+     *
+     * whenComplete 某个任务执行完成后执行的回调方法，会将执行结果或者执行期间抛出的异常传递给回调方法
+     *
+     * handle
+     *
+     * 组合处理
+     * thenCombine / thenAcceptBoth / runAfterBoth
+     * thenCombine 接收两个入参并返回
+     * thenAcceptBoth 接收两个参数 无返回值
+     * runAfterBoth 不接受参数 无返回
+     *
+     * applyToEither / acceptEither / runAfterEither  将两个 future 结果进行组合，只要其中一个完成就执行任务
+     * applyToEither 会将已经执行完成的任务执行结果作为参数又返回值
+     * acceptEither 接收结果但是没有返回值
+     * runAfterEither 没有入参也没有返回值
+     * 两个任务中只要有一个执行异常，则将该异常信息作为指定任务的执行结果
+     *
+     * thenCompose
+     *
+     * anyOf allOf
+     *
+     *
      */
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
