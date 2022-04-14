@@ -3,10 +3,14 @@ package com.destiny.origin;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.aop.framework.AopProxyFactory;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import java.util.concurrent.Future;
 
 
 /**
@@ -78,6 +82,18 @@ public class OriginApplication {
 //        ThreadPoolTaskExecutor bean = run.getBean(ThreadPoolTaskExecutor.class);
 //        System.out.println(bean);
 
+    }
+
+    @Bean
+    public ApplicationRunner applicationRunner() {
+        return args -> {
+            long startTime = System.currentTimeMillis();
+            System.out.println(Thread.currentThread().getName() + "：开始调用异步业务");//有返回值，但主线程不需要用到返回值
+//            Future<String> future = testService.asyncTask("huanzi-qch");
+
+            long endTime = System.currentTimeMillis();
+            System.out.println(Thread.currentThread().getName() + "：调用异步业务结束，耗时：" + (endTime - startTime));
+        };
     }
 
 
