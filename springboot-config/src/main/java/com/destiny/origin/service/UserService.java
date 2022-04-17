@@ -1,5 +1,7 @@
 package com.destiny.origin.service;
 
+import com.destiny.origin.entity.User;
+
 import java.util.concurrent.Future;
 
 /**
@@ -10,10 +12,10 @@ import java.util.concurrent.Future;
 public interface UserService {
 
 
-    public Integer saveUserInfo();
+    public Integer saveUserInfo(User entity);
 
 
-    public Integer updateUserInfo();
+    public Integer updateUserInfo(User entity);
 
 
     public Integer modifyUserInfo();

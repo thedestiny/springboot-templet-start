@@ -1,8 +1,11 @@
 package com.destiny.origin.service.impl;
 
+import com.destiny.origin.entity.User;
+import com.destiny.origin.mapper.UserMapper;
 import com.destiny.origin.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.framework.AopContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -22,6 +25,9 @@ import java.util.concurrent.Future;
 @Service
 public class UserServiceImpl implements UserService {
 
+    @Autowired
+    private UserMapper userMapper;
+
     // 配置事务管理器 传播属性 事务超时时间 隔离级别 异常回滚 异常不回滚
     @Transactional(
             transactionManager = "platformTransactionManager",
@@ -32,13 +38,13 @@ public class UserServiceImpl implements UserService {
             noRollbackFor = IllegalAccessException.class
     )
     @Override
-    public Integer saveUserInfo() {
-        return null;
+    public Integer saveUserInfo(User entity) {
+        return userMapper.insert(entity);
     }
 
     @Transactional
     @Override
-    public Integer updateUserInfo() {
+    public Integer updateUserInfo(User entity) {
         //todo some business
         // 使用AopContext 获取当前的代理对象,然后进行执行方法即可实现
         UserService userService = (UserService) AopContext.currentProxy();

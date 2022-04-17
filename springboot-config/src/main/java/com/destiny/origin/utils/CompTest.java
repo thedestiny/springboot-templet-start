@@ -14,7 +14,7 @@ import java.util.concurrent.*;
 @Slf4j
 public class CompTest {
 
-    public void test(){
+    public void test() {
 //        CompletableFuture<String> thenApply = future.thenApply((params) -> {
 //            log.info("thenApply supplyAsync {}", params);
 //            return params + " res";
@@ -65,10 +65,19 @@ public class CompTest {
 
         // future.handleAsync()
 
+        CompletableFuture<String> thenCompose = future.thenCompose((res) -> {
+            log.info("result is {}", res);
+            return CompletableFuture.supplyAsync(() -> {
+                log.info("supplyAsync");
+                return "result";
+            });
+        });
+
         log.info("whenComplete result is {}", whenComplete.get());
         log.info("exceptionally result is {}", exceptionally.get());
 
-
+        CompletableFuture.allOf(future);
+        CompletableFuture.anyOf(future);
 
 
     }

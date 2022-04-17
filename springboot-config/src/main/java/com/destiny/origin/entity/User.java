@@ -1,33 +1,42 @@
 package com.destiny.origin.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import java.math.BigDecimal;
-import java.util.List;
-
-/**
- * @Description
- * @Date 2022-04-07 11:34 AM
- */
+import java.io.Serializable;
 
 @Data
-public class User {
-
-    private String name;
-
-    private Integer age;
-
-    private List<String> tags;
-
-    private BigDecimal weight;
-
-    public User(String name, Integer age, List<String> tags, BigDecimal weight) {
-        this.name = name;
-        this.age = age;
-        this.tags = tags;
-        this.weight = weight;
-    }
-
-    public User() {
-    }
+@TableName(value = "tb_user")
+public class User implements Serializable {
+	
+	@TableId(type= IdType.ASSIGN_ID, value = "id")
+	private Long id;
+	
+	@TableField(value = "username")
+	private String username;
+	
+	@TableField(value = "salt")
+	private String salt;
+	
+	@TableField(value = "nickname")
+	private String nickname;
+	
+	@TableField(value = "id_card")
+	private String idCard;
+	
+	@TableField(value = "age")
+	private Integer age;
+	
+	@TableField(value = "password")
+	private transient String password;
+	
+	@TableField(value = "cellphone")
+	private String cellphone;
+	
+	@TableField(exist = false) // 不存在的字段
+	private String test;
+	
 }

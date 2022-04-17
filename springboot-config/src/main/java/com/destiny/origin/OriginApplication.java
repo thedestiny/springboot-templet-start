@@ -1,5 +1,7 @@
 package com.destiny.origin;
 
+import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.date.TimeInterval;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.aop.framework.AopProxyFactory;
@@ -10,7 +12,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import java.util.concurrent.Future;
 
 
 /**
@@ -25,6 +26,16 @@ import java.util.concurrent.Future;
 @EnableTransactionManagement// (proxyTargetClass = false, mode = AdviceMode.ASPECTJ)
 @EnableAspectJAutoProxy// (exposeProxy = false)
 public class OriginApplication {
+
+    @Bean
+    public ApplicationRunner applicationRunner() {
+        return args -> {
+            //有返回值，但主线程不需要用到返回值
+            TimeInterval timer = DateUtil.timer();
+            log.info(Thread.currentThread().getName() + "：开始调用异步业务");
+            log.info(Thread.currentThread().getName() + "：调用异步业务结束，耗时：" + timer.interval());
+        };
+    }
 
 
     public static void main(String[] args) {
@@ -84,17 +95,7 @@ public class OriginApplication {
 
     }
 
-    @Bean
-    public ApplicationRunner applicationRunner() {
-        return args -> {
-            long startTime = System.currentTimeMillis();
-            System.out.println(Thread.currentThread().getName() + "：开始调用异步业务");//有返回值，但主线程不需要用到返回值
-//            Future<String> future = testService.asyncTask("huanzi-qch");
 
-            long endTime = System.currentTimeMillis();
-            System.out.println(Thread.currentThread().getName() + "：调用异步业务结束，耗时：" + (endTime - startTime));
-        };
-    }
 
 
 }
