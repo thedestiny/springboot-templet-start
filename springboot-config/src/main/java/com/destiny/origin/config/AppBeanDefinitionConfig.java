@@ -25,7 +25,7 @@ public class AppBeanDefinitionConfig implements BeanDefinitionRegistryPostProces
         // invokeBeanFactoryPostProcessors 时机调用
         String[] beanDefinitionNames = registry.getBeanDefinitionNames();
         for (String beanDefinitionName : beanDefinitionNames) {
-            log.info("registry :: postProcessBeanDefinitionRegistry " + beanDefinitionName);
+            // log.info("registry :: postProcessBeanDefinitionRegistry " + beanDefinitionName);
         }
     }
 
@@ -33,7 +33,7 @@ public class AppBeanDefinitionConfig implements BeanDefinitionRegistryPostProces
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         Iterator<String> iterator = beanFactory.getBeanNamesIterator();
         while (iterator.hasNext()){
-            log.info("factory :: postProcessBeanFactory " + iterator.next());
+            // log.info("factory :: postProcessBeanFactory " + iterator.next());
         }
     }
 

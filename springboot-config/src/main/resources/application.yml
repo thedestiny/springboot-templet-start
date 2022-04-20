@@ -3,7 +3,6 @@ server:
   tomcat:
     uri-encoding: UTF-8
 
-
 mybatis-plus:
   global-config:
     banner: true
@@ -18,6 +17,7 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: true
+    use-actual-param-name: true
 
 spring:
   datasource:
@@ -26,23 +26,31 @@ spring:
     url: jdbc:mysql://localhost:3306/db_victory?useUnicode=true&characterEncoding=utf8&useSSL=false&tinyInt1isBit=true
     username: root
     password: 123456
+
     # password: Myroot123!
     hikari:
       idle-timeout: 300
       connection-test-query: select 1
-      pool-name: hikari-pool
+      pool-name: hikari-
       connection-timeout: 3000
+      jdbc-url: ${spring.datasource.url}
+      username: ${spring.datasource.username}
+      password: ${spring.datasource.password}
+      driver-class-name: ${spring.datasource.driver-class-name}
+  profiles:
+    active: dev
+
 
 app:
   info:
-    name : 小明12
+    name: 小明12
     age: 12
     birthday: 2022-01-22
     weight: 23.4
     height: 32
     user_pets:
-      - dog
-      - cat
+    - dog
+    - cat
     user_ext:
       learn: maths
       hobby: runing
