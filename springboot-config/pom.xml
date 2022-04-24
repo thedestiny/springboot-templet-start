@@ -20,6 +20,7 @@
 
     <properties>
         <spring.version>5.2.8.RELEASE</spring.version>
+        <qlexpress.version>3.2.0</qlexpress.version>
     </properties>
 
     <dependencies>
@@ -131,6 +132,19 @@
             <artifactId>guava</artifactId>
             <version>31.0.1-jre</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>QLExpress</artifactId>
+            <version>${qlexpress.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.stuxuhai</groupId>
+            <artifactId>jpinyin</artifactId>
+            <version>1.1.8</version>
+        </dependency>
+
 
     </dependencies>
 

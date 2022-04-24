@@ -25,7 +25,14 @@
        select
        *
        from `tb_user`
-       where username = #{username} and nickname = #{nickname}
+        <where>
+            <if test="username != null ">
+                username = #{username}
+            </if>
+            <if test="nickname != null ">
+               and nickname = #{nickname}
+            </if>
+        </where>
 
     </select>
 

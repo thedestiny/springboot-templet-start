@@ -23,22 +23,28 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/db_victory?useUnicode=true&characterEncoding=utf8&useSSL=false&tinyInt1isBit=true
+    url: jdbc:mysql://localhost:3306/springboot_example?useUnicode=true&characterEncoding=utf8&useSSL=false&tinyInt1isBit=true
     username: root
-    password: 123456
-
-    # password: Myroot123!
+    password: Myroot123!
     hikari:
-      idle-timeout: 300
+      # 连接最大存活时间 默认 10分钟
+      idle-timeout: 600000
       connection-test-query: select 1
       pool-name: hikari-
-      connection-timeout: 3000
-      jdbc-url: ${spring.datasource.url}
-      username: ${spring.datasource.username}
-      password: ${spring.datasource.password}
-      driver-class-name: ${spring.datasource.driver-class-name}
+      # 连接超时时间 默认 30s
+      connection-timeout: 30000
+      #jdbc-url: ${spring.datasource.url}
+      #username: ${spring.datasource.username}
+      #password: ${spring.datasource.password}
+      #driver-class-name: ${spring.datasource.driver-class-name}
+      # 连接池中的最长生命周期，0 为无限长
+      max-lifetime: 1800000
+      # 连接池最大数
+      maximum-pool-size: 20
+
   profiles:
     active: dev
+
 
 
 app:
@@ -55,4 +61,9 @@ app:
       learn: maths
       hobby: runing
     money: 23
+
+# 日志配置
+logging:
+  level:
+    com.destiny.origin.mapper : debug
 

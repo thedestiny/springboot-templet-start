@@ -20,7 +20,7 @@ public class HedghogApplication {
 
         log.info("start app HedghogApplication --> ");
         SpringApplicationBuilder builder = new SpringApplicationBuilder();
-        builder.sources(OriginApplication.class)
+        builder.sources(HedghogApplication.class)
                 .run(args);
 
     }

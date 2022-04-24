@@ -1,20 +1,20 @@
-package com.destiny.origin.config;
-
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeansException;
-import org.springframework.beans.PropertyValues;
-import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
-import org.springframework.cglib.proxy.Enhancer;
-import org.springframework.stereotype.Component;
-
-/**
- * @Description
- * @Author liangwenchao
- * @Date 2022-03-16 12:34 PM
- */
-@Slf4j
-@Component
-public class AppInstantiationAwareConfig implements InstantiationAwareBeanPostProcessor {
+//package com.destiny.origin.config;
+//
+//import lombok.extern.slf4j.Slf4j;
+//import org.springframework.beans.BeansException;
+//import org.springframework.beans.PropertyValues;
+//import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
+//import org.springframework.cglib.proxy.Enhancer;
+//import org.springframework.stereotype.Component;
+//
+///**
+// * @Description
+// * @Author liangwenchao
+// * @Date 2022-03-16 12:34 PM
+// */
+//@Slf4j
+//@Component
+//public class AppInstantiationAwareConfig implements InstantiationAwareBeanPostProcessor {
 //    @Override
 //    public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
 //        log.info("实例化之后 bean {}", beanName);
@@ -48,4 +48,4 @@ public class AppInstantiationAwareConfig implements InstantiationAwareBeanPostPr
 //        log.info("进行数据性设置 bean {}", beanName);
 //        return pvs;
 //    }
-}
+//}

@@ -3,6 +3,7 @@ package com.destiny.origin.config;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;
+import org.springframework.context.ApplicationContext;
 
 import java.lang.reflect.Method;
 
@@ -20,5 +21,6 @@ public class AppBeanMethodInterceptor implements MethodInterceptor {
         Object value = proxy.invokeSuper(obj, objects);
         log.info(" intercept is {}", value);
         return value;
+
     }
 }
