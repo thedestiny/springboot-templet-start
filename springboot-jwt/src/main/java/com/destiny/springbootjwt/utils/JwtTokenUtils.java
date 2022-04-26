@@ -8,17 +8,13 @@ import java.util.Date;
 import java.util.HashMap;
 
 /**
- * Created by echisan on 2018/6/23
- *
+ * Created by token
  * JWT header payload signature
- *
- *
  * {
  *     "typ":"JWT",
  *     "alg":"HS256" 加密算法
  *
  * }
- *
  * {
        "iss": "John Wu JWT",  // jwt 签发者
        "iat": 1441593502, // 签发时间

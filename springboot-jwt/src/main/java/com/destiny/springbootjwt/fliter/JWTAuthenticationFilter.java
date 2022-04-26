@@ -1,8 +1,9 @@
 package com.destiny.springbootjwt.fliter;
 
-import cn.echisan.springbootjwtdemo.entity.JwtUser;
-import cn.echisan.springbootjwtdemo.model.LoginUser;
-import cn.echisan.springbootjwtdemo.utils.JwtTokenUtils;
+
+import com.destiny.springbootjwt.entity.JwtUser;
+import com.destiny.springbootjwt.model.LoginUser;
+import com.destiny.springbootjwt.utils.JwtTokenUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

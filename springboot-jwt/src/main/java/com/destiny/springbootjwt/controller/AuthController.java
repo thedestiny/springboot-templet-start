@@ -17,8 +17,6 @@ import java.util.Map;
 @RequestMapping("/auth")
 public class AuthController {
 
-    @Autowired
-    private UserRepository userRepository;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -29,7 +27,9 @@ public class AuthController {
         user.setUsername(registerUser.get("username"));
         user.setPassword(bCryptPasswordEncoder.encode(registerUser.get("password")));
         user.setRole("ROLE_USER");
-        User save = userRepository.save(user);
-        return save.toString();
+        // User save = userRepository.save(user);
+//        return save.toString();
+
+        return user.toString();
     }
 }

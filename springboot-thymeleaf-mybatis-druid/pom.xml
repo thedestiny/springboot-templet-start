@@ -234,13 +234,11 @@
 
     <!--*
      springboot 打包的是可执行jar,普通的项目打包是不可以执行的，
-     repackage：这个是默认 goal，在 mvnpackage 执行之后，这个命令再次打包生成可执行的 jar，
-     同时将 mvnpackage 生成的 jar 重命名为 *.origin
+     repackage：这个是默认 goal，在 mvn package 执行之后，这个命令再次打包生成可执行的 jar，
+     同时将 mvn package 生成的 jar 重命名为 *.origin
 
      boot-inf 信息中存在信息
      meta-inf  manifest.mf 信息中有 main-class spring-boot-lib 地址
-
-
     -->
 
     <build>
