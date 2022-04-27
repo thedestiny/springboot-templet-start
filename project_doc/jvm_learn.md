@@ -35,6 +35,8 @@ client 1500 次 server 10000次调用阈值
 -XX:CompileThreshold=10000
 -XX:-UseCounterDecay 次数减半控制
 
+缓冲 对数据进行暂存，然后进行批量的传输或者读写操作，多采用顺序操作，来缓解不同设备之间缓慢的读写操作。
+
 
 
 ```
