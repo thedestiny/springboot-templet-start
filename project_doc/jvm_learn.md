@@ -37,6 +37,14 @@ client 1500 次 server 10000次调用阈值
 
 缓冲 对数据进行暂存，然后进行批量的传输或者读写操作，多采用顺序操作，来缓解不同设备之间缓慢的读写操作。
 
+java -XX:+PrintCommandLineFlags -version
+
+java -XX:+PrintFlagsFinal -XX:+UseG1GC  2>&1 | grep UseAdaptiveSizePolicy
+
+虽然配置的最大的堆内存，但是只有在使用时才会真正的进行分配，
+-XX:+AlwaysPreTouch
+
+ES 需要预留一般的内存给文件缓存 
 
 
 ```

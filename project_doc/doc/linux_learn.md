@@ -133,3 +133,11 @@ poll
 epoll
 
 https://zhuanlan.zhihu.com/p/144805500
+
+
+```
+
+# 磁盘操作 查看资源占用情况
+df -hla 
+du -h -m --max-depth=1 ./  |  sort -nr
+```

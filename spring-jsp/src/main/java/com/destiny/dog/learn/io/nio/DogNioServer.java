@@ -20,6 +20,21 @@ import java.util.Set;
  * 功能3：客户端登录后，发送已经设置好的欢迎信息和在线人数给客户端，并且通知其他客户端该客户端上线
  * 功能4：服务器收到已登录客户端输入内容，转发至其他登录客户端。
 
+   条条块块
+ https://www.cnblogs.com/chdf/p/11466522.html
+
+ https://blog.csdn.net/u010430495/article/details/86087154
+   写数据 后 position 为写数据位置
+   flip 写完之后进行 reset, 进行读写数据， position 归0 ， limit 到可取数据
+
+   Invariants: mark <= position <= limit <= capacity
+   private int mark = -1;   //标记位置，reset时需要
+   private int position = 0;//当前读取
+   private int limit;       //读取的最大位置
+   private int capacity;    //buffer的容量
+
+
+
  */
 
 public class DogNioServer {
@@ -52,7 +67,8 @@ public class DogNioServer {
 		//开门迎客，排队叫号大厅开始工作
 		selector = Selector.open();
 		
-		//告诉服务叫号大厅的工作人员，你可以接待了（事件）
+		// 告诉服务叫号大厅的工作人员，你可以接待了（事件）
+		// 连接事件分类 op_accept op_connect op_read op_write
 		server.register(selector, SelectionKey.OP_ACCEPT);
 		
 		System.out.println("服务已启动，监听端口是：" + this.port);
@@ -95,11 +111,13 @@ public class DogNioServer {
 			//注册选择器，并设置为读取模式，收到一个连接请求，然后起一个SocketChannel，并注册到selector上，之后这个连接的数据，就由这个SocketChannel处理
 			client.register(selector, SelectionKey.OP_READ);
 			
-			//将此对应的channel设置为准备接受其他客户端请求
+			// 将此对应的channel设置为准备接受其他客户端请求
 			key.interestOps(SelectionKey.OP_ACCEPT);
-//            System.out.println("有客户端连接，IP地址为 :" + sc.getRemoteAddress());
+            // System.out.println("有客户端连接，IP地址为 :" + sc.getRemoteAddress());
 			client.write(charset.encode("请输入你的昵称"));
 		}
+
+
 		//处理来自客户端的数据读取请求
 		if(key.isReadable()){
 			//返回该SelectionKey对应的 Channel，其中有数据需要读取
@@ -107,6 +125,7 @@ public class DogNioServer {
 			
 			//往缓冲区读数据
 			ByteBuffer buff = ByteBuffer.allocate(1024);
+
 			StringBuilder content = new StringBuilder();
 			try{
 				while(client.read(buff) > 0)
