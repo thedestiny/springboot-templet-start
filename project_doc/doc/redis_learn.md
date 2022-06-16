@@ -199,7 +199,13 @@ jemalloc作为Redis的默认内存分配器，在减小内存碎片方面做的�
 
 
 
+```
 
+
+https://blog.csdn.net/happytree001/article/details/119685207
+
+https://blog.csdn.net/weixin_44205087/article/details/121102841
+```
 
 
 

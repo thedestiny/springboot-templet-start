@@ -4,6 +4,7 @@ package com.destiny.springbootjwt.config;
 import com.destiny.springbootjwt.JWTAuthenticationEntryPoint;
 import com.destiny.springbootjwt.fliter.JWTAuthenticationFilter;
 import com.destiny.springbootjwt.fliter.JWTAuthorizationFilter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -25,6 +26,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
  *
  * spring security
  */
+@Slf4j
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -33,20 +35,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Qualifier("userDetailsServiceImpl")
     private UserDetailsService userDetailsService;
 
+    // 密码解析器
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder(){
+        log.info("passwordEncoder init ... ");
         return new BCryptPasswordEncoder();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
+        auth.userDetailsService(userDetailsService)
+                .passwordEncoder(bCryptPasswordEncoder());
     }
 
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
+        // CSRF（Cross-site request forgery）简称：跨站请求伪造，CSRF禁用，因为不使用session
         http.cors().and().csrf().disable()
                 .authorizeRequests()
                 // 测试用资源，需要验证了的用户才能访问

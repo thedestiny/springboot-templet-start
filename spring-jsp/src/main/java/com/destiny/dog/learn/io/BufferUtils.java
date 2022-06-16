@@ -16,7 +16,8 @@ public class BufferUtils {
         //分配10字节大小内存空间
         ByteBuffer buffer = ByteBuffer.allocate(10);
 
-
+        String property = System.getProperty("user.dir");
+        System.out.println(property);
 
     }
 }
