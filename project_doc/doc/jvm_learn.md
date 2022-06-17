@@ -1,6 +1,3 @@
-
-
-
 ##### 垃圾回收器
 https://www.cnblogs.com/yanl55555/p/13365572.html
 
@@ -12,9 +9,10 @@ jdk8 默认的垃圾回收器为 ps+po
 并发回收器：CMS. G1（分区算法）
 
 
-    新生代收集器： Serial、 ParNeW、Parallel Scavenge；
-    老年代收集器： Serial Old、 Parallel Old、 CMS；
-    整堆收集器： G1；
+新生代收集器： Serial、 ParNeW、Parallel Scavenge；
+老年代收集器： Serial Old、 Parallel Old、 CMS；
+整堆收集器： G1；
+
 查看默认的垃圾回收器
 -xx：+PrintCommandLineFlags
 

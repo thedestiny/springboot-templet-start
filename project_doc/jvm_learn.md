@@ -47,4 +47,9 @@ java -XX:+PrintFlagsFinal -XX:+UseG1GC  2>&1 | grep UseAdaptiveSizePolicy
 ES 需要预留一般的内存给文件缓存 
 
 
+jmap -histo:live pid | head -n 10 查看前10的堆内对象的示例统计信息
+String char[] 优化为了 byte[]
+char 在 jvm 中占用两个字节，使用 utf-8 编码，则其范围为 \u0000（0）和 \uffff（65,535）
+
+https://blog.csdn.net/YimBa/article/details/125025298
 ```
