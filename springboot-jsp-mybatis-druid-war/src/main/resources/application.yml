@@ -1,4 +1,4 @@
-
+ex
 spring:
   profiles:
     active: dev
@@ -55,4 +55,5 @@ server:
   tomcat:
     uri-encoding: UTF-8
   port: 9090
-  context-path: /
+  servlet:
+    context-path:

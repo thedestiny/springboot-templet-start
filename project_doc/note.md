@@ -9,6 +9,8 @@ https://www.jianshu.com/p/7122e6bef7f7
 # 异步实现原理
 https://www.cnblogs.com/shamo89/p/15715091.html
 
+# 30 张图详解操作系统总结
+https://mp.weixin.qq.com/s/vFetuDQEI8cXU1ypMCMpcQ
 
 ```
 

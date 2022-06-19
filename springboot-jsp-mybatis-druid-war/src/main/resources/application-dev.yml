@@ -1,5 +1,5 @@
 spring:
   datasource:
-    url: jdbc:mysql://xxxxxxxxxxxxx:5306/rabbit?useUnicode=true&characterEncoding=utf8&useSSL=false&tinyInt1isBit=true
-    username: xxxx
-    password: xxxxxxxxxxx
+    url: jdbc:mysql://localhost:3306/dashao?useUnicode=true&characterEncoding=utf8&useSSL=false&tinyInt1isBit=true&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
