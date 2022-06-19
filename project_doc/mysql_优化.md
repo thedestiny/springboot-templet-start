@@ -377,6 +377,22 @@ derived_merge=on
 
 ```
 
+```
+
+ACID 
+保证事务的特性
+隔离性是由锁机制实现的
+原子性 一致性 持久性 分别由redo undo 日志来实现
+
+redo日志 checkpoint 机制
+WAL 机制 write ahead logging 先写日志再写磁盘 
+redologbuffer redologfile   若干个 redolog block 512个字节
+ib_logfile0 和 ib_logfile1 重做日志文件
+
+
+
+```
+
 
 
 

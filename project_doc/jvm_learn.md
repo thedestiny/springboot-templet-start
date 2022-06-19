@@ -52,4 +52,15 @@ String char[] 优化为了 byte[]
 char 在 jvm 中占用两个字节，使用 utf-8 编码，则其范围为 \u0000（0）和 \uffff（65,535）
 
 https://blog.csdn.net/YimBa/article/details/125025298
+
+cms 产生的问题为 浮动垃圾 内存碎片 漏标的情况
+
+G1
+ZGC 
+Shennandan
+Esplion
+
+三色标记算法 黑白灰 
+
+
 ```
