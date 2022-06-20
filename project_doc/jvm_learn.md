@@ -86,6 +86,10 @@ HotSpot的源码TARGET_REGION_NUMBER定义了Region区的数量限制为2048个
 
 STAB + 写屏障 snapshot at the begining 
 
+染色指针 
+Remebered Set 双向卡表
+连接矩阵
+
 ```
 
 [](./images/jvm_gcs.png)
