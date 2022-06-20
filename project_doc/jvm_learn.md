@@ -62,5 +62,30 @@ Esplion
 
 三色标记算法 黑白灰 
 
+SMP(Symmetric Multiprocessing)， 即对称多处理器架构，是目前最常见的多处理器计算机架构。
+AMP(Asymmetric Multiprocessing)， 即非对称多处理器架构，则是与SMP相对的概念。
+非统一内存访问（NUMA） 
+均匀内存访问 UMA
+https://blog.csdn.net/qq_34556414/article/details/123076197
+
+多个CPU通过同一个北桥(North Bridge)芯片与内存链接。
+
+https://blog.csdn.net/qq_20817327/article/details/105925071
+
+https://blog.csdn.net/weixin_45101064/article/details/123478022
+
+Epsilon主要是用于测试的无操作收集器，如：性能测试、内存压力测试、VM接口测试.期间不会发生GC,程序分配的内存耗尽就会因为 oom 而退出。
+G1收集器是开启了整堆回收的里程碑
+CMS收集器是JVM中开辟并发收集的里程碑，而本次的主角G1则是开创GC分区回收新时代的里程碑。
+G1全称为Garbage-First Garbage Collector（垃圾优先收集器）
+-XX:+UseG1GC装配它。G1是一款专门针对于拥有多核处理器和大内存的机器的收集器，
+
+HotSpot的源码TARGET_REGION_NUMBER定义了Region区的数量限制为2048个
+-XX:MaxGCPauseMills参数设定GC预期回收停顿时间值，那么G1默认为200ms。
+局部复制，全局标记-理整
+
+STAB + 写屏障 snapshot at the begining 
 
 ```
+
+[](./images/jvm_gcs.png)
