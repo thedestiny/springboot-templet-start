@@ -18,7 +18,7 @@
     <properties>
         <java.version>1.8</java.version>
         <junit.version>4.13.1</junit.version>
-        <mysql.version>8.0.21</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <!--  spring-boot-starter-parent 中的 spring-boot-dependencies  中定义依赖版本-->
         <tomcat.version>9.0.37</tomcat.version>
 
