@@ -572,3 +572,18 @@ MySQL就会将这个区里面所有的数据页都加载进Buffer Pool中的LRU�
 mysql通过free list，lru list，flush list来区分free数据块、冷数据块。 
 
 
+提取 json 数据
+json_extract(json_val, "$.deptName")
+https://blog.csdn.net/asd529735325/article/details/107205214
+
+时间格式化
+DATE_FORMAT(create_time, '%Y%m%d%H') as time_str,
+DATE_FORMAT(create_time, '%Y%m%d') as day_str,
+DATE_FORMAT(create_time, '%H') as hour_str,
+minute(create_time) as min_str,
+WEEKDAY(create_time) as week_str
+
+regexp 正则表达式
+SELECT * FROM t_user_account  WHERE longmin_id REGEXP '[^0-9]'
+
+https://blog.csdn.net/weixin_51356824/article/details/119810362
