@@ -44,7 +44,7 @@ public class ElasticSearchConfig {
 		List<HttpHost> httpHosts = new ArrayList<>();
 		clusterNodes.forEach(node -> {
 			try {
-				String[] parts = StrUtil.split(node, ":");
+				String[] parts = node.split(":");//StrUtil.split(node, ":");
 				Assert.notNull(parts, "Must defined");
 				Assert.state(parts.length == 2, "Must be defined as 'host:port'");
 				httpHosts.add(new HttpHost(parts[0], Integer.parseInt(parts[1]), properties.getSchema()));

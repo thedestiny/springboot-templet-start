@@ -90,6 +90,12 @@ STAB + 写屏障 snapshot at the begining
 Remebered Set 双向卡表
 连接矩阵
 
+https://blog.csdn.net/weixin_45101064/category_11685806.html
+
+-- 只拉去最近一次提交
+git clone --depth 1 <repo_uri>
+
+
 ```
 
 [](./images/jvm_gcs.png)
