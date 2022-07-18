@@ -1,6 +1,9 @@
 package com.destiny.rabbit.config;
 
+import com.baomidou.mybatisplus.extension.parsers.DynamicTableNameParser;
+import com.baomidou.mybatisplus.extension.parsers.ITableNameHandler;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +14,10 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
 @Slf4j
 @Configuration
@@ -34,10 +41,26 @@ public class MybatisPlusConfig {
 		PaginationInnerInterceptor paginationInnerInterceptor = new PaginationInnerInterceptor();
 		paginationInnerInterceptor.setOverflow(true);
 		paginationInnerInterceptor.setMaxLimit(500L);
+
+		List<String> tables = new ArrayList<>();
+		tables.add("user");
+
+		DynamicTableNameParser parser = new DynamicTableNameParser();
+		parser.setTableNameHandlerMap(new HashMap<String, ITableNameHandler>() {{
+			tables.forEach(tableTitle -> put(tableTitle,(metaObject, sql, tableName) -> "db01." + tableName ));
+		}});
+
+		PaginationInterceptor interceptor = new PaginationInterceptor();
+		interceptor.setSqlParserList(Collections.singletonList(parser));
+
 		mybatisPlusInterceptor.addInnerInterceptor(paginationInnerInterceptor);
 
 		return mybatisPlusInterceptor;
 	}
+
+
+
+
 	
 	
 	//注册乐观锁插件

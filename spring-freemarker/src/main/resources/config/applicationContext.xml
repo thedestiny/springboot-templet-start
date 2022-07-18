@@ -8,6 +8,17 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
+
+
+
+
+    <bean id="bean1" class="com.destiny.cat.config.BeanName" init-method="init1"/>
+    <bean id="bean2" class="com.destiny.cat.config.BeanName" init-method="init2"/>
+
+
+
+
+
     <!-- class annotation related... start -->
     <context:component-scan base-package="com.destiny.cat" >
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>

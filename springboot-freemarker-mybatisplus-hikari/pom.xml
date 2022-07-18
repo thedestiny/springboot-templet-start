@@ -56,7 +56,7 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-generator</artifactId>
-            <version>3.4.0</version>
+            <version>3.3.0</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-extension -->
@@ -85,6 +85,8 @@
             <version>8.0.21</version>
             <scope>runtime</scope>
         </dependency>
+
+
 
 
         <dependency>
