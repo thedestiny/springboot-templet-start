@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: elastic
+
+server:
+  port: 8096
+
+
