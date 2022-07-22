@@ -29,6 +29,7 @@
         <module>springboot-jwt</module>
         <module>springboot-netty</module>
         <module>springboot-config</module>
+        <module>springboot-elastic</module>
     </modules>
 
 
