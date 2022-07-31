@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: elastic
+  info:
+    build:
+      encoding: UTF-8
+  elasticsearch:
+    rest:
+      uris: http://localhost:9200
+      username:
+      password:
+
+  profiles:
+    active: dev
+
+server:
+  port: 8096
+
