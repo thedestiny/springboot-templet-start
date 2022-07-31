@@ -3,7 +3,6 @@ package com.destiny.camel.util;
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;
 import com.github.dozermapper.core.loader.api.BeanMappingBuilder;
-
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;

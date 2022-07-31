@@ -175,4 +175,9 @@ ALTER USER root@'localhost' IDENTIFIED WITH MYSQL_NATIVE_PASSWORD BY 'Myroot123!
 ```
 
 
+```  
+https://blog.csdn.net/weixin_35794878/article/details/125730036
+https://blog.51cto.com/u_14006572/3025363
+```
+
 
