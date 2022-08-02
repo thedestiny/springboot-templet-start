@@ -8,4 +8,8 @@ https://cuiqingcai.com/1319.html
 ### python 依赖安装地址
 
 https://pypi.mirrors.ustc.edu.cn/simple/
+
+
+# 按照依赖进行安装数据
+pip install -r requirements.txt
 ```

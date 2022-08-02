@@ -22,6 +22,9 @@ public class DataNode {
         tree.creatTree("45+23*56/2-5");//创建表达式的二叉树
         tree.output();//输出验证
 
+        ExprNode tree1 = createTree("ab+cde+**");
+        System.out.println(tree1);
+
     }
 
 
@@ -34,13 +37,7 @@ public class DataNode {
         String s = "";
         for (int i = 0; i < expression.length(); i++) {
             char ch = expression.charAt(i); //取出字符串的各个字符
-            if (ch >= '0' && ch <= '9') {
-                s += ch;
-            } else {
-                dataList.add(s);
-                s = "";
-                dataList.add(String.valueOf(ch));
-            }
+            dataList.add(String.valueOf(ch));
         }
 
         for (int i = 0; i < dataList.size(); i++) {
