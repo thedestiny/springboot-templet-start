@@ -31,7 +31,7 @@ import javax.sql.DataSource;
 
 @Slf4j
 @Configuration
-@MapperScan(basePackages = "com.destiny.hiootamus.mapper.second",sqlSessionFactoryRef = "secSqlSessionFactory")
+@MapperScan(basePackages = "com.destiny.hiootamus.mapper.second", sqlSessionFactoryRef = "secSqlSessionFactory")
 public class MybatisPlusConfigSecondDatasource {
 
 

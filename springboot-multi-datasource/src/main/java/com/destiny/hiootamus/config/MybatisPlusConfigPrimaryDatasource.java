@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.MybatisXMLLanguageDriver;
 import com.baomidou.mybatisplus.core.config.GlobalConfig;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.type.JdbcType;
@@ -30,6 +31,8 @@ import java.util.Properties;
  * @Author liangwenchao
  * @Date 2021-05-12 4:39 PM
  */
+
+@Slf4j
 @Configuration
 @MapperScan(basePackages = "com.destiny.hiootamus.mapper.primary", sqlSessionFactoryRef = "priSqlSessionFactory")
 public class MybatisPlusConfigPrimaryDatasource {
@@ -43,7 +46,9 @@ public class MybatisPlusConfigPrimaryDatasource {
     @Primary
     // primary是设置优先，因为有多个数据源，在没有明确指定用哪个的情况下，会用带有primary的，这个注解必须有一个数据源要添加
     public DataSource priDataSource() {
-        return DataSourceBuilder.create().build();
+        DataSource build = DataSourceBuilder.create().build();
+        log.info(" start datasource !" );
+        return build;
     }
 
     // pre
@@ -82,23 +87,23 @@ public class MybatisPlusConfigPrimaryDatasource {
         return new TransactionTemplate(manager);
     }
 
-    @Bean
-    public TransactionInterceptor transactionInterceptor(@Qualifier("priTransactionManager") DataSourceTransactionManager manager) {
-
-        TransactionInterceptor interceptor = new TransactionInterceptor();
-        interceptor.setTransactionManager(manager);
-
-        Properties properties = new Properties();
-        properties.setProperty("delete*", "PROPAGATION_REQUIRED");
-        properties.setProperty("remove*", "PROPAGATION_REQUIRED");
-        properties.setProperty("update*", "PROPAGATION_REQUIRED");
-        properties.setProperty("get*", "PROPAGATION_REQUIRED,-Exception,readOnly");
-        properties.setProperty("query*", "PROPAGATION_REQUIRED,-Exception,readOnly");
-        properties.setProperty("select*", "PROPAGATION_REQUIRED,-Exception,readOnly");
-        interceptor.setTransactionAttributes(properties);
-
-        return interceptor;
-    }
+//    @Bean(name = "priTransactionInterceptor")
+//    public TransactionInterceptor transactionInterceptor(@Qualifier("priTransactionManager") DataSourceTransactionManager manager) {
+//
+//        TransactionInterceptor interceptor = new TransactionInterceptor();
+//        interceptor.setTransactionManager(manager);
+//
+//        Properties properties = new Properties();
+//        properties.setProperty("delete*", "PROPAGATION_REQUIRED");
+//        properties.setProperty("remove*", "PROPAGATION_REQUIRED");
+//        properties.setProperty("update*", "PROPAGATION_REQUIRED");
+//        properties.setProperty("get*", "PROPAGATION_REQUIRED,-Exception,readOnly");
+//        properties.setProperty("query*", "PROPAGATION_REQUIRED,-Exception,readOnly");
+//        properties.setProperty("select*", "PROPAGATION_REQUIRED,-Exception,readOnly");
+//        interceptor.setTransactionAttributes(properties);
+//
+//        return interceptor;
+//    }
 
 
 }
