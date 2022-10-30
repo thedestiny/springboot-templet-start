@@ -213,6 +213,13 @@ public class CompletableFutureTest {
     }
 
     @Test
+    public void test040(){
+
+    }
+
+
+
+    @Test
     public void test004() {
 
         CompletableFuture<String> f1 = CompletableFuture.supplyAsync(() -> {
@@ -226,7 +233,7 @@ public class CompletableFutureTest {
 
         CompletableFuture<String> f2 = CompletableFuture.supplyAsync(() -> {
             try {
-                TimeUnit.SECONDS.sleep(RandomUtil.randomInt(0, 4));
+                TimeUnit.SECONDS.sleep(RandomUtil.randomInt(5, 8));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -239,8 +246,12 @@ public class CompletableFutureTest {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            int f  = 3/ 0;
             String detail = StrUtil.format("{} -> {} ,可以执行第三步了", res1, res2);
             return detail;
+        }).exceptionally(ex -> {
+            log.info("error {} ",ex.getCause(),ex );
+            return "ssss";
         });
 
         String join = result.join();
