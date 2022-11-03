@@ -14,11 +14,12 @@ import org.elasticsearch.client.indices.CreateIndexResponse;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.Locale;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -48,6 +49,35 @@ public class IndexController {
 
     }
 
+    @PostMapping(value = "save/data")
+    public String saveData() throws IOException {
+
+        String idxName = "indexName";
+        Integer batchSize = 3000;
+        List<Map<String, Object>> skuList = new ArrayList<>();
+
+        BulkRequest bulkRequest = buildSkuBulkRequest("indexName", batchSize, skuList);
+        client.bulk(bulkRequest, RequestOptions.DEFAULT);
+
+        return "";
+    }
+
+    private BulkRequest buildSkuBulkRequest(String indexName, int batchSize,
+                                            List<Map<String, Object>> skuList) {
+        BulkRequest bulkRequest = new BulkRequest(indexName);
+        Random random = new Random();
+        for (int j = 0; j < batchSize; j++) {
+            int index = random.nextInt(100_000); // 从这 10 万商品数据随机选
+
+            // 参数封装：略。
+            IndexRequest indexRequest = new IndexRequest().source(XContentType.JSON,
+                    skuList);
+            bulkRequest.add(indexRequest);
+        }
+        return bulkRequest;
+    }
+
+
     public static Faker faker;
     public static Snowflake snow;
 
@@ -68,17 +98,17 @@ public class IndexController {
 
             User user = genUser();
             IndexRequest index = new IndexRequest();
-            index.id(snow.nextIdStr()).source(JSONObject.toJSONString(user),XContentType.JSON);
+            index.id(snow.nextIdStr()).source(JSONObject.toJSONString(user), XContentType.JSON);
             bulk.add(index);
         }
     }
 
-    public static User genUser(){
+    public static User genUser() {
 
         User user = new User();
         user.setId(snow.nextId());
         user.setUsername(faker.name().username());
-        user.setAge(faker.random().nextInt(10,50));
+        user.setAge(faker.random().nextInt(10, 50));
         user.setAddress(faker.address().fullAddress());
         user.setEmail(faker.internet().emailAddress());
         double v = faker.number().randomDouble(2, 20, 60);
