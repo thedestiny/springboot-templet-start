@@ -171,6 +171,7 @@ grant all privileges on *.* to destiny@'%';
 
 # 修改账户密码
 ALTER USER root@'localhost' IDENTIFIED WITH MYSQL_NATIVE_PASSWORD BY 'Myroot123!';
+ALTER USER destiny@'%' IDENTIFIED WITH mysql_native_password BY 'Myroot123!';
 
 ```
 
@@ -181,6 +182,8 @@ https://blog.51cto.com/u_14006572/3025363
 
 mysql 查询服务
 https://mp.weixin.qq.com/s/vMGBYX9sPYHdvk8CJXhaVg
+
+
 
 
 ```
