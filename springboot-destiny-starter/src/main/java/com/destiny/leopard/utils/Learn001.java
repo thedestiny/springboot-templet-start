@@ -1,6 +1,5 @@
 package com.destiny.leopard.utils;
 
-import org.slf4j.MDC;
 
 /**
  * @Description
