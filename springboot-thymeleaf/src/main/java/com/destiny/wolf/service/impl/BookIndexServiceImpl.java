@@ -58,10 +58,12 @@ public class BookIndexServiceImpl extends IEsServiceImpl implements BookIndexSer
 	}
 	
 	protected SearchResponse search(String index) {
-		
+
 		SearchRequest searchRequest = new SearchRequest(index);
 		SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+		searchSourceBuilder.trackTotalHits(true);
 		searchSourceBuilder.query(QueryBuilders.matchAllQuery());
+		searchSourceBuilder.query(QueryBuilders.rangeQuery("level").gte("34"));
 		
 		//bool符合查询
 		//BoolQueryBuilder boolQueryBuilder = new BoolQueryBuilder()
