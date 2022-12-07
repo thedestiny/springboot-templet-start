@@ -1,20 +1,26 @@
 package com.destiny.origin.data.kruskal;
 
 
+import lombok.Data;
+
 import java.util.*;
 
+@Data
 public class DirectedGraph {
 
 
-    private Map<String, String> Parent = new HashMap<>();
     private List<Edge> directedGraph;
 
     public DirectedGraph(int edges) {
-        directedGraph = new ArrayList<>();
+        this.directedGraph = new ArrayList<>();
         buildGraph(edges);
     }
 
-    private class Edge {
+    public DirectedGraph(List<Edge> graph) {
+        this.directedGraph = graph;
+    }
+
+    static class Edge {
         private String endNode;
         private String startNode;
         private int weight;
@@ -22,6 +28,12 @@ public class DirectedGraph {
         public Edge(String endNode, String startNode, int weight) {
             this.endNode = endNode;
             this.startNode = startNode;
+            this.weight = weight;
+        }
+
+        public Edge(Integer endNode, Integer startNode, int weight) {
+            this.endNode = String.valueOf(endNode);
+            this.startNode =  String.valueOf(startNode);
             this.weight = weight;
         }
 
@@ -45,25 +57,27 @@ public class DirectedGraph {
                 directedGraph.add(e);
             }
         }
-//        System.out.println("生成的图结果");
-//        System.out.println(directedGraph);
+
+        System.out.println("生成的图结果");
+        System.out.println(directedGraph);
     }
 
 
-    public void kruskal(int numbersofnodes) {
+    public void kruskal(int nodes) {
 
-        Graph graph = new Graph(numbersofnodes);
+        Graph graph = new Graph(nodes);
 
-        for (int i = 0; i < numbersofnodes; i++) {
+        for (int i = 0; i < nodes; i++) {
             graph.addVertex(String.valueOf(i));
         }
 
-        for (Edge edge : directedGraph) {
+        for (Edge edge : this.directedGraph) {
             graph.addEdge(Integer.valueOf(edge.startNode), Integer.valueOf(edge.endNode), edge.weight);
         }
+        System.out.println("打印图");
+        graph.printGraph();
 
         doKruskal(graph);
-
 
     }
 
@@ -101,8 +115,7 @@ public class DirectedGraph {
             }
         }
         //3、输出最终结果
-        // System.out.println("各顶点间的连接线：");
-        System.out.println("结果");
+        System.out.println("各顶点间的连接线：");
         for (String e : result) System.out.println(e);
     }
 

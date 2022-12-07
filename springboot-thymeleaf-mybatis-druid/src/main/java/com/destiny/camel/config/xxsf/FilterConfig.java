@@ -31,7 +31,7 @@ public class FilterConfig {
 		FilterRegistrationBean registrationBean = new FilterRegistrationBean();
 		registrationBean.setDispatcherTypes(DispatcherType.REQUEST);
 		registrationBean.setFilter(new XssFilter());
-		registrationBean.addUrlPatterns(StrUtil.split(urlPatterns, ","));
+		// registrationBean.addUrlPatterns(StrUtil.split(urlPatterns, ","));
 		registrationBean.setName("XssFilter");
 		registrationBean.setOrder(9999);
 		Map<String, String> initParameters = new HashMap<>();
