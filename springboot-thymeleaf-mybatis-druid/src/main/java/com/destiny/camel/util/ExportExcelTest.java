@@ -33,7 +33,7 @@ public class ExportExcelTest {
         Long start = System.currentTimeMillis();
         // List<Map<String, Object>> maps = new ArrayList<>();
 	    String property = System.getProperty("user.dir");
-	    String s = RandomUtil.randomUUID();
+	    String s = RandomUtil.randomNumbers(30);
 	
 	    StringJoiner path = new StringJoiner("\\").add(property).add(s + ".xlsx");
 	    System.out.println(path.toString());
