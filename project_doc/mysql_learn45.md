@@ -183,7 +183,8 @@ https://blog.51cto.com/u_14006572/3025363
 mysql 查询服务
 https://mp.weixin.qq.com/s/vMGBYX9sPYHdvk8CJXhaVg
 
-
+# maven 仓库地址
+https://mvnrepository.com/search?q=mail
 
 
 ```
