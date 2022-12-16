@@ -173,6 +173,11 @@ grant all privileges on *.* to destiny@'%';
 ALTER USER root@'localhost' IDENTIFIED WITH MYSQL_NATIVE_PASSWORD BY 'Myroot123!';
 ALTER USER destiny@'%' IDENTIFIED WITH mysql_native_password BY 'Myroot123!';
 
+# flink cdc 
+CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
+GRANT SELECT, SHOW DATABASES, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO 'user' IDENTIFIED BY 'password';
+FLUSH PRIVILEGES;
+
 ```
 
 
