@@ -1,6 +1,7 @@
 package com.destiny.wolf;
 
 // import com.alibaba.nacos.api.config.annotation.NacosConfigurationProperties;
+import cn.hutool.core.util.ReflectUtil;
 import com.destiny.wolf.config.WolfAppEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -20,6 +21,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class WolfApplication {
 	
 	public static void main(String[] args) {
+
+		// ReflectUtil.
 		log.info("start WolfApplication !");
 		ConfigurableApplicationContext run = SpringApplication.run(WolfApplication.class, args);
 		WolfAppEvent event = new WolfAppEvent("test", "测试 App event");
