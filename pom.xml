@@ -31,6 +31,7 @@
         <module>springboot-config</module>
         <module>springboot-elastic</module>
         <module>platform-destiny-jpa</module>
+        <module>platform-jsp</module>
     </modules>
 
 
