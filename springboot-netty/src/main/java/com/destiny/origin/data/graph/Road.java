@@ -110,6 +110,11 @@ public class Road  implements Comparable<Road> {
 
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
     /**
      * This method specified by compareTo in interface java.lang.Comparable<Road>
      * @param o an instance of Road
@@ -119,4 +124,6 @@ public class Road  implements Comparable<Road> {
     public int compareTo(Road o) {
         return this.getWeight() - o.getWeight();
     }
+
+
 }

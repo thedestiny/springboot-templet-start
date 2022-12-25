@@ -5,6 +5,11 @@ logs
 loghome
 springboot-templet-start.iml
 
+/*/target
+
+platform-jsp
+
+
 
 springboot-jsp-mybatis-druid-war/src/test/java/com/example/
 springboot-jsp-mybatis-druid/src/test/java/com/example/
