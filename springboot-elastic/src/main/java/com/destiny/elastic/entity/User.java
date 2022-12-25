@@ -13,7 +13,6 @@ import java.util.Date;
 @Data
 public class User {
 
-
     private Long id;
 
     private String username;
@@ -26,9 +25,11 @@ public class User {
 
     private BigDecimal weight;
 
-    private Date birthday;
+    private String birthday;
 
-    private Date createTime;
+    private String createTime;
+
+    private String updateTime;
 
     private Boolean sex;
 

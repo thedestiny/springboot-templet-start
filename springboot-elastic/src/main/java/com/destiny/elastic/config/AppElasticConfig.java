@@ -16,10 +16,13 @@ public class AppElasticConfig {
 
     @Bean
     public RestHighLevelClient restHighLevelClient() {
+
         return new RestHighLevelClient(
                 RestClient.builder(
                         //若有多个，可以传一个数组
                         new HttpHost("127.0.0.1", 9200, "http")));
+
+
     }
 
 

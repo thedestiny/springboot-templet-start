@@ -9,6 +9,9 @@ spring:
       uris: http://localhost:9200
       username:
       password:
+      # 连接超时默认 1s 读取超时 默认 30s
+      connection-timeout: 1000
+      read-timeout: 1000
 
   profiles:
     active: dev
