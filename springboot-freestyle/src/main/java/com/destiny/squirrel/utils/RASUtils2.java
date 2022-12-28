@@ -66,7 +66,7 @@ public class RASUtils2 {
         Sign sign = new Sign(SignAlgorithm.MD5withRSA, privateKey,publicKey);
 
 
-        // 签名和验签 
+        // 签名和验签
         String data = "我是一段测试aaaa";
         byte[] sign1 = sign.sign(data);
         boolean verify = sign.verify(data.getBytes(StandardCharsets.UTF_8), sign1);
