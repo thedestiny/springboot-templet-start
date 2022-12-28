@@ -5,9 +5,7 @@ import cn.hutool.core.io.resource.ClassPathResource;
 import cn.hutool.core.util.CharsetUtil;
 import cn.hutool.core.util.HexUtil;
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.crypto.asymmetric.AsymmetricAlgorithm;
-import cn.hutool.crypto.asymmetric.KeyType;
-import cn.hutool.crypto.asymmetric.RSA;
+import cn.hutool.crypto.asymmetric.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
@@ -33,6 +31,8 @@ public class RASUtils2 {
     // e : 1 < e < E , e E 互为质数, 选出公钥
     // 计算私钥 e*d%E=1
     // 公钥 (n, e) 私钥 (n, d)
+
+    // https://blog.csdn.net/qq_34486648/article/details/123984664
     // https://blog.csdn.net/qq_44750892/article/details/120075922
 
 
@@ -62,7 +62,14 @@ public class RASUtils2 {
         PublicKey publicKey = rsa.getPublicKey();
         String publicKeyBase64 = rsa.getPublicKeyBase64();
 
+
+        Sign sign = new Sign(SignAlgorithm.MD5withRSA, privateKey,publicKey);
+
+
+        // 签名和验签 
         String data = "我是一段测试aaaa";
+        byte[] sign1 = sign.sign(data);
+        boolean verify = sign.verify(data.getBytes(StandardCharsets.UTF_8), sign1);
         //公钥加密，私钥解密
         byte[] encrypt = rsa.encrypt(StrUtil.bytes(data, CharsetUtil.CHARSET_UTF_8), KeyType.PublicKey);
         String s = rsa.encryptBase64(data, KeyType.PublicKey);
