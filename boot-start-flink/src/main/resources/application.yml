@@ -1,0 +1,14 @@
+# 应用名称
+spring:
+  application:
+      name: boot-start-flink
+
+logging:
+  level:
+    root: info
+    io.debezium.connector.base: info
+  config: classpath:/log4j.properties
+
+
+
+
