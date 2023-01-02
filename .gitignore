@@ -7,7 +7,7 @@ springboot-templet-start.iml
 
 /*/target
 
-platform-jsp
+# platform-jsp
 
 
 

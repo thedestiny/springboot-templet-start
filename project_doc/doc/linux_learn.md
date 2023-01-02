@@ -20,6 +20,20 @@ nl /etc/passwd | sed '1a drink tea'
 第二行后加入两行
 nl -n ln /etc/passwd | sed '2a I like drinking tea\nI like drinking beer'
 
+
+磁盘使用情况
+df -h
+
+查看磁盘较大的文件
+du -sh *
+
+查看后 300行数据
+tail -300f data.log 
+查看后 20 行数据
+tail -n 20 data.log 
+查看前10行之后的数据
+tail -n +10 data.log
+
 ```
 
 

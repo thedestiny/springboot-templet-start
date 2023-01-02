@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sk.manage.mapper.PartyMemberMapper">
+
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.sk.manage.entity.PartyMember">
+        <id column="id" property="id" />
+        <result column="username" property="username" />
+        <result column="status" property="status" />
+        <result column="address" property="address" />
+        <result column="cellphone" property="cellphone" />
+        <result column="age" property="age" />
+        <result column="introducer" property="introducer" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, username, status, address, cellphone, age, introducer, create_time, update_time
+    </sql>
+
+
+
+
+    <insert id="insertEntityList" parameterType="ArrayList">
+        INSERT INTO tb_party_member (id,username,status,address,cellphone,age,introducer,create_time,update_time)
+        VALUES
+        <foreach collection="list" item="e" separator=",">
+            (#{e.id},#{e.username},#{e.status},#{e.address},#{e.cellphone},#{e.age},#{e.introducer},#{e.createTime},#{e.updateTime})
+        </foreach>
+    </insert>
+
+    <insert id="insertEntity" parameterType="com.sk.manage.entity.PartyMember" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO tb_party_member (id,username,status,address,cellphone,age,introducer,create_time,update_time)
+        VALUES
+        (#{id},#{username},#{status},#{address},#{cellphone},#{age},#{introducer},#{createTime},#{updateTime})
+    </insert>
+
+
+    <insert id="updateByEntityId" parameterType="com.sk.manage.entity.PartyMember">
+        UPDATE tb_party_member
+        <set>
+            <if test="username != null">
+                username = #{username} ,
+            </if>
+            <if test="status != null">
+                status = #{status} ,
+            </if>
+            <if test="address != null">
+                address = #{address} ,
+            </if>
+            <if test="cellphone != null">
+                cellphone = #{cellphone} ,
+            </if>
+            <if test="age != null">
+                age = #{age} ,
+            </if>
+            <if test="introducer != null">
+                introducer = #{introducer} ,
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime} ,
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime}
+            </if>
+        </set>
+        where  id = #{id}
+    </insert>
+
+    <delete id="deleteById">
+        delete from tb_party_member where id = #{id}
+
+    </delete>
+
+
+    <select id="selectPartyCount" resultType="Integer">
+
+        select count(*)
+        from tb_party_member
+        <where>
+            <if test="username != null and username != '' ">
+                username like concat('%', #{username}, '%')
+            </if>
+            <if test="status != null and status != '' ">
+                and status =  #{status}
+            </if>
+            <if test="address != null and address != '' ">
+                and address like concat('%', #{address}, '%')
+            </if>
+        </where>
+
+    </select>
+
+    <select id="selectPartyList" resultMap="BaseResultMap">
+
+        select
+        <include refid="Base_Column_List"/>
+        from tb_party_member
+        <where>
+            <if test="username != null and username != '' ">
+                username like concat('%', #{username}, '%')
+            </if>
+            <if test="status != null and status != '' ">
+                and status =  #{status}
+            </if>
+            <if test="address != null and address != '' ">
+                and address like concat('%', #{address}, '%')
+            </if>
+        </where>
+        order by id desc
+        limit #{offset}, #{pageSize}
+
+    </select>
+
+
+    <select id="selectEntityById" resultMap="BaseResultMap">
+
+        select
+        <include refid="Base_Column_List"/>
+        from tb_party_member
+        where id = #{id}
+
+    </select>
+
+
+</mapper>
