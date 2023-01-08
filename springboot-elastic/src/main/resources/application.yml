@@ -16,6 +16,15 @@ spring:
   profiles:
     active: dev
 
+# https://juejin.cn/post/7155662252584992805
+easy-es:
+  # 是否开启EE自动配置
+  enable: true
+  # ES连接地址+端口
+  address: localhost:9200
+  # 关闭自带banner
+  banner: false
+
 server:
   port: 8096
 

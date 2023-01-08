@@ -32,6 +32,7 @@
         <module>springboot-elastic</module>
         <module>platform-destiny-jpa</module>
         <module>platform-jsp</module>
+        <module>boot-start-flink</module>
     </modules>
 
 
