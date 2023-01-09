@@ -185,7 +185,7 @@
     <select id="selectEntityByCode" resultMap="BaseResultMap">
 
         select
-        id, code, alias
+        id, code, name
         from `tb_etf_list`
         where `code` = #{code} and end_flag = '0'
 

@@ -36,10 +36,12 @@ public class MysqlCdcCase {
                 .startupOptions(StartupOptions.initial())
                 .build();
         // 3 应用
-        DataStreamSource<String> DataStreamSource = env.addSource(sourceFunction);
+        DataStreamSource<String> source = env.addSource(sourceFunction);
         // 打印
-        DataStreamSource.print();
+        source.print();
         System.out.println("执行了打印");
+
+
         //4.执行任务
         env.execute("flink_cdc_mysql");
 

@@ -34,6 +34,7 @@ CREATE TABLE `tb_etf_list` (
   `month_f` varchar(255)  DEFAULT NULL COMMENT '前5个月',
   `month_g` varchar(255)  DEFAULT NULL COMMENT '前6个月',
   `data_type` varchar(3)  DEFAULT '1' COMMENT '数据类型 1 etf 2 stock',
+  `end_flag` varchar(3)  DEFAULT '0' COMMENT '0 停止 1 正常',
   `date_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `sharp_rate` decimal(18,3) DEFAULT NULL COMMENT '夏普比率',
   `stand_error` decimal(18,3) DEFAULT NULL COMMENT '标准差',
