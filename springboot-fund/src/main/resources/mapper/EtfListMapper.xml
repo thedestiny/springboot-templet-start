@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.platform.fund.mapper.EtfListMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.platform.fund.entity.EtfList">
+        <id column="id" property="id" />
+        <result column="code" property="code" />
+        <result column="name" property="name" />
+        <result column="alias" property="alias" />
+        <result column="fund_size" property="fundSize" />
+        <result column="fund_manager" property="fundManager" />
+        <result column="fund_company" property="fundCompany" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="format_time" property="formatTime" />
+        <result column="index_target" property="indexTarget" />
+        <result column="index_error" property="indexError" />
+        <result column="price" property="price" />
+        <result column="price_change" property="priceChange" />
+        <result column="rate_change" property="rateChange" />
+        <result column="href" property="href" />
+        <result column="stage_week1" property="stageWeek1" />
+        <result column="stage_month1" property="stageMonth1" />
+        <result column="stage_month3" property="stageMonth3" />
+        <result column="stage_month6" property="stageMonth6" />
+        <result column="stage_year" property="stageYear" />
+        <result column="stage_year1" property="stageYear1" />
+        <result column="stage_year2" property="stageYear2" />
+        <result column="stage_year3" property="stageYear3" />
+        <result column="month_a" property="monthA" />
+        <result column="month_b" property="monthB" />
+        <result column="month_c" property="monthC" />
+        <result column="month_d" property="monthD" />
+        <result column="month_e" property="monthE" />
+        <result column="month_f" property="monthF" />
+        <result column="month_g" property="monthG" />
+        <result column="data_type" property="dataType" />
+        <result column="date_time" property="dateTime" />
+        <result column="end_flag" property="endFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, code, `name`, alias, fund_size, fund_manager, fund_company, create_time, update_time, format_time, index_target, index_error, price, price_change, rate_change, href, stage_week1, stage_month1, stage_month3, stage_month6, stage_year, stage_year1, stage_year2, stage_year3, month_a, month_b, month_c, month_d, month_e, month_f, month_g, data_type, date_time, end_flag
+    </sql>
+
+
+    <insert id="insertSpecial" parameterType="com.platform.fund.entity.EtfList" keyProperty="id"
+            useGeneratedKeys="true">
+        INSERT ignore INTO tb_etf_list  ( CODE, `NAME` )  VALUES  ( #{code}, #{name})
+    </insert>
+
+
+
+
+    <insert id="insertEntityList" parameterType="ArrayList">
+        INSERT INTO tb_etf_list (id,code,`name`,alias,fund_size,fund_manager,fund_company,create_time,update_time,format_time,index_target,index_error,price,price_change,rate_change,href,stage_week1,stage_month1,stage_month3,stage_month6,stage_year,stage_year1,stage_year2,stage_year3,month_a,month_b,month_c,month_d,month_e,month_f,month_g,data_type,date_time)
+        VALUES
+        <foreach collection="list" item="e" separator=",">
+            (#{e.id},#{e.code},#{e.name},#{e.alias},#{e.fundSize},#{e.fundManager},#{e.fundCompany},#{e.createTime},#{e.updateTime},#{e.formatTime},#{e.indexTarget},#{e.indexError},#{e.price},#{e.priceChange},#{e.rateChange},#{e.href},#{e.stageWeek1},#{e.stageMonth1},#{e.stageMonth3},#{e.stageMonth6},#{e.stageYear},#{e.stageYear1},#{e.stageYear2},#{e.stageYear3},#{e.monthA},#{e.monthB},#{e.monthC},#{e.monthD},#{e.monthE},#{e.monthF},#{e.monthG},#{e.dataType},#{e.dateTime})
+        </foreach>
+    </insert>
+
+    <insert id="insertEntity" parameterType="com.platform.fund.entity.EtfList">
+        INSERT INTO tb_etf_list (id,code,`name`,alias,fund_size,fund_manager,fund_company,create_time,update_time,format_time,index_target,index_error,price,price_change,rate_change,href,stage_week1,stage_month1,stage_month3,stage_month6,stage_year,stage_year1,stage_year2,stage_year3,month_a,month_b,month_c,month_d,month_e,month_f,month_g,data_type,date_time)
+        VALUES
+        (#{id},#{code},#{name},#{alias},#{fundSize},#{fundManager},#{fundCompany},#{createTime},#{updateTime},#{formatTime},#{indexTarget},#{indexError},#{price},#{priceChange},#{rateChange},#{href},#{stageWeek1},#{stageMonth1},#{stageMonth3},#{stageMonth6},#{stageYear},#{stageYear1},#{stageYear2},#{stageYear3},#{monthA},#{monthB},#{monthC},#{monthD},#{monthE},#{monthF},#{monthG},#{dataType},#{dateTime})
+    </insert>
+
+
+    <insert id="updateByEntityId" parameterType="com.platform.fund.entity.EtfList">
+        UPDATE tb_etf_list
+        <set>
+            <if test="code != null">
+                code = #{code} ,
+            </if>
+            <if test="name != null">
+                `name` = #{name} ,
+            </if>
+            <if test="alias != null">
+                alias = #{alias} ,
+            </if>
+            <if test="fundSize != null">
+                fund_size = #{fundSize} ,
+            </if>
+            <if test="fundManager != null">
+                fund_manager = #{fundManager} ,
+            </if>
+            <if test="fundCompany != null">
+                fund_company = #{fundCompany} ,
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime} ,
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime} ,
+            </if>
+            <if test="formatTime != null">
+                format_time = #{formatTime} ,
+            </if>
+            <if test="indexTarget != null">
+                index_target = #{indexTarget} ,
+            </if>
+            <if test="indexError != null">
+                index_error = #{indexError} ,
+            </if>
+            <if test="price != null">
+                price = #{price} ,
+            </if>
+            <if test="priceChange != null">
+                price_change = #{priceChange} ,
+            </if>
+            <if test="rateChange != null">
+                rate_change = #{rateChange} ,
+            </if>
+            <if test="href != null">
+                href = #{href} ,
+            </if>
+            <if test="stageWeek1 != null">
+                stage_week1 = #{stageWeek1} ,
+            </if>
+            <if test="stageMonth1 != null">
+                stage_month1 = #{stageMonth1} ,
+            </if>
+            <if test="stageMonth3 != null">
+                stage_month3 = #{stageMonth3} ,
+            </if>
+            <if test="stageMonth6 != null">
+                stage_month6 = #{stageMonth6} ,
+            </if>
+            <if test="stageYear != null">
+                stage_year = #{stageYear} ,
+            </if>
+            <if test="stageYear1 != null">
+                stage_year1 = #{stageYear1} ,
+            </if>
+            <if test="stageYear2 != null">
+                stage_year2 = #{stageYear2} ,
+            </if>
+            <if test="stageYear3 != null">
+                stage_year3 = #{stageYear3} ,
+            </if>
+            <if test="monthA != null">
+                month_a = #{monthA} ,
+            </if>
+            <if test="monthB != null">
+                month_b = #{monthB} ,
+            </if>
+            <if test="monthC != null">
+                month_c = #{monthC} ,
+            </if>
+            <if test="monthD != null">
+                month_d = #{monthD} ,
+            </if>
+            <if test="monthE != null">
+                month_e = #{monthE} ,
+            </if>
+            <if test="monthF != null">
+                month_f = #{monthF} ,
+            </if>
+            <if test="monthG != null">
+                month_g = #{monthG} ,
+            </if>
+            <if test="dataType != null">
+                data_type = #{dataType} ,
+            </if>
+            <if test="dateTime != null">
+                date_time = #{dateTime} 
+            </if>
+        </set>
+         where  id = #{id}
+    </insert>
+
+
+    <select id="selectEntityList" resultMap="BaseResultMap">
+
+        select
+        <include refid="Base_Column_List"/>
+        from tb_etf_list
+        where end_flag = '0'
+
+    </select>
+
+    <select id="selectEntityByCode" resultMap="BaseResultMap">
+
+        select
+        id, code, alias
+        from `tb_etf_list`
+        where `code` = #{code} and end_flag = '0'
+
+    </select>
+
+
+    <select id="queryEtfListPage" resultMap="BaseResultMap">
+
+        select
+        <include refid="Base_Column_List"/>
+        from tb_etf_list
+        <where>
+            end_flag = '0'
+            <if test="alias != null and alias != '' ">
+                and alias = #{alias}
+            </if>
+            <if test="fundSize != null ">
+                and fund_size > #{fundSize}
+            </if>
+            <if test="fundManager != null and fundManager != '' ">
+                and fund_manager like concat('%', #{fundManager}, '%')
+            </if>
+
+            <if test="fundCompany != null and fundCompany != '' ">
+                and fund_company like concat('%', #{fundCompany}, '%')
+            </if>
+        </where>
+
+
+    </select>
+
+
+
+</mapper>

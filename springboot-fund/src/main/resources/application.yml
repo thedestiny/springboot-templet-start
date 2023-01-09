@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: fund
+  datasource:
+    url: jdbc:mysql://localhost:3306/account?useUnicode=true&characterEncoding=utf8&useSSL=false&tinyInt1isBit=true&serverTimezone=Asia/Shanghai&allowMultiQueries=true&rewriteBatchedStatements=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 5
+      idle-timeout: 18000
+      maximum-pool-size: 50
+      auto-commit: true
+      pool-name: hikari-app
+      max-lifetime: 180000
+      connection-timeout: 30000
+      connection-test-query: select 1
+
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.platform.fund.entity
+
+server:
+  port: 9098

@@ -28,6 +28,7 @@
         <module>springboot-sharding</module>
         <module>springboot-jwt</module>
         <module>springboot-netty</module>
+        <module>springboot-fund</module>
         <module>springboot-config</module>
         <module>springboot-elastic</module>
         <module>platform-destiny-jpa</module>
