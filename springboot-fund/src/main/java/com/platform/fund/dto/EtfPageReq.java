@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * @Description
@@ -14,6 +15,7 @@ import java.math.BigDecimal;
 @Data
 public class EtfPageReq extends Page<EtfPageReq> implements Serializable {
 
+    private static final long serialVersionUID = 4103385685895739747L;
 
     private String alias;
 
@@ -26,6 +28,8 @@ public class EtfPageReq extends Page<EtfPageReq> implements Serializable {
     private BigDecimal stageWeek1;
 
     private BigDecimal stageMonth1;
+
+    private List<String> codeList;
 
 
 

@@ -40,4 +40,11 @@ public interface EtfListMapper extends BaseMapper<EtfList> {
      * @return
      */
     Page<EtfList> queryEtfListPage(EtfPageReq req);
+
+    /**
+     * 查询数据
+     * @param dataType
+     * @return
+     */
+    List<String> queryDataList(String dataType);
 }

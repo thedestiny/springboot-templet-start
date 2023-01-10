@@ -2,6 +2,7 @@ package com.platform.fund.web;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.platform.fund.dto.EtfPageReq;
+import com.platform.fund.dto.FundList;
 import com.platform.fund.dto.Result;
 import com.platform.fund.entity.EtfList;
 import com.platform.fund.service.EtfListService;
@@ -30,11 +31,12 @@ public class FundController {
     /**
      * 分页查询数据信息
      * localhost:9098/api/v1/etf/list
+     *
      * @param req
      * @return
      */
     @GetMapping(value = "etf/list")
-    public  Result<Page<EtfList>>  queryEtfList(EtfPageReq req){
+    public Result<Page<EtfList>> queryEtfList(EtfPageReq req) {
 
         Page<EtfList> page = listService.queryEtfListPage(req);
         Result<Page<EtfList>> result = new Result<>();
@@ -44,8 +46,19 @@ public class FundController {
         return result;
     }
 
+    /**
+     * 下拉列表数据
+     * @return
+     */
+    @GetMapping(value = "fund/list")
+    public Result<FundList> queryFundList() {
+        FundList fundList = listService.queryFundListData();
+        Result<FundList> result = new Result<>();
+        result.setCode("200");
+        result.setMsg("请求成功");
+        result.setData(fundList);
+        return result;
 
-
-
+    }
 
 }

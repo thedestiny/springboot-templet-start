@@ -6,6 +6,7 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.platform.fund.dto.EtfPageReq;
+import com.platform.fund.dto.FundList;
 import com.platform.fund.entity.EtfList;
 import com.platform.fund.mapper.EtfListMapper;
 import com.platform.fund.service.EtfListService;
@@ -105,5 +106,13 @@ public class EtfListServiceImpl extends ServiceImpl<EtfListMapper, EtfList> impl
         return baseMapper.queryEtfListPage(req);
     }
 
-
+    @Override
+    public FundList queryFundListData() {
+        List<String> manage = baseMapper.queryDataList("1");
+        List<String> company = baseMapper.queryDataList("2");
+        FundList fundList = new FundList();
+        fundList.setCompanyList(company);
+        fundList.setManagerList(manage);
+        return fundList;
+    }
 }

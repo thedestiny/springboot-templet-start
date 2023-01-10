@@ -3,6 +3,7 @@ package com.platform.fund.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.platform.fund.dto.EtfPageReq;
+import com.platform.fund.dto.FundList;
 import com.platform.fund.entity.EtfList;
 
 /**
@@ -38,4 +39,10 @@ public interface EtfListService extends IService<EtfList> {
      * @return
      */
     Page<EtfList> queryEtfListPage(EtfPageReq req);
+
+    /**
+     *
+     * @return
+     */
+    FundList queryFundListData();
 }
