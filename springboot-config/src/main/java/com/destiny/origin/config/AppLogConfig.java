@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @Description 日志记录
- * @Author liangwenchao
+ * @Author destiny
  * @Date 2022-03-30 2:06 PM
  */
 

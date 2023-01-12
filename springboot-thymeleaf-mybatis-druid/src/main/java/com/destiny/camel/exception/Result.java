@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 
 /**
  * @Description
- * @Author liangwenchao
+ * @Author destiny
  * @Date 2021-05-18 10:57 AM
  */
 public final class Result {

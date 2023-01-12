@@ -10,7 +10,7 @@ import java.util.Collection;
 
 /**
  * @Description 精确分片算法
- * @Author liangwenchao
+ * @Author destiny
  * @Date 2021-08-07 5:00 PM
  */
 @Slf4j

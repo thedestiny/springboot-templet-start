@@ -28,7 +28,7 @@ import java.util.Properties;
 
 /**
  * @Description 新数据库连接配置
- * @Author liangwenchao
+ * @Author destiny
  * @Date 2021-05-12 4:39 PM
  */
 

@@ -2,7 +2,7 @@ package com.destiny.cat.config;
 
 /**
  * @Description
- * @Author liangwenchao
+ * @Author destiny
  * @Date 2022-07-11 10:04 AM
  */
 public class BeanName {

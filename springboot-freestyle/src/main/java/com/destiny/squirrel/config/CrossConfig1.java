@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 /**
  * @Description 跨域的四种设置方式
- * @Author liangwenchao
+ * @Author destiny
  * @Date 2021-11-19 2:22 PM
  */
 

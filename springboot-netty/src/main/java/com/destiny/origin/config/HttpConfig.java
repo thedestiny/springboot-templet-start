@@ -8,7 +8,7 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * @Description
- * @Author liangwenchao
+ * @Author destiny
  * @Date 2022-11-02 10:22 AM
  */
 public class HttpConfig {

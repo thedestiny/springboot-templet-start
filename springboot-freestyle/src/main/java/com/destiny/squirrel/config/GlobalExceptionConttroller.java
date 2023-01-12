@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * @Description 全局异常捕获
- * @Author liangwenchao
+ * @Author destiny
  * @Date 2021-11-19 3:29 PM
  */
 @Slf4j

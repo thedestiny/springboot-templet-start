@@ -2,7 +2,7 @@ package com.destiny.camel.service;
 
 /**
  * @Description
- * @Author liangwenchao
+ * @Author destiny
  * @Date 2021-05-18 9:56 AM
  */
 public interface RedisService {

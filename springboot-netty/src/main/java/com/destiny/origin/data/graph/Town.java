@@ -2,7 +2,7 @@ package com.destiny.origin.data.graph;
 
 /**
  * @Description
- * @Author liangwenchao
+ * @Author destiny
  * @Date 2022-12-07 4:25 PM
  */
 public class Town implements Comparable<Town>{

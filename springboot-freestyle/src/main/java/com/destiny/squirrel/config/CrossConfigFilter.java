@@ -10,7 +10,7 @@ import java.io.IOException;
 
 /**
  * @Description 跨域请求配置
- * @Author liangwenchao
+ * @Author destiny
  * @Date 2021-11-19 2:32 PM
  */
 

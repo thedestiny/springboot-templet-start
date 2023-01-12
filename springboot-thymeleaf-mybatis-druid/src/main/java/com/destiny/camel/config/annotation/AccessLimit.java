@@ -2,7 +2,7 @@ package com.destiny.camel.config.annotation;
 
 /**
  * @Description
- * @Author liangwenchao
+ * @Author destiny
  * @Date 2021-05-18 9:29 AM
  */
 public @interface AccessLimit {

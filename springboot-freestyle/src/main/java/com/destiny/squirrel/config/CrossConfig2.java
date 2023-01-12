@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * @Description 跨域的四种设置方式
- * @Author liangwenchao
+ * @Author destiny
  * @Date 2021-11-19 2:22 PM
  */
 

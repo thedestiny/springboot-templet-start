@@ -5,7 +5,7 @@ import java.util.Set;
 
 /**
  * @Description
- * @Author liangwenchao
+ * @Author destiny
  * @Date 2022-12-07 4:30 PM
  */
 public interface GraphInterface<V, E> {

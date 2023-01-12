@@ -3,7 +3,7 @@ package com.destiny.leopard.utils;
 
 /**
  * @Description
- * @Author liangwenchao
+ * @Author destiny
  * @Date 2022-07-11 9:36 AM
  */
 public class Learn001 {

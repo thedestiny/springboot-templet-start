@@ -4,7 +4,7 @@ import com.destiny.squirrel.service.AnimalKlass;
 
 /**
  * @Description
- * @Author liangwenchao
+ * @Author destiny
  * @Date 2021-06-04 3:59 PM
  */
 public abstract class AbstractAnimalKlass implements AnimalKlass {

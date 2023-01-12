@@ -2,7 +2,7 @@ package com.destiny.squirrel.config;
 
 /**
  * @Description
- * @Author liangwenchao
+ * @Author destiny
  * @Date 2021-06-30 8:33 PM
  */
 

@@ -2,7 +2,7 @@ package com.destiny.squirrel.utils;
 
 /**
  * @Description 进制转换工具类
- * @Author liangwenchao
+ * @Author destiny
  * @Date 2021-10-28 8:51 PM
  */
 public class HexUtils {
