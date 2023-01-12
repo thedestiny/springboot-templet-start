@@ -25,6 +25,14 @@
 
     <dependencies>
 
+        <!--  https://mp.weixin.qq.com/s/_oS1xzGNfX0d-QzIMwYtyA  -->
+
+        <dependency>
+            <groupId>io.github.admin4j</groupId>
+            <artifactId>http</artifactId>
+            <version>0.4.0</version>
+        </dependency>
+
         <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>

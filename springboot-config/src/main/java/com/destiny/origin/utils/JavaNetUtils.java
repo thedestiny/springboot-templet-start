@@ -17,6 +17,7 @@ public class JavaNetUtils {
 
     public static void main(String[] args) {
 
+
         StringBuffer result = new StringBuffer();
         Charset charset = Charset.forName("UTF-8");
         String param = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><user>\n" +
