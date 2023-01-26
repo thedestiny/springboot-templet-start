@@ -3,10 +3,7 @@ package com.platform.fund.utils;
 
 import cn.hutool.extra.ftp.Ftp;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.net.ftp.FTP;
-import org.apache.commons.net.ftp.FTPClient;
-import org.apache.commons.net.ftp.FTPFile;
-import org.apache.commons.net.ftp.FTPReply;
+import org.apache.commons.net.ftp.*;
 
 import java.io.*;
 import java.nio.charset.Charset;
@@ -32,6 +29,25 @@ public class FtpUtils {
         Integer port = 21;
         // todo 切换 ftp 目录, 服务器上的目录
         String workPath = "";
+
+        /**
+         * ftp 和 ftps 连接
+         */
+        FTPSClient ftpsClient = new FTPSClient();
+        ftpsClient.connect("host",78);
+        ftpsClient.enterLocalPassiveMode();
+        // 登陆FTP服务器
+        ftpsClient.login("username", "password");
+        ftpsClient.execPBSZ(0);
+        ftpsClient.execPROT("P");
+        ftpsClient.type(FTP.BINARY_FILE_TYPE);
+        if (!FTPReply.isPositiveCompletion(ftpsClient.getReplyCode())) {
+            System.err.println("未连接到FTP，用户名或密码错误。");
+            ftpsClient.disconnect();
+        } else {
+            log.info("FTP连接成功。");
+        }
+
 
         log.info("开始连接Ftp服务器 . . .");
         Ftp ftp = new Ftp(host, port, user, password);
