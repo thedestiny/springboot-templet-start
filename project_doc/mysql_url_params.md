@@ -10,5 +10,5 @@ inet_ntoa(ip_addr)     -> 转为为ip 地址
 8字节 BIGINT          -9223372036854775808到9223372036854775807
 
 
-
+alter table table_name auto_increment = 1
 
