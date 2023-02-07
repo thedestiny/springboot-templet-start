@@ -160,6 +160,8 @@ https://zhuanlan.zhihu.com/p/144805500
 crontab -e 
 * * * * * /bin/ls
 
+* * * * * /bin/ls
 
+0 3 * * * echo "" >  /root/sandbox-treasure/nohup.out
 
 ```

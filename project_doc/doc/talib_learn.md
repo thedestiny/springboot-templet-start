@@ -9,6 +9,9 @@ import talib
 https://github.com/HuaRongSAO/talib-document
 Whl下载地址：https://www.lfd.uci.edu/~gohlke/pythonlibs/#TA-Lib
 
+centos 安装 talib
+https://www.likecs.com/show-306761469.html#sc=497
+
 pip install xxx.whl
 
 ```
