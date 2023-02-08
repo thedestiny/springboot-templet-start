@@ -14,6 +14,9 @@ https://www.likecs.com/show-306761469.html#sc=497
 
 pip install xxx.whl
 
+# 华为镜像源下载
+https://mirrors.huaweicloud.com/python/
+
 ```
 
 
