@@ -43,4 +43,29 @@ sudo n v14.19.0 // 版本v自定义
 npm install -g n
 
 
+# 升级到稳定版
+sudo n stable
+# 升级到最新版
+sudo n lastest
+# 切换使用node版本
+sudo n 12.13.0
+# 删除某个node版本
+sudo n rm 12.13.0
+# 用指定版本执行脚本
+sudo n use 12.13.0  some.js
+
+
+  nvm install 8.0.0                     Install a specific version number
+  nvm use 8.0                           Use the latest available 8.0.x release
+  nvm run 6.10.3 app.js                 Run app.js using node 6.10.3
+  nvm exec 4.8.3 node app.js            Run `node app.js` with the PATH pointing to node 4.8.3
+  nvm alias default 8.1.0               Set default node version on a shell
+  nvm alias default node                Always default to the latest available node version on a shell
+
+  nvm install node                      Install the latest available version
+  nvm use node                          Use the latest version
+  nvm install --lts                     Install the latest LTS version
+  nvm use --lts                         Use the latest LTS version
+
+
 ```
