@@ -29,7 +29,7 @@ public class HomeController {
 		// reset template 发起请求
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.set("Content-Type", "application/json");
-		
+
 		JSONObject json = new JSONObject();
         json.put("data", "123");
         json.put("msg", "消息详情");
