@@ -1,83 +1,58 @@
 package com.destiny.squirrel.utils;
 
-import cn.hutool.core.collection.CollUtil;
-import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.destiny.squirrel.entity.User;
-import lombok.extern.slf4j.Slf4j;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Slf4j
+/**
+ * 正则表达式
+ * 在线测试地址
+ * https://c.runoob.com/front-end/854/
+ * https://blog.csdn.net/kong_gu_you_lan/article/details/113062057
+ * https://blog.csdn.net/kong_gu_you_lan/article/details/119342396
+ * @Description
+ * @Date 2023-02-20 3:17 PM
+ */
 public class RegexUtils {
-	
-	
-	public static void main(String[] args) {
-		
-		
-		User user = new User("rr");
-		user.setAddress("ddd");
-		user.setId(3L);
-		String s = JSONObject.toJSONString(user, SerializerFeature.PrettyFormat);
-		System.out.println(s);
-		
-		// 匹配方法
-		System.out.println(matchMethod("WrapperResponse<Boolean>  batchGenaListProd(GenaListProdReqDTO genaListProdReqDTO);"));
-	}
-	
-	
-	public static String match(String node){
-		node = node.replaceAll("\"","'");
-		Pattern p = Pattern.compile("(?:^|\\s)'([^']*?)'(?:$|\\s)", Pattern.MULTILINE);
-		Matcher m = p.matcher(node);
-		String result = "";
-		
-		if (m.find()) {
-			System.out.print(m.group());
-			while (m.find()) result+= m.group();// System.out.print(", "+m.group());
-		} else {
-			// System.out.println("NONE");
-		}
-		return result.replaceAll("[']","");
-	}
-	
-	public static String matchMethod(String node){
-		node = node.replaceAll("\"","'");
-		//, Pattern.MULTILINE
-		Pattern p = Pattern.compile(">(.*?)\\(");
-		Matcher m = p.matcher(node);
-		String result = "";
-		
-		if (m.find()) {
-			result = m.group();
-			
-		} else {
-			// System.out.println("NONE");
-		}
-		String tmp =  result.replace("(","").replace(">","").trim();
-		return tmp;
-	}
-	
-	public static String matchStr(String managers, String regex) {
-		List<String> list = matchStrs(managers, regex);
-		if (CollUtil.isNotEmpty(list)) {
-			return list.get(0);
-		} else {
-			return "";
-		}
-	}
-	
-	public static List<String> matchStrs(String managers, String regex) {
-		List<String> ls = new ArrayList<String>();
-		Pattern pattern = Pattern.compile(regex);
-		Matcher matcher = pattern.matcher(managers);
-		while (matcher.find())
-			ls.add(matcher.group());
-		return ls;
-	}
-	
-	
+
+    // * 0次到多次 + 1次到多次 ？ 0次或者1次
+
+    // 正则	名称	含义	示例
+    //(?<=Y)	肯定逆序环视	左边是Y	(?<=\d)th 左边是数字的 th，可以匹配上 9th
+    //(?<!Y)	否定逆序环视	左边不是Y	(?<!\d)th 左边不是数字的 th，可以匹配上 health
+    //(?=Y)	肯定顺序环视	右边是Y	six(?=\d) 右边是数字的 six，可以匹配上 six6
+    //(?!Y)	否定顺序环视	右边不是Y	six(?!\d) 右边不是数字的 six，可以匹配上 sixgod
+
+
+    public static void main(String[] args) {
+
+        // Pattern pattern = Pattern.compile("(?<=>).+?(?=<)");
+        // Pattern pattern = Pattern.compile("(?<=>).*?(?=<)");
+        // Pattern pattern = Pattern.compile("(?<=>).+?(?=<)");
+
+        Pattern pattern = Pattern.compile("((?<=>)[^>]+\\+?(?=</)|(?<=auto\"><strong>).+?(?=</))");
+
+        String test = "<p style=\"width: auto\"><strong>2,114.15USD</strong></p >\n" +
+                "<p style=\"width: auto\">消费&nbsp;失败</p >\n" +
+                "<p style=\"width: auto\">530616******0099</p >\n" +
+                "<p style=\"width: auto\">2022-12-20 20:17</p >";
+
+        System.out.println(test + "\n");
+
+        String[] split = test.split("\n");
+
+        for (String s : split) {
+
+            Matcher matcher = pattern.matcher(s);
+            if (matcher.find()) {
+                System.out.println(matcher.group());
+            }
+
+        }
+
+
+
+
+    }
+
+
 }
