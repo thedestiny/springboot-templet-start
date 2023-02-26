@@ -1,6 +1,10 @@
 // 删除索引
 DELETE person_profile
 
+https://blog.csdn.net/dgfdhgghd/article/details/127882138
+
+
+
 // 查看索引结构
 GET /person_profile/_mapping
 

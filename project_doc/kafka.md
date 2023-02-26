@@ -16,5 +16,4 @@ https://vuejs.zcopy.site/v2/guide/
 https://cdn.baomitu.com/
 
 
--- python 版本下载
-https://mirrors.huaweicloud.com/python/
+
