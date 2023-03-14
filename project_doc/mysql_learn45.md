@@ -124,6 +124,18 @@ set @@auto_increment_offset = 1;     -- 起始值
 set @@auto_increment_increment = 2;  -- 步长
 
 
+```
+
+mysql binlog  配置
+
+log-bin = mysql-bin
+binlog_format = mixed
+server-id = 1
+expire_logs_days = 10
+
+
+```
+
 ```$xslt
 
 # 一致性协议
