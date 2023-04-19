@@ -45,7 +45,9 @@ public class BookIndexServiceImpl extends IEsServiceImpl implements BookIndexSer
 	@Override
 	public List<BookIndex> searchList() {
 		SearchResponse searchResponse = search(index);
-		SearchHit[] hits = searchResponse.getHits().getHits();
+		// 数据总条数
+        long value = searchResponse.getHits().getTotalHits().value;
+        SearchHit[] hits = searchResponse.getHits().getHits();
 		List<BookIndex> lolList = new ArrayList<>();
 		Arrays.stream(hits).forEach(hit -> {
 			Map<String, Object> sourceAsMap = hit.getSourceAsMap();
