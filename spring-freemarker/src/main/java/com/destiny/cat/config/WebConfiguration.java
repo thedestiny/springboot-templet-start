@@ -35,22 +35,21 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
 
 
 
-	
 	InheritableThreadLocal<String> threadLocal = new InheritableThreadLocal<>();
-	
+
 	@Bean
 	public StringHttpMessageConverter stringHttpMessageConverter() {
 		return new StringHttpMessageConverter(Charset.forName("UTF-8"));
 	}
-	
+
 	@Bean
 	public FastJsonHttpMessageConverter fastJsonHttpMessageConverter(){
 		FastJsonHttpMessageConverter converter = new FastJsonHttpMessageConverter();
-		converter.setFeatures(SerializerFeature.DisableCircularReferenceDetect);
+		// converter.setFeatures(SerializerFeature.DisableCircularReferenceDetect);
 		converter.setCharset(Charset.forName("UTF-8"));
 		return converter;
 	}
-	
+
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 		//添加字符转解析器
@@ -58,17 +57,17 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
 		//添加json解析器
 		converters.add(fastJsonHttpMessageConverter());
 	}
-	
+
 	@Override
 	public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-		
-		
-		
-		
+
+
+
+
 		converters.clear();
 		converters.add(stringHttpMessageConverter());
 		converters.add(fastJsonHttpMessageConverter());
 	}
 
-	
+
 }
