@@ -82,6 +82,7 @@ public class BookIndexServiceImpl extends IEsServiceImpl implements BookIndexSer
 				.query(QueryBuilders.rangeQuery("level").gte("34"))
 				.query(QueryBuilders.termQuery("", ""));
 
+
 		//bool符合查询
 		//BoolQueryBuilder boolQueryBuilder = new BoolQueryBuilder()
 		//        .filter(QueryBuilders.matchQuery("name", "盖伦"))

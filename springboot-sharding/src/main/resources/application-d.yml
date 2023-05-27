@@ -1,0 +1,119 @@
+#激活指定的环境
+spring:
+  profiles:
+    active: dev
+
+---
+#开发环境
+
+#tomcat的配置
+server:
+  port: 8080
+
+#spring的配置
+spring:
+  config:
+    activate:
+      on-profile: dev #环境名
+  shardingsphere:
+    datasource:
+      names: master,slave1
+      master:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://183.6.120.227:3307/reggie?characterEncoding=utf-8
+        username: root
+        password: Clbjm_3122
+      slave1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://183.6.120.227:3308/reggie?characterEncoding=utf-8
+        username: root
+        password: Clbjm_3122
+    masterslave:
+      load-balance-algorithm-type: round_robin
+      name: dataSource
+      master-data-source-name: master
+      slave-data-source-names: slave1
+    props:
+      sql:
+        show: true
+  main:
+    allow-bean-definition-overriding: true
+
+  #redis相关配置
+  data:
+    redis:
+      host: 183.6.120.227
+      port: 6380
+      password: Clbjm_3122
+      database: 0
+      jedis:
+        pool:
+          max-active: 8 #最大连接数
+          max-wait: 1ms #最大阻塞等待时间
+          max-idle: 4 #最大空闲连接
+          min-idle: 0 #最小空闲连接
+
+
+#mybatis-plus的配置
+mybatis-plus:
+  configuration:
+    #映射时，表名改为大驼峰，字段改为小驼峰
+    map-underscore-to-camel-case: true
+    #控制台输出详细SQL执行过程
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      #使用雪花算法生成ID值
+      id-type: ASSIGN_ID
+
+
+reggie:
+  path: /usr/local/reggie_img
+
+
+---
+#生产环境
+server:
+  port: 8080
+
+spring:
+  config:
+    activate:
+      on-profile: pro
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///reggie?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: Clbjm_3122
+  data:
+    redis:
+      host: 183.6.120.227
+      port: 6380
+      password: Clbjm_3122
+      database: 0
+      jedis:
+        pool:
+          max-active: 8 #最大连接数
+          max-wait: 1ms #最大阻塞等待时间
+          max-idle: 4 #最大空闲连接
+          min-idle: 0 #最小空闲连接
+  cache:
+    redis:
+      time-to-live: 18000000 #缓存过期时间是5小时，如果不设置，默认永不过期。
+
+mybatis-plus:
+  configuration:
+    #映射时，表名改为大驼峰，字段改为小驼峰
+    map-underscore-to-camel-case: true
+    #控制台输出详细SQL执行过程
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      #使用雪花算法生成ID值
+      id-type: ASSIGN_ID
+
+reggie:
+  path: /usr/local/reggie_img

@@ -96,3 +96,43 @@ http {
 
 
 ```
+
+##### 防火墙 epel
+
+```
+
+# centos7.9 防火墙操作
+https://blog.csdn.net/jianxuan/article/details/121416840
+# epel 操作
+http://www.taodudu.cc/news/show-3524824.html?action=onClick
+# 下载安装文件 epel 
+wget -O /etc/yum.repos.d/epel.repo http://mirrors.cloud.tencent.com/repo/epel-7.repo
+
+# 阿里的 repo 源即可
+
+https://blog.csdn.net/weixin_45946254/article/details/129016056
+
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+yum clean all 
+yum makecache
+
+
+
+service iptables status 
+
+查看防火墙的状态
+systemctl status firewalld.service
+关闭防火墙
+systemctl stop firewalld.service
+启用防火墙
+systemctl start firewalld.service
+开机禁用防火墙
+systemctl disable firewalld.service
+开机启用防火墙
+systemctl enable firewalld.service
+
+
+
+
+
+```
