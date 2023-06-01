@@ -1,6 +1,7 @@
 package com.platform.itcast.pojo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -14,6 +15,8 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     //标准产品单位（商品集合）
+    // 忽略json 转换
+    @JsonIgnore
     private Long spu;
     //库存量单位（最小品类单元）
     private Long sku;
