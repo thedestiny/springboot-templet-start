@@ -137,6 +137,24 @@ location ~* /js/.*/\.js
 ```
 
 
+```
+
+# 端口转发
+server{
+  listen 88;
+  server_name  112.225.37.221 112.225.37.197;
+
+  location / {
+    proxy_pass  http://127.0.0.1:9274;
+    proxy_set_header Host $proxy_host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  }
+}
+
+
+```
+
 
 underscores_in_headers 默认 off 即默认忽略带下划线的 header 所以自定义 header 时最好使用带-的header
 这样做是为了避免把 headers 映射为 CGI 变量时出现歧义，因为破折号和下划线都会被映射为下划线，所以两者不好区分
