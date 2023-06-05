@@ -202,7 +202,13 @@ https://mp.weixin.qq.com/s/vMGBYX9sPYHdvk8CJXhaVg
 # maven 仓库地址
 https://mvnrepository.com/search?q=mail
 
-
+时间格式化
+SELECT DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s');  -- 结果：2020-12-07 22:18:58
+SELECT DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i');   -- 结果：2020-12-07 22:18
+SELECT DATE_FORMAT(NOW(),'%Y-%m-%d %H');     -- 结果：2020-12-07 22
+SELECT DATE_FORMAT(NOW(),'%Y-%m-%d');      -- 结果：2020-12-07
+SELECT DATE_FORMAT(NOW(),'%H:%i:%s');      -- 结果：22:18:58
+SELECT DATE_FORMAT(NOW(),'%H');         -- 结果：22
 ```
 
 
