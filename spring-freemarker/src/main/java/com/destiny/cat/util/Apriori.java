@@ -1,5 +1,8 @@
 package com.destiny.cat.util;
 
+import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.util.StrUtil;
+
 import java.util.*;
 
 /**
@@ -23,15 +26,14 @@ public class Apriori {
      * @param dataList
      * @return
      */
-
-    private Map<String, Integer> find1_FrequentSet(ArrayList<String> dataList) {
+    private Map<String, Integer> findFrequentMap(List<String> dataList) {
         Map<String, Integer> resultSetMap = new HashMap<>();
         for (String data : dataList) {
-            String[] strings = data.split(GAP);
+            String[] element = data.split(GAP);
             //这是把所有的购买记录一条条的筛选出来
-            for (String string : strings) {
+            for (String string : element) {
                 string += GAP;
-                if (resultSetMap.get(string) == null) {
+                if (!resultSetMap.containsKey(string)) {
                     resultSetMap.put(string, 1);
                 } else {
                     resultSetMap.put(string, resultSetMap.get(string) + 1);
@@ -116,15 +118,14 @@ public class Apriori {
      * @return
      */
 
-    public TreeMap<String, Integer> apriori(ArrayList<String> dataList) {
-        Map<String, Integer> setpFrequentSetMap = new HashMap<>();
-        setpFrequentSetMap.putAll(find1_FrequentSet(dataList));
+    public Map<String, Integer> apriori(List<String> dataList) {
 
-        TreeMap<String, Integer> frequentSetMap = new TreeMap<String, Integer>();
-        frequentSetMap.putAll(setpFrequentSetMap);
+        Map<String, Integer> maps = findFrequentMap(dataList);
+
+        Map<String, Integer> frequentSetMap = new TreeMap<>(maps);
         // Into the loop choose
-        while (setpFrequentSetMap != null && setpFrequentSetMap.size() > 0) {
-            Map<String, Integer> candidateSetMap = aprioriGen(setpFrequentSetMap);
+        while (CollUtil.isNotEmpty(maps)) {
+            Map<String, Integer> candidateSetMap = aprioriGen(maps);
             //得到的就是候选集 candidateSetMap ，当然我们只要key部分即可啦！
             Set<String> candidateKeySet = candidateSetMap.keySet();
 
@@ -137,7 +138,9 @@ public class Apriori {
                         //意味着在Data，也就是在初始的购物记录中查找当前的频繁项集中的某一条。寻找string如果不成功，则返回-1；
                         // indexOf(Object o)方法
                         // 功能：查找某个元素在ArrayList中第一次出现的位置。
-                        if (data.indexOf(string + GAP) == -1) {
+
+                        // if (data.indexOf(string + GAP) == -1) {
+                        if (!StrUtil.contains(data, string + GAP)) {
                             flag = false;
                             break;
                         }
@@ -150,16 +153,16 @@ public class Apriori {
             }
             //从候选集中找到符合支持度的频繁项集，stepFrequentSetMap顾名思义就是每一次找到的新的频繁集。
             //所以在置入新的频繁集之前，都要先把上次的清空掉。
-            setpFrequentSetMap.clear();
+            maps.clear();
             for (String candidate : candidateKeySet) {
                 Integer count = candidateSetMap.get(candidate);
                 if (count >= SUPPORT) {
-                    setpFrequentSetMap.put(candidate, count);
+                    maps.put(candidate, count);
                 }
             }
             // puaAll的作用是把一个Map的所有元素置入并且去重。
             // 合并所有频繁集
-            frequentSetMap.putAll(setpFrequentSetMap);
+            frequentSetMap.putAll(maps);
         }
         //While循环结束的条件是新的频繁项集的大小为0.也就是必须要完全空了才出来。
         //这时候已经确保了frequentSetMap包含有所有的频繁项集了。
@@ -294,7 +297,7 @@ public class Apriori {
         maps.put("4", "火腿");
         maps.put("5", "芝士");
 
-        ArrayList<String> resList = new ArrayList<>();
+        List<String> resList = new ArrayList<>();
         for (String ele : dataList) {
             String res = ele;
             for (Map.Entry<String, String> entry : maps.entrySet()) {
@@ -313,15 +316,15 @@ public class Apriori {
 
         Apriori apriori2 = new Apriori();
 
-        System.out.println("=频繁项集==========");
+        System.out.println("=========频繁项集==========");
 
-        Map<String, Integer> frequentSetMap = apriori2.apriori(dataList);
+        Map<String, Integer> frequentSetMap = apriori2.apriori(resList);
         Set<String> keySet = frequentSetMap.keySet();
         for (String key : keySet) {
             System.out.println(key + " : " + frequentSetMap.get(key));
         }
 
-        System.out.println("=关联规则==========");
+        System.out.println("===========关联规则==========");
         Map<String, Double> relationRulesMap = apriori2.getRelationRules(frequentSetMap);
         Set<String> rrKeySet = relationRulesMap.keySet();
         for (String rrKey : rrKeySet) {
