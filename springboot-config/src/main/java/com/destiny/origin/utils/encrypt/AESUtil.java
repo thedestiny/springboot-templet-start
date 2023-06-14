@@ -28,16 +28,12 @@ public class AESUtil {
 
     public static String encrypt(String content, String password) {
         try {
-            Cipher cipher = Cipher.getInstance("AES/GCM/PKCS5Padding");
+            Cipher cipher = Cipher.getInstance(DEFAULT_CIPHER_ALGORITHM);
             cipher.init(1, getSecretKey(password));
             byte[] iv = cipher.getIV();
-
             assert iv.length == 12;
-
             byte[] encryptData = cipher.doFinal(content.getBytes());
-
             assert encryptData.length == content.getBytes().length + 16;
-
             byte[] message = new byte[12 + content.getBytes().length + 16];
             System.arraycopy(iv, 0, message, 0, 12);
             System.arraycopy(encryptData, 0, message, 12, encryptData.length);
@@ -55,7 +51,7 @@ public class AESUtil {
                 throw new IllegalArgumentException();
             } else {
                 GCMParameterSpec params = new GCMParameterSpec(128, content, 0, 12);
-                Cipher cipher = Cipher.getInstance("AES/GCM/PKCS5Padding");
+                Cipher cipher = Cipher.getInstance(DEFAULT_CIPHER_ALGORITHM);
                 cipher.init(2, getSecretKey(password), params);
                 byte[] decryptData = cipher.doFinal(content, 12, content.length - 12);
                 return new String(decryptData);
@@ -73,6 +69,16 @@ public class AESUtil {
         kg.init(128, random);
         SecretKey secretKey = kg.generateKey();
         return new SecretKeySpec(secretKey.getEncoded(), "AES");
+    }
+
+    public static void main(String[] args) {
+
+        String key = "admin";
+        String data = "我是一个测试串";
+        String enData = encrypt(data, key);
+        System.out.println(enData);
+        System.out.println(decrypt(enData, key));
+
     }
 
 
