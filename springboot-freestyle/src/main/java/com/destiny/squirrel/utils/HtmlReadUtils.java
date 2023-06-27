@@ -95,12 +95,12 @@ public class HtmlReadUtils {
         String tmp = "";
 
         for (String node : arr) {
-            String s = RegexUtils.matchStr(node, "[\u4e00-\u9fa5]");
-            if (StrUtil.isBlank(s)) {
-                tmp += " " + node;
-            } else {
-                tmp += "\n" + node;
-            }
+//            String s = RegexUtils.matchStr(node, "[\u4e00-\u9fa5]");
+//            if (StrUtil.isBlank(s)) {
+//                tmp += " " + node;
+//            } else {
+//                tmp += "\n" + node;
+//            }
         }
         System.out.println(tmp);
 

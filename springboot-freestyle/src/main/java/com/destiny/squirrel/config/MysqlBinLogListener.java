@@ -27,11 +27,12 @@ public class MysqlBinLogListener implements ApplicationRunner {
     }
 
     public void connectMysqlBinLog() {
+
         //自己MySQL的信息。host，port，username，password
         BinaryLogClient client = new BinaryLogClient("localhost", 3306, "root", "123456");
         // 设置监听的server_id 必须是唯一的，该server_id 作为从节点来接受 mysql 数据
         client.setServerId(100);
-
+        // https://blog.csdn.net/m0_69424697/article/details/124947861
         client.registerEventListener(event -> {
             EventData data = event.getData();
 
@@ -64,6 +65,13 @@ public class MysqlBinLogListener implements ApplicationRunner {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public static void main(String[] args) {
+
+        MysqlBinLogListener listener = new MysqlBinLogListener();
+        listener.connectMysqlBinLog();
 
     }
 
