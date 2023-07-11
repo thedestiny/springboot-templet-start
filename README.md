@@ -83,4 +83,29 @@ https://www.cnblogs.com/kismetv/p/9236731.html
 
 https://blog.csdn.net/weixin_67222106/article/details/125590431
 
+SELECT TABLE_NAME as 'tab_name',TABLE_COMMENT as 'tab_com' FROM information_schema.TABLES WHERE table_schema = 'db_uat' and TABLE_NAME like "t_%" and TABLE_NAME not in ("t_trade_order", "t_trade_refund")
+
+
+select COLUMN_NAME,COLUMN_COMMENT from information_schema.columns where  table_name='表名'
+
+
+git commit  作者信息和邮箱修改
+https://blog.csdn.net/u014641168/article/details/125414820
+
+git filter-branch --env-filter '
+oldEmail="old@163.com"
+newName="kaiyang"
+newEmail="kaiyang@qq.com"
+
+if [ "$GIT_COMMITTER_EMAIL" = "$oldEmail" ]; then
+    export GIT_COMMITTER_NAME="$newName"
+    export GIT_COMMITTER_EMAIL="$newEmail"
+fi
+
+if [ "$GIT_AUTHOR_EMAIL" = "$oldEmail" ]; then
+    export GIT_AUTHOR_NAME="$newName"
+    export GIT_AUTHOR_EMAIL="$newEmail"
+fi
+' --tag-name-filter cat -- --branches --tags
+
 ```

@@ -3,6 +3,7 @@ package com.destiny.squirrel.utils;
 import com.destiny.squirrel.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import ognl.Ognl;
+import ognl.OgnlContext;
 import ognl.OgnlException;
 
 import java.util.HashMap;
@@ -44,6 +45,19 @@ public class OgnlTest {
         Ognl.setValue("age", user, "18");
 
         System.out.println(user);
+
+        Map<String, String> cxt = new HashMap<>();
+        cxt.put("name","小明");
+
+       //  Ognl.parseExpression("this 中文 ${name}",cxt)
+
+
+
+
+
+
+
+
 
 
 
