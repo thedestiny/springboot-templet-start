@@ -2,6 +2,8 @@ package com.destiny.squirrel.config;
 
 
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.db.Db;
+import com.alibaba.druid.pool.DruidDataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -28,6 +30,16 @@ public class MysqlBinLogListener implements ApplicationRunner {
     }
 
     public void connectMysqlBinLog() {
+
+
+        DruidDataSource dataSource = new DruidDataSource();
+        dataSource.setUrl("jdbc:mysql://localhost:3306/account?useUnicode=true&characterEncoding=utf8&useSSL=false&tinyInt1isBit=true&serverTimezone=Asia/Shanghai&allowMultiQueries=true&rewriteBatchedStatements=true");
+        dataSource.setUsername("root");
+        dataSource.setPassword("123456");
+        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+
+        Db use = Db.use(dataSource, "com.mysql.jdbc.Driver");
+
 
         Map<Long, String> tabMap = new HashMap<>();
         //自己MySQL的信息。host，port，username，password
