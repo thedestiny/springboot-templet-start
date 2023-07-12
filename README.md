@@ -88,6 +88,14 @@ SELECT TABLE_NAME as 'tab_name',TABLE_COMMENT as 'tab_com' FROM information_sche
 
 select COLUMN_NAME,COLUMN_COMMENT from information_schema.columns where  table_name='表名'
 
+-- 查询数据库表字段
+SELECT COLUMN_NAME as 'name',
+DATA_TYPE as 'type' , COLUMN_COMMENT as 'comment' 
+FROM information_schema.`COLUMNS`WHERE
+ TABLE_SCHEMA = 'account' 
+ AND TABLE_NAME= 'tb_user';
+ 
+
 
 git commit  作者信息和邮箱修改
 https://blog.csdn.net/u014641168/article/details/125414820

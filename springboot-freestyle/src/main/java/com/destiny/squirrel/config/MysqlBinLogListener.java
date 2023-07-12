@@ -3,7 +3,9 @@ package com.destiny.squirrel.config;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.db.Db;
+import cn.hutool.db.Entity;
 import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -39,6 +41,14 @@ public class MysqlBinLogListener implements ApplicationRunner {
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 
         Db use = Db.use(dataSource, "com.mysql.jdbc.Driver");
+
+        String sl = "select COLUMN_NAME,COLUMN_COMMENT from information_schema.columns where table_name='tb_user'";
+        try {
+            List<Entity> query = use.query(sl);
+            log.info("data is {}", JSONObject.toJSONString(query,true));
+        } catch (Exception e) {
+
+        }
 
 
         Map<Long, String> tabMap = new HashMap<>();
