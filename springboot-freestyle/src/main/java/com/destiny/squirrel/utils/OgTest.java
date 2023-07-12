@@ -1,6 +1,7 @@
 package com.destiny.squirrel.utils;
 
 
+import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 
 /**
  * @Description
@@ -10,6 +11,7 @@ package com.destiny.squirrel.utils;
 public class OgTest {
 
     public static void main(String[] args) {
+
 
 
     }
