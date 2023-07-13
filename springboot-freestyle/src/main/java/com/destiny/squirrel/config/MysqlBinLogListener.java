@@ -1,6 +1,8 @@
 package com.destiny.squirrel.config;
 
 
+import cn.hutool.core.date.DateTime;
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.db.Db;
 import cn.hutool.db.Entity;
@@ -120,9 +122,28 @@ public class MysqlBinLogListener implements ApplicationRunner {
 
     public static void main(String[] args) {
 
-        MysqlBinLogListener listener = new MysqlBinLogListener();
-        listener.connectMysqlBinLog();
+//        MysqlBinLogListener listener = new MysqlBinLogListener();
+//        listener.connectMysqlBinLog();
+
+
+        print("2023-07-08");
+        print("2023-07-09");
+        print("2023-07-10");
+        print("2023-07-11");
+        print("2023-07-12");
+        print("2023-07-13");
+        print("2023-07-14");
 
     }
+
+    public static void print(String val){
+
+        DateTime parse = DateUtil.parse(val, "yyyy-MM-dd");
+        int i = parse.weekOfYear();
+        int i1 = parse.dayOfWeek();
+        System.out.println(val + " -- " + i + " --- " + i1);
+
+    }
+
 
 }
