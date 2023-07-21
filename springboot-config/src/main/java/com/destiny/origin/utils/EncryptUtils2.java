@@ -36,7 +36,7 @@ public class EncryptUtils2 {
         //1.初始化密钥
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
         // 1024 2048
-        keyPairGenerator.initialize(512);
+        keyPairGenerator.initialize(2048);
         KeyPair keyPair = keyPairGenerator.generateKeyPair();
         RSAPublicKey rsaPublicKey = (RSAPublicKey)keyPair.getPublic();
         RSAPrivateKey rsaPrivateKey = (RSAPrivateKey)keyPair.getPrivate();
