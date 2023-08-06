@@ -143,7 +143,6 @@ location ~* /js/.*/\.js
 server{
   listen 88;
   server_name  112.225.37.221 112.225.37.197;
-
   location / {
     proxy_pass  http://127.0.0.1:9274;
     proxy_set_header Host $proxy_host;
