@@ -20,6 +20,31 @@ yum makecache
 yum update -y
 yum -y install vim
 
+docker run -d --name centos7 --privileged=true centos:7 /usr/sbin/init
+
+# 安装  service 
+yum install -y initscripts
+# 安装 netstat 
+yum install -y net-tools
+
+yum install -y nginx
+
+
+service firewall status
+service firewall stop
+service firewall restart
+service firewall start
+
+systemctl status firewalld
+systemctl start firewalld
+systemctl stop firewalld  
+systemctl disable firewalld
+systemctl enable firewalld
+
+systemctl stop iptables
+systemctl status iptables
+systemctl start iptables
+
 
 ```
 
@@ -27,7 +52,19 @@ yum -y install vim
 
 ```
 
+cat /proc/version 
+cat /etc/issue
+cat /etc/redhat-release
+
+
+systemctl:test
 docker run -itd --privileged --name centos -p 8300:80  centos /bin/bash
+
+docker run -itd --privileged --name centos -p 8300:80  couchbase/centos7-systemd  /bin/bash
+
+docker run -itd --privileged --name centos1 -p 8400:80  centos systemctl:test
+
+docker run -itd --privileged --name centos1 -p 8400:80  centos systemctl:test
 
 docker run -itd --privileged --name nginx -p 8300:80  nginx /bin/bash
 
