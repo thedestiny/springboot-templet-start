@@ -77,6 +77,8 @@ docker attach 进入容器再退出导致容器停止
 docker exec -it  containerid -
 docker exec -it 243c32535da7 /bin/bash
 
+docker run -itd --privileged -p -v centos /bin/bash
+
 
 
 
