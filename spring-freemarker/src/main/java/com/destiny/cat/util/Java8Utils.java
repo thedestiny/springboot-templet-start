@@ -29,19 +29,19 @@ public class Java8Utils {
 
     public static void main(String[] args) {
 
-        String mobile = "13849869912";
+        String mobile = "13449859912";
         boolean b = Pattern.matches("^1[0-9]{10}$", mobile);
         System.out.println(b);
 
 
-        OrderInfoDto node = new OrderInfoDto("123", BigDecimal.valueOf(5), "456");
+        OrderInfoDto node1 = new OrderInfoDto("123", BigDecimal.valueOf(5), "456");
         //node.setMerNo("345");
 
-        Optional.ofNullable(node.getMerNo()).ifPresent(element -> {
+        Optional.ofNullable(node1.getMerNo()).ifPresent(element -> {
             System.out.println("ddd  " + element);
         });
 
-        String dd = Optional.ofNullable(node.getMerNo()).orElse("34");
+        String dd = Optional.ofNullable(node1.getMerNo()).orElse("34");
         System.out.println(dd);
 
         // 实践数据
