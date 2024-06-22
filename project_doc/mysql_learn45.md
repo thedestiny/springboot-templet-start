@@ -171,8 +171,10 @@ DROP DATABASE If Exists `novel_plus`;
 CREATE DATABASE If Not Exists  `novel_plus` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 use novel_plus;
 
-grant all on *.* to root@'%' identified by 'admin123';
 
+CREATE DATABASE If Not Exists  `student` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+
+grant all on *.* to root@'%' identified by 'admin123';
 
 # 创建用户并授权 mysql57
 GRANT ALL ON *.* TO destiny@'%' IDENTIFIED BY "Myroot123!"; 
