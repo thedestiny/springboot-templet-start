@@ -8,7 +8,7 @@
     <artifactId>platform-jsp</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
-    <name>spring-jsp</name>
+    <name>platform-jsp</name>
 
 
     <properties>

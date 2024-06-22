@@ -8,7 +8,9 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
@@ -17,6 +19,7 @@ import java.util.stream.Collectors;
  * 聚合分析
  * mapreduce
  * compute
+ *
  * @Description
  * @Date 2023-09-07 8:33 PM
  */
@@ -25,6 +28,21 @@ public class Java8Utils {
 
 
     public static void main(String[] args) {
+
+        String mobile = "13449859912";
+        boolean b = Pattern.matches("^1[0-9]{10}$", mobile);
+        System.out.println(b);
+
+
+        OrderInfoDto node1 = new OrderInfoDto("123", BigDecimal.valueOf(5), "456");
+        //node.setMerNo("345");
+
+        Optional.ofNullable(node1.getMerNo()).ifPresent(element -> {
+            System.out.println("ddd  " + element);
+        });
+
+        String dd = Optional.ofNullable(node1.getMerNo()).orElse("34");
+        System.out.println(dd);
 
         // 实践数据
         OrderInfoDto dto1 = new OrderInfoDto("123", BigDecimal.valueOf(5), "456");

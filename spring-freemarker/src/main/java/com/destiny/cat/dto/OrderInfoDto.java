@@ -21,6 +21,16 @@ public class OrderInfoDto implements Serializable {
     // 订单号
     private String orderNo;
 
+    private String merNo;
+
+    public String getMerNo() {
+        return merNo;
+    }
+
+    public void setMerNo(String merNo) {
+        this.merNo = merNo;
+    }
+
     public OrderInfoDto() {
     }
 
@@ -53,4 +63,6 @@ public class OrderInfoDto implements Serializable {
     public void setOrderNo(String orderNo) {
         this.orderNo = orderNo;
     }
+
+
 }
