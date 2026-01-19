@@ -2,7 +2,7 @@
 ##### 给容器中注册组件
 ```
 aop 
-
+https://baijiahao.baidu.com/s?id=1724327365978008424&wfr=spider&for=pc
 给容器中注册组件；
 1）、包扫描+组件标注注解（@Controller/@Service/@Repository/@Component）[自己写的类]
 2）、@Bean[导入的第三方包里面的组件]
